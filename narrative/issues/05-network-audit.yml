@@ -1,0 +1,331 @@
+# Network changes and renumbering, then audit and NIS2 findings, most still open.
+- id: is_086
+  summary: Renumber Birch line 2
+  type: Change
+  status: Done
+  reporter: p_tiina
+  assignee: p_tiina
+  createdDaysAgo: 1160
+  resolvedDaysAgo: 1150
+  description: |
+    New address plan for line 2. Old addresses for reference:
+    [[birch-l2-plc-01|oldip]], [[birch-l2-plc-02|oldip]], [[birch-l2-plc-06|oldip]], [[birch-l2-plc-11|oldip]].
+    Rest in the diagram.
+  labels: [kind:network]
+- id: is_087
+  summary: Line 2 HMIs point at old addresses
+  type: Incident
+  status: Done
+  reporter: p_tiina
+  assignee: p_pentti
+  createdDaysAgo: 1155
+  resolvedDaysAgo: 1100
+  description: Panels still use [[birch-l2-plc-13|oldip]] and [[birch-l2-plc-14|oldip]]. Pentti will fix.
+  labels: [kind:network]
+- id: is_088
+  summary: Duplicate IP on Rowan line 1, [[a_2yq7i|ip]]
+  type: Incident
+  status: Open
+  reporter: p_sanna
+  assignee: null
+  createdDaysAgo: 500
+  description: |
+    Scanner sees two controllers on one address. Same model, different MACs.
+    One of them is [[a_6asq9|ip]] too, as far as the scanner knows. Needs someone on site.
+  labels: [kind:network]
+- id: is_089
+  summary: Second duplicate IP on Rowan line 1
+  type: Incident
+  status: Open
+  reporter: p_sanna
+  assignee: null
+  createdDaysAgo: 480
+  description: Same story at [[a_oqcmf|ip]]. Also [[a_v4vfq|ip]]. Probably the same cause.
+  labels: [kind:network]
+- id: is_090
+  summary: Segment Spruce line 1
+  type: Change
+  status: Open
+  reporter: p_sanna
+  assignee: p_antti
+  createdDaysAgo: 300
+  description: Flat network. Engineering PC [[spruce-l1-pc-02]] can reach every PLC and the office. Plan cells.
+  labels: [kind:network, no-follow-up]
+- id: is_091
+  summary: Unknown boxes on Spruce line 1
+  type: Task
+  status: Open
+  reporter: p_sanna
+  assignee: null
+  createdDaysAgo: 700
+  description: "[[a_29s7w|ip]] and [[a_ynwrt|ip]] answer ping and nothing else. Who owns them."
+  labels: [kind:network]
+- id: is_092
+  summary: Birch line 1 ring setup
+  type: Change
+  status: Done
+  reporter: p_kontro
+  assignee: p_kontro
+  createdDaysAgo: 2800
+  resolvedDaysAgo: 2800
+  description: Ring manager [[birch-l1-sw-06|oldname]] configured. Test passed.
+  labels: [kind:network]
+- id: is_093
+  summary: Warehouse switch replaced
+  type: Change
+  status: Done
+  reporter: p_sanna
+  assignee: p_sanna
+  createdDaysAgo: 200
+  resolvedDaysAgo: 199
+  description: New switch [[annex-l4-sw-01]]. Old one kept as a spare.
+  labels: [kind:network]
+- id: is_094
+  summary: Firewall rules between office and plants
+  type: Change
+  status: Open
+  reporter: p_sanna
+  assignee: p_sanna
+  createdDaysAgo: 150
+  description: Today everything is allowed. First step, log what is used. Second step, decide.
+  labels: [kind:network]
+- id: is_095
+  summary: Alder VLAN cleanup
+  type: Change
+  status: Done
+  reporter: p_leena
+  assignee: p_leena
+  createdDaysAgo: 1400
+  resolvedDaysAgo: 1390
+  description: Management VLAN moved. Old management address [[alder-l2-sw-01|oldip]] no longer used.
+  labels: [kind:network]
+- id: is_096
+  summary: Rowan line 2 moved to the new hall
+  type: Change
+  status: Done
+  reporter: p_ville
+  assignee: p_ville
+  createdDaysAgo: 1200
+  resolvedDaysAgo: 1180
+  description: "[[a_992uo|nick]] and [[a_w6dgi|nick]] moved with the line. Addresses kept. Names not set."
+  labels: [kind:network]
+- id: is_097
+  summary: Spruce address plan
+  type: Change
+  status: Done
+  reporter: p_esa
+  assignee: p_esa
+  createdDaysAgo: 2700
+  resolvedDaysAgo: 2700
+  description: Infeed PLC at [[spruce-l1-plc-03|oldip]]. Others follow the list.
+  labels: [kind:network]
+- id: is_098
+  summary: Remote access for Siemens support
+  type: Request
+  status: Open
+  reporter: p_antti
+  assignee: p_sanna
+  createdDaysAgo: 60
+  description: Vendor wants a permanent VPN. Proposed a session based one instead.
+  labels: [kind:network]
+- id: is_099
+  summary: ET 200SP stations have no hostnames
+  type: Task
+  status: Open
+  reporter: p_tiina
+  assignee: null
+  createdDaysAgo: 1300
+  description: "[[a_9zeqx|ip]] and [[a_fp2rd|ip]] and the rest. Integrator did not set names."
+  labels: [kind:network]
+- id: is_100
+  summary: Fifty nameless devices on Alder line 2
+  type: Task
+  status: Open
+  reporter: p_sanna
+  assignee: p_leena
+  createdDaysAgo: 100
+  description: Scanner sees them, nobody has a list. Starting with [[a_jc0bx|ip]] and [[a_kphw0|ip]].
+  labels: [kind:network]
+- id: is_101
+  summary: "NIS2 gap: nobody owns the asset inventory"
+  type: Task
+  status: Open
+  reporter: p_marja
+  assignee: null
+  createdDaysAgo: 120
+  description: Asset management is in Article 21. We have four lists and no owner.
+  labels: [kind:audit, nis2]
+- id: is_102
+  summary: "Audit: CP 343-1 modules on Birch line 2 with critical findings"
+  type: Task
+  status: Open
+  reporter: p_sanna
+  assignee: null
+  createdDaysAgo: 90
+  description: Scanner shows critical findings on the old CPs. No owner, no plan, no spares.
+  labels: [kind:audit, nis2]
+- id: is_103
+  summary: "Audit: same password on all Spruce panels"
+  type: Task
+  status: Open
+  reporter: p_jukka
+  assignee: p_antti
+  createdDaysAgo: 300
+  description: Starting with [[spruce-l1-hmi-01]]. The page says removed. The password is not.
+  labels: [kind:audit]
+- id: is_104
+  summary: "Audit: no backups for Pine"
+  type: Task
+  status: Open
+  reporter: p_marja
+  assignee: p_timo
+  createdDaysAgo: 400
+  description: No program backups on the share for Pine line 1.
+  labels: [kind:audit]
+- id: is_105
+  summary: "Audit: unsupported Windows on engineering PCs"
+  type: Task
+  status: Open
+  reporter: p_sanna
+  assignee: p_antti
+  createdDaysAgo: 250
+  description: "[[spruce-l1-pc-01]] and [[spruce-l1-pc-02]] run Windows versions without updates."
+  labels: [kind:audit, nis2]
+- id: is_106
+  summary: "Audit: safety program change log"
+  type: Task
+  status: Done
+  reporter: p_jukka
+  assignee: p_ville
+  createdDaysAgo: 500
+  resolvedDaysAgo: 480
+  description: Change log for [[rowan-l1-plc-04]] is complete. Other plants not checked.
+  labels: [kind:audit]
+- id: is_107
+  summary: "NIS2: incident reporting contacts"
+  type: Task
+  status: Open
+  reporter: p_marja
+  assignee: p_sanna
+  createdDaysAgo: 200
+  description: Early warning within 24 hours needs a contact list that works at night.
+  labels: [kind:audit, nis2]
+- id: is_108
+  summary: "NIS2: supplier access review"
+  type: Task
+  status: Open
+  reporter: p_sanna
+  assignee: null
+  createdDaysAgo: 180
+  description: Integrator accounts still active. One of the integrators does not exist any more.
+  labels: [kind:audit, nis2]
+- id: is_109
+  summary: "Audit: building automation passwords held by facility company"
+  type: Task
+  status: Open
+  reporter: p_sanna
+  assignee: null
+  createdDaysAgo: 240
+  description: "[[annex-l21-pc-01|nick]] and the heating controllers. Asked twice."
+  labels: [kind:audit]
+- id: is_110
+  summary: "Audit: nobody knows what is in Hall C"
+  type: Task
+  status: Open
+  reporter: p_marja
+  assignee: null
+  createdDaysAgo: 1000
+  description: A page says three controllers. Nobody has been there.
+  labels: [kind:audit]
+- id: is_111
+  summary: "NIS2: vulnerability handling process"
+  type: Task
+  status: Open
+  reporter: p_sanna
+  assignee: null
+  createdDaysAgo: 150
+  description: Scanner findings arrive every week. Nobody decides what to do with them.
+  labels: [kind:audit, nis2]
+- id: is_112
+  summary: "Audit: many machines without a name"
+  type: Task
+  status: Open
+  reporter: p_sanna
+  assignee: null
+  createdDaysAgo: 70
+  description: The scanner knows the box. Nobody knows the machine.
+  labels: [kind:audit, nis2]
+- id: is_113
+  summary: "Audit: single person dependency, Birch"
+  type: Task
+  status: Open
+  reporter: p_marja
+  assignee: null
+  createdDaysAgo: 30
+  description: Pentti is the only name on most Birch line 1 and line 2 tickets. He retires next year.
+  labels: [kind:audit]
+- id: is_114
+  summary: "Audit: spare parts list for Alder"
+  type: Task
+  status: Done
+  reporter: p_jukka
+  assignee: p_leena
+  createdDaysAgo: 800
+  resolvedDaysAgo: 760
+  description: List made. In the runbooks now.
+  labels: [kind:audit]
+- id: is_115
+  summary: "Audit 2022: remote access without MFA"
+  type: Task
+  status: Done
+  reporter: p_sanna
+  assignee: p_sanna
+  createdDaysAgo: 1400
+  resolvedDaysAgo: 1200
+  description: MFA on the office VPN. Plant VPN next. Plant VPN not done.
+  labels: [kind:audit]
+- id: is_116
+  summary: "Audit 2021: no segmentation on Spruce"
+  type: Task
+  status: Open
+  reporter: p_antti
+  assignee: null
+  createdDaysAgo: 1700
+  description: Same as the new ticket. Older.
+  labels: [kind:audit]
+- id: is_117
+  summary: "Audit: F-CPU firmware out of date"
+  type: Task
+  status: Open
+  reporter: p_jukka
+  assignee: null
+  createdDaysAgo: 1100
+  description: "[[pine-l1-plc-02]] at least. Others not checked."
+  labels: [kind:audit]
+- id: is_118
+  summary: "NIS2: basic training for maintenance staff"
+  type: Task
+  status: Open
+  reporter: p_marja
+  assignee: p_sanna
+  createdDaysAgo: 90
+  description: One hour, once a year, with coffee.
+  labels: [kind:audit, nis2]
+- id: is_119
+  summary: "Audit: who approves PLC program changes"
+  type: Task
+  status: Open
+  reporter: p_jukka
+  assignee: null
+  createdDaysAgo: 600
+  description: Safety programs have a sign-off. Normal programs have whoever is there.
+  labels: [kind:audit]
+- id: is_120
+  summary: "Audit: asset list does not match the scanner"
+  type: Task
+  status: Open
+  reporter: p_sanna
+  assignee: null
+  createdDaysAgo: 20
+  description: Four lists, four answers. The scanner is the only one that is up to date, and it does not know names.
+  labels: [kind:audit, nis2]

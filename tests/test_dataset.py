@@ -12,6 +12,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import build_dataset as bd  # noqa: E402
 import check_dataset as cd  # noqa: E402
+import narrative as nar  # noqa: E402
 
 RAW = ROOT / "data" / "raw"
 GEN = ROOT / "data" / "generated"
@@ -65,6 +66,7 @@ def test_purdue_and_days():
 def synthetic_cfg():
     cfg = yaml.safe_load((ROOT / "config" / "names.yml").read_text(encoding="utf-8"))
     cfg["plants"] = {"AAAAA1": "Birch", "BBBBB1": "Spruce"}
+    cfg["pins"] = []
     return cfg
 
 
@@ -104,7 +106,7 @@ def synthetic(tmp_path):
     raw.mkdir()
     (raw / "ot_inventory_anonymized.json").write_text(json.dumps(inv), encoding="utf-8")
     (raw / "ot_vulnerabilities_anonymized.json").write_text(json.dumps(vul), encoding="utf-8")
-    return bd.build(raw, ROOT, synthetic_cfg())
+    return bd.build(raw, ROOT, synthetic_cfg(), narrative_root=tmp_path)
 
 
 def test_site_resolution_order(synthetic):
@@ -136,8 +138,56 @@ def test_findings_join_and_offsets(synthetic):
 
 
 def test_synthetic_is_deterministic(tmp_path, synthetic):
-    again = bd.build(tmp_path / "raw", ROOT, synthetic_cfg())
+    again = bd.build(tmp_path / "raw", ROOT, synthetic_cfg(), narrative_root=tmp_path)
     assert json.dumps(again) == json.dumps(synthetic)
+
+
+# --- narrative renderer and pins
+
+def tiny_assets():
+    base = {"nickname": None, "model": "CPU 315-2 DP", "plant": "Birch", "line": "L2", "role": "plc",
+            "ipHistory": [], "formerNames": []}
+    return [
+        dict(base, id="a_aaaaa", hostname="birch-l2-plc-07", ip="10.1.2.27", nickname="Old Faithful"),
+        dict(base, id="a_bbbbb", hostname=None, ip="10.1.2.13"),
+    ]
+
+
+def test_render_forms_and_mentions():
+    r = nar.Renderer(tiny_assets())
+    text, m = r.render("[[birch-l2-plc-07]] aka [[birch-l2-plc-07|nick]] at [[a_bbbbb|ip]], [[a_bbbbb|modelline]]", "t")
+    assert text == "birch-l2-plc-07 aka Old Faithful at 10.1.2.13, the CPU 315-2 DP on line 2"
+    assert [x["kind"] for x in m] == ["exact", "nick", "exact", "model_line"]
+    assert [x["assetId"] for x in m] == ["a_aaaaa", "a_aaaaa", "a_bbbbb", "a_bbbbb"]
+
+
+def test_old_ip_and_name_are_stable_and_recorded():
+    assets = tiny_assets()
+    r = nar.Renderer(assets)
+    one, m = r.render("[[birch-l2-plc-07|oldip]] [[birch-l2-plc-07|oldname]]", "t")
+    two, _ = r.render("[[birch-l2-plc-07|oldip]] [[birch-l2-plc-07|oldname]]", "t")
+    assert one == two == "10.1.2.200 bir2plc7"
+    assert assets[0]["ipHistory"] == ["10.1.2.200"] and assets[0]["formerNames"] == ["bir2plc7"]
+    assert {x["kind"] for x in m} == {"old"}
+
+
+def test_render_rejects_bad_refs():
+    r = nar.Renderer(tiny_assets())
+    for bad in ("[[nope]]", "[[a_bbbbb]]", "[[a_bbbbb|nick]]", "[[a_aaaaa|weird]]"):
+        with pytest.raises(nar.NarrativeError):
+            r.render(bad, "t")
+
+
+def test_pins_set_fields_and_borrow_an_address():
+    assets = tiny_assets()
+    assets[1]["hostname"] = "birch-l2-plc-03"
+    nar.apply_pins(assets, [
+        {"id": "a_aaaaa", "set": {"hostname": "birch-l2-cp-04", "role": "cp"}, "ipHistory": ["@birch-l2-plc-03"]},
+    ])
+    assert assets[0]["hostname"] == "birch-l2-cp-04" and assets[0]["role"] == "cp"
+    assert assets[0]["ipHistory"] == ["10.1.2.13"]
+    with pytest.raises(nar.NarrativeError):
+        nar.apply_pins(assets, [{"id": "a_zzzzz", "set": {}}])
 
 
 # --- committed dataset (runs in CI)

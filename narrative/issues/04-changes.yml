@@ -1,0 +1,246 @@
+# Firmware and config changes. A few were started and never finished.
+- id: is_061
+  summary: Firmware update, [[spruce-l1-plc-03]] and [[spruce-l1-plc-04]]
+  type: Change
+  status: Done
+  reporter: p_antti
+  assignee: p_antti
+  createdDaysAgo: 160
+  resolvedDaysAgo: 150
+  description: Updated in the September stop. Backup before and after. Both tested.
+  labels: [kind:change, firmware]
+- id: is_062
+  summary: Firmware update, Spruce batch S7-300 group
+  type: Change
+  status: Open
+  reporter: p_antti
+  assignee: p_antti
+  createdDaysAgo: 470
+  description: |
+    The CP 343-1 modules in [[spruce-l1-plc-19]], [[spruce-l1-plc-20]] and [[spruce-l1-plc-22]] have known issues.
+    Needs a stop of the batch side. Waiting for a stop.
+  labels: [kind:change, firmware, no-follow-up]
+- id: is_063
+  summary: AP firmware, [[birch-l2-dev-01]] [[birch-l2-dev-02]] [[birch-l2-dev-03]]
+  type: Change
+  status: Open
+  reporter: p_sanna
+  assignee: null
+  createdDaysAgo: 440
+  description: Needs a stop of line 2. Nobody owns the stop.
+  labels: [kind:change, firmware, no-follow-up]
+- id: is_064
+  summary: Panel project update, Spruce HMIs
+  type: Change
+  status: Done
+  reporter: p_antti
+  assignee: p_antti
+  createdDaysAgo: 380
+  resolvedDaysAgo: 375
+  description: New alarm texts on [[spruce-l1-hmi-01]] and [[spruce-l1-hmi-02]]. Others next time.
+  labels: [kind:change]
+- id: is_065
+  summary: Rowan F-CPU firmware, [[rowan-l1-plc-04]] [[rowan-l1-plc-05]]
+  type: Change
+  status: Done
+  reporter: p_ville
+  assignee: p_ville
+  createdDaysAgo: 230
+  resolvedDaysAgo: 220
+  description: Updated with Jukka present. New checksums signed off.
+  labels: [kind:change, firmware, safety]
+- id: is_066
+  summary: Recipe change on [[spruce-l1-plc-19|oldname]]
+  type: Change
+  status: Done
+  reporter: p_esa
+  assignee: p_esa
+  createdDaysAgo: 2300
+  resolvedDaysAgo: 2300
+  description: Changed recipe 12 online.
+  labels: [kind:change]
+- id: is_067
+  summary: New program version on [[spruce-l1-plc-01|oldname]]
+  type: Change
+  status: Done
+  reporter: p_esa
+  assignee: p_esa
+  createdDaysAgo: 1900
+  resolvedDaysAgo: 1900
+  description: v2.3 loaded. Changes in the comments.
+  labels: [kind:change]
+- id: is_068
+  summary: Water treatment program, comments missing
+  type: Change
+  status: Open
+  reporter: p_antti
+  assignee: p_antti
+  createdDaysAgo: 1400
+  description: The v2.3 program on [[spruce-l1-plc-01|nick]] has no comments. Esa said they were in the comments.
+  labels: [kind:change, no-follow-up]
+- id: is_069
+  summary: Switch config backup, Alder line 2
+  type: Change
+  status: Done
+  reporter: p_leena
+  assignee: p_leena
+  createdDaysAgo: 95
+  resolvedDaysAgo: 95
+  description: Exported [[alder-l2-sw-01]], [[alder-l2-sw-02]], [[alder-l2-sw-05]], [[alder-l2-sw-09]]. Diffed. No changes.
+  labels: [kind:change]
+- id: is_070
+  summary: Alder 313C program change, dryer timing
+  type: Change
+  status: Done
+  reporter: p_leena
+  assignee: p_leena
+  createdDaysAgo: 600
+  resolvedDaysAgo: 598
+  description: Changed dryer start delay on [[alder-l2-plc-01]]. Backup before and after on the share.
+  labels: [kind:change]
+- id: is_071
+  summary: Firmware on the old Birch CPs
+  type: Change
+  status: Open
+  reporter: p_marja
+  assignee: null
+  createdDaysAgo: 2100
+  description: Scanner report says the CPs on Birch line 2 need firmware. Who does this.
+  labels: [kind:change, firmware, no-follow-up]
+- id: is_072
+  summary: Oven program change, zone 1 compensation
+  type: Change
+  status: Done
+  reporter: p_kontro
+  assignee: p_kontro
+  createdDaysAgo: 2350
+  resolvedDaysAgo: 2350
+  description: Added offset for thermocouple 3 on [[birch-l2-plc-26|oldname]].
+  labels: [kind:change]
+- id: is_073
+  summary: HMI project for [[rowan-l1-hmi-03|nick]] lost
+  type: Change
+  status: Open
+  reporter: p_ville
+  assignee: p_ville
+  createdDaysAgo: 1250
+  description: The archive copy is older than the panel. Need to upload from the panel. Needs a stop.
+  labels: [kind:change, no-follow-up]
+- id: is_074
+  summary: Palletizer program backup
+  type: Change
+  status: Done
+  reporter: p_antti
+  assignee: p_antti
+  createdDaysAgo: 140
+  resolvedDaysAgo: 140
+  description: Backups of [[spruce-l1-plc-15]] and [[spruce-l1-plc-16]] to the share.
+  labels: [kind:change]
+- id: is_075
+  summary: Safety program change request, Rowan
+  type: Change
+  status: Done
+  reporter: p_jukka
+  assignee: p_ville
+  createdDaysAgo: 900
+  resolvedDaysAgo: 880
+  description: New light curtain on filling. Change on [[rowan-l1-plc-04]], signed off.
+  labels: [kind:change, safety]
+- id: is_076
+  summary: Windows update on [[alder-l2-pc-01]]
+  type: Change
+  status: Done
+  reporter: p_sanna
+  assignee: p_leena
+  createdDaysAgo: 1200
+  resolvedDaysAgo: 1190
+  description: Updated. Recipe tool still starts.
+  labels: [kind:change]
+- id: is_077
+  summary: Engineering PC licence move
+  type: Change
+  status: Done
+  reporter: p_antti
+  assignee: p_antti
+  createdDaysAgo: 1600
+  resolvedDaysAgo: 1600
+  description: Moved the TIA licence from [[spruce-l1-pc-01]] to [[spruce-l1-pc-02]].
+  labels: [kind:change]
+- id: is_078
+  summary: Kiln F-CPU firmware
+  type: Change
+  status: Open
+  reporter: p_timo
+  assignee: null
+  createdDaysAgo: 1150
+  description: "[[pine-l1-plc-02]] has an old firmware. Needs Jukka and a stop. Neither available."
+  labels: [kind:change, firmware, safety, no-follow-up]
+- id: is_079
+  summary: Crane CP config
+  type: Change
+  status: Done
+  reporter: p_sanna
+  assignee: p_sanna
+  createdDaysAgo: 1100
+  resolvedDaysAgo: 1100
+  description: Changed addresses on [[annex-l18-cp-01|oldip]] and [[annex-l18-cp-02|oldip]] for the new warehouse switch.
+  labels: [kind:change]
+- id: is_080
+  summary: Glue program update
+  type: Change
+  status: Done
+  reporter: p_tiina
+  assignee: p_tiina
+  createdDaysAgo: 1240
+  resolvedDaysAgo: 1240
+  description: Updated glue_v7 on the CPU at [[birch-l2-plc-12|oldip]].
+  labels: [kind:change]
+- id: is_081
+  summary: Mixer torque limit
+  type: Change
+  status: Done
+  reporter: p_kontro
+  assignee: p_kontro
+  createdDaysAgo: 2550
+  resolvedDaysAgo: 2550
+  description: Hard coded torque limit on [[rowan-l1-plc-01|oldname]] as agreed.
+  labels: [kind:change]
+- id: is_082
+  summary: Panel screen saver off, [[birch-l2-hmi-02]]
+  type: Change
+  status: Done
+  reporter: p_aino
+  assignee: p_antti
+  createdDaysAgo: 1700
+  resolvedDaysAgo: 1700
+  description: Operators could not see alarms when it was dark.
+  labels: [kind:change]
+- id: is_083
+  summary: Remove old VPN account for Kontrollitekniikka
+  type: Change
+  status: Open
+  reporter: p_sanna
+  assignee: null
+  createdDaysAgo: 600
+  description: Account still active. Nobody knows what it can reach.
+  labels: [kind:change, no-follow-up]
+- id: is_084
+  summary: Weighing PLC recalibration
+  type: Change
+  status: Done
+  reporter: p_mikko
+  assignee: p_antti
+  createdDaysAgo: 1350
+  resolvedDaysAgo: 1340
+  description: New scale factors on [[spruce-l1-plc-21]] and [[spruce-l1-plc-24]].
+  labels: [kind:change]
+- id: is_085
+  summary: Test bench calibration rig program
+  type: Change
+  status: Done
+  reporter: p_antti
+  assignee: p_antti
+  createdDaysAgo: 1450
+  resolvedDaysAgo: 1450
+  description: Updated [[spruce-l1-plc-12|nick]]. It still says do not touch. It is right.
+  labels: [kind:change]

@@ -16,7 +16,10 @@
   "findings": 2194,
   "rawInventoryRows": 4695,
   "rawFindingRows": 2194,
-  "inventoryWithoutHostname": 874
+  "inventoryWithoutHostname": 874,
+  "people": 13,
+  "pages": 61,
+  "issues": 150
  },
  "dates": "All dates are days before the newest timestamp in the source file. Resolve against the install date."
 }

@@ -134,10 +134,10 @@ All in `config/names.yml`. The generator never uses an original name in its outp
 Keep: all 307 OT-like inventory rows (device types PLC, Industrial Control Device, HMI, Remote IO, Communication Device, Industrial Computer, Communications Adapter, Switch, Gateway, Engineering Station, Sensor, Controller and Purdue 0 to 2.5), plus every host that has findings, plus 100 randomly chosen IT neighbours so the inventory does not look pure. Expect 450 to 550 assets.
 
 ### 5.3 Output shapes (all ids are stable short strings, `a_xxxxx`)
-- `assets.json`: id, hostname, nickname|null, plant, line, role, deviceType, model, firmware|null, manufacturer, purdue, criticality, entityType (managed, unmanaged, unsupported), ip, macs[], firstSeenDaysAgo, lastSeenDaysAgo, flags[] (`NO_NAME`, `DUP_IP`, `UNSUPPORTED`, `NO_FIRMWARE`).
+- `assets.json`: id, hostname, nickname|null, plant, line, role, deviceType, model, firmware|null, manufacturer, purdue, criticality, entityType (managed, unmanaged, unsupported), ot, ip, macs[], flags[] (`NO_NAME`, `DUP_IP`, `UNSUPPORTED`, `NO_FIRMWARE`), modules[], ipHistory[], formerNames[], firstSeenDaysAgo, lastSeenDaysAgo.
 - `findings.json`: id, assetId, cve, severity, score, exploitLabel, exploitValue, status, publishedDaysAgo, openedDaysAgo, summary (<= 240 chars), advisoryUrl (first one only).
 - `people.json`: id, name, role, plant, startedYearsAgo, leavingInDays|null, bio (one dry line).
-- `pages.json`: id, title, space, authorId, class, lastEditedDaysAgo, bodyMarkdown, mentions[] (asset ids, filled by the generator for ground truth, not used by the app).
+- `pages.json`: id, title, space, authorId, class, lastEditedDaysAgo, bodyMarkdown, mentions[] ({assetId, kind}, filled by the generator for ground truth, not used by the app, D17).
 - `issues.json`: id, summary, type, status, reporterId, assigneeId, createdDaysAgo, resolvedDaysAgo|null, description, labels[], mentions[] (ground truth).
 
 ### 5.4 Generated narrative (written by Claude Code, in batches, no API calls)
@@ -179,7 +179,7 @@ Among OT assets:
 - Matcher recall against the ground truth `mentions[]`: at least 0.85 on exact mentions, at least 0.5 on old-name mentions.
 
 ### 5.6 Hero scenes (these must exist, the video depends on them)
-1. `birch-l3-cp-04`, nickname "Old Faithful", a CP 343-1 with 33 open findings and score 9.3 and above. One stale page, one issue from 2019 ("restarted by hand"), only Pentti ever touched it.
+1. `birch-l2-cp-04` (line 2 in the data, see D15), nickname "Old Faithful", a CP 343-1 with 33 open findings and score 9.3 and above. One stale page, one issue from 2019 ("restarted by hand"), only Pentti ever touched it.
 2. A PLC with 90+ findings and no documentation at all.
 3. Two machines with one IP.
 4. A page that refers to a PLC by an address it no longer has, so a naive search returns "documented" and the honest answer is "documented, for a machine that no longer exists at that address".

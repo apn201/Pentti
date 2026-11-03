@@ -1,0 +1,201 @@
+# Pentti's breakdowns. He reports them, he fixes them, he writes "fixed".
+- id: is_001
+  summary: "[[birch-l2-cp-04]] stopped"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 2620
+  resolvedDaysAgo: 2620
+  description: Restarted by hand, do not know why it works.
+  labels: [kind:breakdown]
+- id: is_002
+  summary: "[[birch-l2-plc-01]] fault LED"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 640
+  resolvedDaysAgo: 639
+  description: fixed
+  labels: [kind:breakdown]
+- id: is_003
+  summary: "[[birch-l2-plc-02]] no comms"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 600
+  resolvedDaysAgo: 600
+  description: fixed
+  labels: [kind:breakdown]
+- id: is_004
+  summary: CP fault on [[birch-l2-plc-04]] and [[birch-l2-plc-05]]
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 580
+  resolvedDaysAgo: 579
+  description: fixed both
+  labels: [kind:breakdown]
+- id: is_005
+  summary: "[[birch-l2-plc-06]] in STOP"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 520
+  resolvedDaysAgo: 520
+  description: fixed
+  labels: [kind:breakdown]
+- id: is_006
+  summary: "[[birch-l2-plc-08|nick]] again"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 500
+  resolvedDaysAgo: 500
+  description: fixed
+  labels: [kind:breakdown]
+- id: is_007
+  summary: "[[birch-l2-plc-09]] and [[birch-l2-plc-10]] lost the network"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 470
+  resolvedDaysAgo: 469
+  description: fixed. same as last time
+  labels: [kind:breakdown]
+- id: is_008
+  summary: "[[birch-l2-plc-11]] slow"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 440
+  resolvedDaysAgo: 440
+  description: did not power cycle. fixed
+  labels: [kind:breakdown]
+- id: is_009
+  summary: "[[birch-l2-plc-13]] fault"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 410
+  resolvedDaysAgo: 410
+  description: fixed
+  labels: [kind:breakdown]
+- id: is_010
+  summary: "[[birch-l2-plc-14]] fault"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 380
+  resolvedDaysAgo: 379
+  description: fixed
+  labels: [kind:breakdown]
+- id: is_011
+  summary: "[[birch-l2-plc-15]] in STOP after power dip"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 350
+  resolvedDaysAgo: 350
+  description: fixed
+  labels: [kind:breakdown]
+- id: is_012
+  summary: "[[birch-l2-plc-16]], [[birch-l2-plc-17]] comms"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 320
+  resolvedDaysAgo: 320
+  description: fixed
+  labels: [kind:breakdown]
+- id: is_013
+  summary: "[[birch-l2-plc-19]] and [[birch-l2-plc-20]] dropped off"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 290
+  resolvedDaysAgo: 290
+  description: fixed
+  labels: [kind:breakdown]
+- id: is_014
+  summary: "[[birch-l2-plc-21]] fault"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 260
+  resolvedDaysAgo: 259
+  description: fixed
+  labels: [kind:breakdown]
+- id: is_015
+  summary: "[[birch-l2-plc-22]] [[birch-l2-plc-23]]"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 230
+  resolvedDaysAgo: 230
+  description: fixed
+  labels: [kind:breakdown]
+- id: is_016
+  summary: Glue station, [[birch-l2-plc-24]] and [[birch-l2-plc-25|nick]]
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 200
+  resolvedDaysAgo: 199
+  description: fixed. the potato was hot
+  labels: [kind:breakdown]
+- id: is_017
+  summary: Oven zone 1 and 2 lost comms, [[birch-l2-plc-26]] [[birch-l2-plc-27]]
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 170
+  resolvedDaysAgo: 170
+  description: fixed
+  labels: [kind:breakdown]
+- id: is_018
+  summary: Ring alarm line 1, [[birch-l1-sw-01]] [[birch-l1-sw-02]]
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 140
+  resolvedDaysAgo: 140
+  description: fixed
+  labels: [kind:breakdown]
+- id: is_019
+  summary: "[[birch-l1-sw-03]] [[birch-l1-sw-04]] [[birch-l1-sw-05]] port errors"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 110
+  resolvedDaysAgo: 109
+  description: fixed
+  labels: [kind:breakdown]
+- id: is_020
+  summary: "[[birch-l1-sw-06|nick]] thinking again"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 80
+  resolvedDaysAgo: 80
+  description: fixed
+  labels: [kind:breakdown]

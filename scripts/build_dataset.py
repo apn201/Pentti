@@ -17,6 +17,8 @@ from pathlib import Path
 
 import yaml
 
+from narrative import apply_pins, build_narrative
+
 ROOT = Path(__file__).resolve().parent.parent
 GENERATOR_VERSION = 1
 
@@ -99,7 +101,7 @@ def first_url(*fields):
     return None
 
 
-def build(raw: Path, root: Path, cfg=None):
+def build(raw: Path, root: Path, cfg=None, narrative_root=None):
     cfg = cfg or load_config(root)
     seed = cfg["seed"]
     rng = random.Random(seed)
@@ -170,7 +172,11 @@ def build(raw: Path, root: Path, cfg=None):
     for i, vs in by_row.items():
         tuples = Counter((v["device_model"], v["device_firmware"], v["system_manufacturer"], v["device_type"]) for v in vs)
         best = sorted(tuples.items(), key=lambda kv: (-kv[1], kv[0]))[0][0]
-        facts[i] = {"model": best[0], "firmware": best[1] or None, "manufacturer": best[2], "deviceType": best[3]}
+        models = Counter(v["device_model"] for v in vs)
+        facts[i] = {
+            "model": best[0], "firmware": best[1] or None, "manufacturer": best[2], "deviceType": best[3],
+            "modules": [m for m, _ in sorted(models.items(), key=lambda kv: (-kv[1], kv[0]))],
+        }
 
     # --- names, lines, ips, macs
     roles = cfg["roles"]
@@ -183,6 +189,7 @@ def build(raw: Path, root: Path, cfg=None):
     nick_used = defaultdict(set)
     nick_pool = cfg["nicknames"]
     nick_share = cfg["nickname_share"]
+    reserved = {p["set"]["nickname"] for p in cfg.get("pins", []) if p.get("set", {}).get("nickname")}
 
     assets = []
     asset_id_of_row = {}
@@ -232,7 +239,7 @@ def build(raw: Path, root: Path, cfg=None):
             start = stable_hash(seed, "nickpick", aid) % len(nick_pool)
             for k in range(len(nick_pool)):
                 cand = nick_pool[(start + k) % len(nick_pool)]
-                if cand not in nick_used[plant]:
+                if cand not in nick_used[plant] and cand not in reserved:
                     nick_used[plant].add(cand)
                     nickname = cand
                     break
@@ -267,7 +274,13 @@ def build(raw: Path, root: Path, cfg=None):
             "_first": r.get("first_seen_timestamp"),
             "_last": r.get("last_seen_timestamp"),
             "flags": flags,
+            "modules": f.get("modules", []),
+            "ipHistory": [],
+            "formerNames": [],
         })
+
+    apply_pins(assets, cfg.get("pins"))
+    people, pages, issues = build_narrative(narrative_root or root, cfg, assets)
 
     ip_count = Counter(a["ip"] for a in assets)
     inv_ref = max(parse_ts(x) for r in inv for x in (r.get("first_seen_timestamp"), r.get("last_seen_timestamp")) if x)
@@ -314,10 +327,16 @@ def build(raw: Path, root: Path, cfg=None):
             "rawInventoryRows": len(inv),
             "rawFindingRows": len(vul),
             "inventoryWithoutHostname": sum(1 for r in inv if not r.get("hostname")),
+            "people": len(people),
+            "pages": len(pages),
+            "issues": len(issues),
         },
         "dates": "All dates are days before the newest timestamp in the source file. Resolve against the install date.",
     }
-    return {"assets.json": assets, "findings.json": findings, "meta.json": meta}
+    return {
+        "assets.json": assets, "findings.json": findings, "people.json": people,
+        "pages.json": pages, "issues.json": issues, "meta.json": meta,
+    }
 
 
 def write(out: Path, data):

@@ -1,0 +1,209 @@
+# More of Pentti's, then the breakdowns that other people write up properly.
+- id: is_021
+  summary: "[[birch-l1-sw-07]] and [[birch-l1-sw-08]] link down"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 60
+  resolvedDaysAgo: 60
+  description: fixed
+  labels: [kind:breakdown]
+- id: is_022
+  summary: "[[birch-l1-sw-09]]"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 50
+  resolvedDaysAgo: 50
+  description: fixed
+  labels: [kind:breakdown]
+- id: is_023
+  summary: "[[birch-l1-cp-01]] lost connection to line 1"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 45
+  resolvedDaysAgo: 45
+  description: fixed
+  labels: [kind:breakdown]
+- id: is_024
+  summary: Heating web server, [[birch-l1-plc-01|nick]]
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 40
+  resolvedDaysAgo: 40
+  description: Touched it. fixed
+  labels: [kind:breakdown]
+- id: is_025
+  summary: Hall heating boxes [[birch-l1-dev-01]] [[birch-l1-dev-04]]
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 35
+  resolvedDaysAgo: 34
+  description: fixed
+  labels: [kind:breakdown]
+- id: is_026
+  summary: "[[birch-l2-sw-01]] [[birch-l2-sw-02]] hot"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 30
+  resolvedDaysAgo: 30
+  description: fixed. fan
+  labels: [kind:breakdown]
+- id: is_027
+  summary: "[[birch-l2-sw-03]] second uplink unplugged by someone"
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 20
+  resolvedDaysAgo: 20
+  description: plugged back. also [[birch-l2-sw-04]]. fixed
+  labels: [kind:breakdown]
+- id: is_028
+  summary: Oven zone 3 and 4, [[birch-l2-plc-28|nick]] and [[birch-l2-plc-29]]
+  type: Incident
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 15
+  resolvedDaysAgo: 15
+  description: fixed. removed one cable
+  labels: [kind:breakdown]
+- id: is_029
+  summary: Infeed jam, [[spruce-l1-plc-03]] in fault
+  type: Incident
+  status: Done
+  reporter: p_mikko
+  assignee: p_antti
+  createdDaysAgo: 300
+  resolvedDaysAgo: 299
+  description: |
+    Jam sensor gave a false signal, PLC went to fault as designed.
+    Cleaned the sensor, acknowledged on the panel. Line back in 40 minutes.
+  labels: [kind:breakdown]
+- id: is_030
+  summary: Press 1 stops at cycle start, [[spruce-l1-plc-04]]
+  type: Incident
+  status: Done
+  reporter: p_mikko
+  assignee: p_antti
+  createdDaysAgo: 250
+  resolvedDaysAgo: 248
+  description: |
+    Safety door switch worn. Replaced from stock, shelf B4.
+    Checked the program, no change needed.
+  labels: [kind:breakdown]
+- id: is_031
+  summary: "[[spruce-l1-plc-09|nick]] did not come up after the weekend"
+  type: Incident
+  status: Done
+  reporter: p_mikko
+  assignee: p_antti
+  createdDaysAgo: 200
+  resolvedDaysAgo: 200
+  description: Profinet cable at the cabinet door, again. Rerouted it this time.
+  labels: [kind:breakdown]
+- id: is_032
+  summary: "[[spruce-l1-plc-18|nick]] blinking red"
+  type: Incident
+  status: Done
+  reporter: p_mikko
+  assignee: p_antti
+  createdDaysAgo: 150
+  resolvedDaysAgo: 149
+  description: Diagnostic buffer said a module lost power. Loose terminal. Tightened.
+  labels: [kind:breakdown]
+- id: is_033
+  summary: "[[spruce-l1-hmi-01|nick]] frozen on the alarm screen"
+  type: Incident
+  status: Done
+  reporter: p_mikko
+  assignee: p_mikko
+  createdDaysAgo: 100
+  resolvedDaysAgo: 100
+  description: Restarted the panel. Alarm buffer was full. Cleared it.
+  labels: [kind:breakdown]
+- id: is_034
+  summary: Both mixers stopped, [[rowan-l1-plc-01]] and [[rowan-l1-plc-02]]
+  type: Incident
+  status: Done
+  reporter: p_ville
+  assignee: p_ville
+  createdDaysAgo: 400
+  resolvedDaysAgo: 399
+  description: |
+    Common power supply tripped. Reset, both PLCs restarted in RUN.
+    Ordered a second supply so they do not share one.
+  labels: [kind:breakdown]
+- id: is_035
+  summary: Filling stops mid batch, [[rowan-l1-plc-06]]
+  type: Incident
+  status: Done
+  reporter: p_ville
+  assignee: p_ville
+  createdDaysAgo: 330
+  resolvedDaysAgo: 328
+  description: Level sensor drift. Calibrated. Added a check to the weekly list.
+  labels: [kind:breakdown]
+- id: is_036
+  summary: "[[alder-l2-sw-09|nick]] rebooted itself"
+  type: Incident
+  status: Done
+  reporter: p_leena
+  assignee: p_leena
+  createdDaysAgo: 60
+  resolvedDaysAgo: 60
+  description: PSU, again. New PSU ordered, see the spares ticket.
+  labels: [kind:breakdown]
+- id: is_037
+  summary: Alder line 2 down, [[alder-l2-plc-01]] in STOP
+  type: Incident
+  status: Done
+  reporter: p_leena
+  assignee: p_leena
+  createdDaysAgo: 500
+  resolvedDaysAgo: 499
+  description: |
+    Memory card error. Swapped to the spare card, restored the program from the share.
+    Two hours of downtime. The backup on the share was current.
+  labels: [kind:breakdown]
+- id: is_038
+  summary: Touch does not work on [[birch-l2-hmi-01|nick]]
+  type: Incident
+  status: Done
+  reporter: p_aino
+  assignee: p_antti
+  createdDaysAgo: 220
+  resolvedDaysAgo: 210
+  description: Touch layer replaced. Calibrated.
+  labels: [kind:breakdown]
+- id: is_039
+  summary: Oven panel [[birch-l2-hmi-02]] black
+  type: Incident
+  status: Done
+  reporter: p_aino
+  assignee: p_antti
+  createdDaysAgo: 180
+  resolvedDaysAgo: 180
+  description: Backlight. Swapped to the spare panel and restored the project from the archive.
+  labels: [kind:breakdown]
+- id: is_040
+  summary: Robot cell interlock fault, [[spruce-l1-plc-08]]
+  type: Incident
+  status: Done
+  reporter: p_mikko
+  assignee: p_antti
+  createdDaysAgo: 90
+  resolvedDaysAgo: 90
+  description: Restarted by hand, do not know why it works. Antti will look at the door switch logic.
+  labels: [kind:breakdown]

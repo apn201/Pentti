@@ -103,7 +103,7 @@ nicknames:             # unique within a plant, may repeat across plants
   - The Hermit
   - Snowplough
 
-people:                # the rest (about 11) are written in slice S2
+people:                # all fictional. left_days_ago set = gone, leaving_in_days set = on the way out
   - id: p_pentti
     name: Pentti Vaisanen
     role: Maintenance electrician
@@ -111,3 +111,86 @@ people:                # the rest (about 11) are written in slice S2
     started_years_ago: 38
     leaving_in_days: 150
     bio: "Has the manuals in his head and the spare fuses in his car."
+  - id: p_marja
+    name: Marja Heikkinen
+    role: Plant manager
+    plant: Birch
+    started_years_ago: 6
+    bio: "Reads every audit report. Asks why twice."
+  - id: p_antti
+    name: Antti Rantanen
+    role: Automation engineer
+    plant: Spruce
+    started_years_ago: 9
+    bio: "Keeps a TIA Portal licence the way others keep a pet."
+  - id: p_sanna
+    name: Sanna Lehtonen
+    role: IT/OT coordinator
+    plant: Birch
+    started_years_ago: 3
+    bio: "Wants one list of machines. Has four."
+  - id: p_jukka
+    name: Jukka Salminen
+    role: Safety officer
+    plant: Alder
+    started_years_ago: 12
+    bio: "Signs things. Remembers what he signed."
+  - id: p_leena
+    name: Leena Koskinen
+    role: Maintenance technician
+    plant: Alder
+    started_years_ago: 7
+    bio: "Labels everything she touches. Some of it stays labelled."
+  - id: p_ville
+    name: Ville Hamalainen
+    role: Maintenance technician
+    plant: Rowan
+    started_years_ago: 4
+    bio: "Learned the Rowan line from Pentti, mostly by phone."
+  - id: p_mikko
+    name: Mikko Nieminen
+    role: Line operator
+    plant: Spruce
+    started_years_ago: 15
+    bio: "Knows which alarm means coffee and which means trouble."
+  - id: p_aino
+    name: Aino Jarvinen
+    role: Line operator
+    plant: Birch
+    started_years_ago: 21
+    bio: "Writes her notes in Finnish because the machines understand it better."
+  - id: p_timo
+    name: Timo Mattila
+    role: Maintenance technician
+    plant: Pine
+    started_years_ago: 2
+    bio: "The only person who has been to Pine twice this year."
+  - id: p_esa
+    name: Esa Korhonen
+    role: Contractor, PLC programming
+    plant: Spruce
+    started_years_ago: 11
+    left_days_ago: 1460
+    bio: "Wrote half the Spruce programs. Left a USB stick and no comments."
+  - id: p_tiina
+    name: Tiina Laakso
+    role: Contractor, networks
+    plant: Birch
+    started_years_ago: 6
+    left_days_ago: 820
+    bio: "Renumbered line 2 in a weekend. The diagram stayed behind."
+  - id: p_kontro
+    name: Kontrollitekniikka Oy
+    role: Integrator (no longer answers)
+    plant: null
+    started_years_ago: 19
+    left_days_ago: 2200
+    bio: "Their support number now reaches a pizzeria."
+
+pins:                  # hero scenes, FACTORY_BUILD.md 5.6. Asset ids are stable for a given raw export and seed.
+  - id: a_d4mjq        # hero 1: CPU 315 rack with a CP 343-1, 33 findings, max score 9.3
+    set: { hostname: birch-l2-cp-04, role: cp, model: "CP 343-1", nickname: Old Faithful }
+  - id: a_8bjia        # hero 2: the PLC with 91 findings, no name, nothing known
+    set: { nickname: null }
+  - id: a_h0nda        # hero 4: birch-l2-plc-12 used to have the address birch-l2-plc-03 has now
+    ipHistory: ["@birch-l2-plc-03"]

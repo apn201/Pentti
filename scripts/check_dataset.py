@@ -3,8 +3,9 @@
 
   python scripts/check_dataset.py [--dir DIR]
 
-S1 checks the mechanical parts: shapes, ids, joins, remaps, offsets, scope.
-The narrative distribution targets in 5.5 join in S2.
+Mechanical parts (S1): shapes, ids, joins, remaps, offsets, scope.
+Narrative targets (S2): section 5.5 distribution and 5.6 hero scenes, from ground-truth mentions.
+  --progress  print the coverage numbers and only fail on mechanical problems
 Exit codes: 0 pass, 1 fail.
 """
 import argparse
@@ -21,7 +22,7 @@ ROOT = Path(__file__).resolve().parent.parent
 ASSET_KEYS = [
     "id", "hostname", "nickname", "plant", "line", "role", "deviceType", "model", "firmware",
     "manufacturer", "purdue", "criticality", "entityType", "ot", "ip", "macs", "flags",
-    "firstSeenDaysAgo", "lastSeenDaysAgo",
+    "modules", "ipHistory", "formerNames", "firstSeenDaysAgo", "lastSeenDaysAgo",
 ]
 FINDING_KEYS = [
     "id", "assetId", "cve", "severity", "score", "exploitLabel", "exploitValue", "status",
@@ -36,7 +37,125 @@ MAC = re.compile(r"^[0-9a-f]{2}(:[0-9a-f]{2}){5}$")
 CVE = re.compile(r"^CVE-\d{4}-\d{4,}$")
 
 
-def check(d: Path, root: Path):
+# windows from config/scoring.yml, in days
+FRESH_DOC_DAYS = 548
+OWNER_DAYS = 730
+HISTORY_DAYS = 1095
+LEAVING_DAYS = 180
+PAGE_TARGETS = {"gold": 6, "ok": 14, "stale": 20, "wrong-ref": 8, "duplicate-conflict": 4, "orphan": 4, "fun": 4, "reference": 1}
+ISSUE_KINDS = {"breakdown": 60, "change": 25, "network": 15, "audit": 20, "spares": 15, "noise": 15}
+BANNED = ["\u2014", "\u2013", "\u201c", "\u201d", "\u2018", "\u2019", "!", "[["]
+
+
+def coverage(assets, people, pages, issues):
+    """Ground-truth view of what is known per OT asset."""
+    person = {p["id"]: p for p in people}
+    active = {pid for pid, p in person.items() if p.get("leftDaysAgo") is None}
+    stays = {pid for pid in active if person[pid].get("leavingInDays") is None or person[pid]["leavingInDays"] > LEAVING_DAYS}
+    docs, hist, touch = {}, {}, {}
+    for pg in pages:
+        for m in pg["mentions"]:
+            docs.setdefault(m["assetId"], []).append(pg["lastEditedDaysAgo"])
+            if pg.get("authorId"):
+                touch.setdefault(m["assetId"], []).append((pg["authorId"], pg["lastEditedDaysAgo"]))
+    for it in issues:
+        for m in it["mentions"]:
+            hist.setdefault(m["assetId"], []).append(it["createdDaysAgo"])
+            for pid in {it["reporterId"], it.get("assigneeId")} - {None}:
+                touch.setdefault(m["assetId"], []).append((pid, it["createdDaysAgo"]))
+    rows = {}
+    for a in assets:
+        if not a["ot"]:
+            continue
+        aid = a["id"]
+        recent = {pid for pid, d in touch.get(aid, []) if d <= OWNER_DAYS and pid in active}
+        rows[aid] = {
+            "name": bool(a["hostname"] or a["nickname"]),
+            "doc": aid in docs,
+            "fresh": bool(docs.get(aid)) and min(docs[aid]) <= FRESH_DOC_DAYS,
+            "history": bool(hist.get(aid)) and min(hist[aid]) <= HISTORY_DAYS,
+            "anyIssue": aid in hist,
+            "owner": bool(recent & stays),
+            "anyTouch": aid in touch,
+            "recent": recent,
+            "critical": a["criticality"] == "Critical",
+            "nickname": bool(a["nickname"]),
+        }
+    return rows
+
+
+def narrative_report(assets, people, pages, issues, findings):
+    rows = coverage(assets, people, pages, issues)
+    n = len(rows)
+    well = sum(1 for r in rows.values() if r["name"] and r["owner"] and r["fresh"] and r["history"])
+    stale = sum(1 for r in rows.values() if r["doc"] and not r["fresh"])
+    nodoc = sum(1 for r in rows.values() if not r["doc"])
+    danger = sum(1 for r in rows.values() if r["critical"] and not r["doc"] and not r["anyIssue"] and not r["anyTouch"] and not r["nickname"])
+    pentti = sum(1 for r in rows.values() if r["recent"] == {"p_pentti"})
+    all_m = [m for x in pages + issues for m in x["mentions"]]
+    kinds = Counter(m["kind"] for m in all_m)
+    report = {
+        "otAssets": n,
+        "wellDocumented": [well, round(well / n, 3)],
+        "staleDocOnly": [stale, round(stale / n, 3)],
+        "noDoc": [nodoc, round(nodoc / n, 3)],
+        "criticalNothingKnown": danger,
+        "penttiOnlyRecent": pentti,
+        "pages": dict(Counter(p["class"] for p in pages)),
+        "issues": dict(Counter(next((lb[5:] for lb in i["labels"] if lb.startswith("kind:")), "?") for i in issues)),
+        "mentionKinds": dict(kinds),
+        "oldShare": round(kinds["old"] / max(1, len(all_m)), 3),
+    }
+    targets = [
+        ("well documented about 10 percent", 0.08 <= well / n <= 0.14),
+        ("stale doc about 25 percent", 0.21 <= stale / n <= 0.30),
+        ("no doc about 40 percent", 0.36 <= nodoc / n <= 0.46),
+        ("at least 20 Critical with nothing known", danger >= 20),
+        ("Pentti only recent toucher of 35 to 45", 35 <= pentti <= 45),
+        ("about a fifth of mentions old", 0.15 <= report["oldShare"] <= 0.28),
+        ("page classes", report["pages"] == PAGE_TARGETS),
+        ("issue kinds", report["issues"] == ISSUE_KINDS),
+        ("about 12 people", 10 <= len(people) <= 14),
+    ]
+    targets += hero_checks(assets, pages, issues, findings)
+    return report, targets
+
+
+def hero_checks(assets, pages, issues, findings):
+    by_id = {a["id"]: a for a in assets}
+    fc = Counter(f["assetId"] for f in findings if f["status"] in ("open", "reopen"))
+    top = {}
+    for f in findings:
+        top[f["assetId"]] = max(top.get(f["assetId"], 0), f["score"] or 0)
+    out = []
+    of = next((a for a in assets if a["nickname"] == "Old Faithful"), None)
+    ok = bool(of) and of["model"] == "CP 343-1" and fc[of["id"]] >= 33 and top.get(of["id"], 0) >= 9.3
+    if ok:
+        pg = [p for p in pages if any(m["assetId"] == of["id"] for m in p["mentions"])]
+        it = [i for i in issues if any(m["assetId"] == of["id"] for m in i["mentions"])]
+        touchers = {p.get("authorId") for p in pg} | {x for i in it for x in (i["reporterId"], i.get("assigneeId"))}
+        touchers -= {None}
+        ok = (len(pg) >= 1 and all(p["lastEditedDaysAgo"] > FRESH_DOC_DAYS for p in pg) and len(it) == 1
+              and it[0]["createdDaysAgo"] >= 2400 and touchers <= {"p_pentti", "p_kontro", "p_tiina", "p_esa"}
+              and "p_pentti" in touchers)
+    out.append(("hero 1 Old Faithful: CP 343-1, 33 open, 9.3, one stale page, one 2019 issue, Pentti only", ok))
+    mentioned = {m["assetId"] for x in pages + issues for m in x["mentions"]}
+    big = [a for a in assets if a["deviceType"] == "PLC" and fc[a["id"]] >= 90]
+    out.append(("hero 2 PLC with 90+ findings and no documentation", any(a["id"] not in mentioned for a in big)))
+    ips = Counter(a["ip"] for a in assets if a["ot"])
+    out.append(("hero 3 two machines with one IP", any(c == 2 for c in ips.values())))
+    ip_holder = {a["ip"]: a for a in assets}
+    wrong = False
+    for p in pages:
+        for m in p["mentions"]:
+            a = by_id[m["assetId"]]
+            if m["kind"] == "old" and a["role"] == "plc" and any(ip in ip_holder and ip_holder[ip]["id"] != a["id"] for ip in a["ipHistory"]):
+                wrong = True
+    out.append(("hero 4 page names a PLC by an address another machine now has", wrong))
+    return out
+
+
+def check(d: Path, root: Path, progress=False):
     cfg = yaml.safe_load((root / "config" / "names.yml").read_text(encoding="utf-8"))
     errors = []
 
@@ -163,20 +282,46 @@ def check(d: Path, root: Path):
 
     if meta.get("counts", {}).get("rawFindingRows") and len(findings) != meta["counts"]["rawFindingRows"]:
         fail(f"{meta['counts']['rawFindingRows'] - len(findings)} findings did not join to an asset")
+
+    try:
+        people = json.loads((d / "people.json").read_text(encoding="utf-8"))
+        pages = json.loads((d / "pages.json").read_text(encoding="utf-8"))
+        issues = json.loads((d / "issues.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError) as e:
+        return errors + [f"cannot read narrative: {e}"]
+    banned = [b.encode().decode("unicode_escape") for b in BANNED]
+    for x in pages + issues:
+        for m in x["mentions"]:
+            if m["assetId"] not in ids:
+                fail(f"{x['id']}: mention of unknown asset {m['assetId']}")
+        text = x.get("bodyMarkdown", "") + x.get("description", "") + x.get("title", "") + x.get("summary", "")
+        for b in banned:
+            if b in text:
+                fail(f"{x['id']}: copy voice, contains {b!r}")
+    report, targets = narrative_report(assets, people, pages, issues, findings)
+    if progress:
+        print(json.dumps(report, indent=1))
+        for name, ok in targets:
+            print(("  ok   " if ok else "  MISS ") + name)
+    else:
+        for name, ok in targets:
+            if not ok:
+                fail("target: " + name)
     return errors
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dir", default=str(ROOT / "data" / "generated"))
+    ap.add_argument("--progress", action="store_true")
     args = ap.parse_args()
-    errors = check(Path(args.dir), ROOT)
+    errors = check(Path(args.dir), ROOT, args.progress)
     if errors:
         print(f"FAIL: {len(errors)} problem(s)")
         for e in errors[:50]:
             print("  " + e)
         return 1
-    print("dataset ok (S1 mechanical checks)")
+    print("dataset ok")
     return 0
 
 

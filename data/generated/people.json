@@ -1,0 +1,132 @@
+[
+ {
+  "id": "p_pentti",
+  "name": "Pentti Vaisanen",
+  "role": "Maintenance electrician",
+  "plant": "Birch",
+  "startedYearsAgo": 38,
+  "leavingInDays": 150,
+  "leftDaysAgo": null,
+  "bio": "Has the manuals in his head and the spare fuses in his car."
+ },
+ {
+  "id": "p_marja",
+  "name": "Marja Heikkinen",
+  "role": "Plant manager",
+  "plant": "Birch",
+  "startedYearsAgo": 6,
+  "leavingInDays": null,
+  "leftDaysAgo": null,
+  "bio": "Reads every audit report. Asks why twice."
+ },
+ {
+  "id": "p_antti",
+  "name": "Antti Rantanen",
+  "role": "Automation engineer",
+  "plant": "Spruce",
+  "startedYearsAgo": 9,
+  "leavingInDays": null,
+  "leftDaysAgo": null,
+  "bio": "Keeps a TIA Portal licence the way others keep a pet."
+ },
+ {
+  "id": "p_sanna",
+  "name": "Sanna Lehtonen",
+  "role": "IT/OT coordinator",
+  "plant": "Birch",
+  "startedYearsAgo": 3,
+  "leavingInDays": null,
+  "leftDaysAgo": null,
+  "bio": "Wants one list of machines. Has four."
+ },
+ {
+  "id": "p_jukka",
+  "name": "Jukka Salminen",
+  "role": "Safety officer",
+  "plant": "Alder",
+  "startedYearsAgo": 12,
+  "leavingInDays": null,
+  "leftDaysAgo": null,
+  "bio": "Signs things. Remembers what he signed."
+ },
+ {
+  "id": "p_leena",
+  "name": "Leena Koskinen",
+  "role": "Maintenance technician",
+  "plant": "Alder",
+  "startedYearsAgo": 7,
+  "leavingInDays": null,
+  "leftDaysAgo": null,
+  "bio": "Labels everything she touches. Some of it stays labelled."
+ },
+ {
+  "id": "p_ville",
+  "name": "Ville Hamalainen",
+  "role": "Maintenance technician",
+  "plant": "Rowan",
+  "startedYearsAgo": 4,
+  "leavingInDays": null,
+  "leftDaysAgo": null,
+  "bio": "Learned the Rowan line from Pentti, mostly by phone."
+ },
+ {
+  "id": "p_mikko",
+  "name": "Mikko Nieminen",
+  "role": "Line operator",
+  "plant": "Spruce",
+  "startedYearsAgo": 15,
+  "leavingInDays": null,
+  "leftDaysAgo": null,
+  "bio": "Knows which alarm means coffee and which means trouble."
+ },
+ {
+  "id": "p_aino",
+  "name": "Aino Jarvinen",
+  "role": "Line operator",
+  "plant": "Birch",
+  "startedYearsAgo": 21,
+  "leavingInDays": null,
+  "leftDaysAgo": null,
+  "bio": "Writes her notes in Finnish because the machines understand it better."
+ },
+ {
+  "id": "p_timo",
+  "name": "Timo Mattila",
+  "role": "Maintenance technician",
+  "plant": "Pine",
+  "startedYearsAgo": 2,
+  "leavingInDays": null,
+  "leftDaysAgo": null,
+  "bio": "The only person who has been to Pine twice this year."
+ },
+ {
+  "id": "p_esa",
+  "name": "Esa Korhonen",
+  "role": "Contractor, PLC programming",
+  "plant": "Spruce",
+  "startedYearsAgo": 11,
+  "leavingInDays": null,
+  "leftDaysAgo": 1460,
+  "bio": "Wrote half the Spruce programs. Left a USB stick and no comments."
+ },
+ {
+  "id": "p_tiina",
+  "name": "Tiina Laakso",
+  "role": "Contractor, networks",
+  "plant": "Birch",
+  "startedYearsAgo": 6,
+  "leavingInDays": null,
+  "leftDaysAgo": 820,
+  "bio": "Renumbered line 2 in a weekend. The diagram stayed behind."
+ },
+ {
+  "id": "p_kontro",
+  "name": "Kontrollitekniikka Oy",
+  "role": "Integrator (no longer answers)",
+  "plant": null,
+  "startedYearsAgo": 19,
+  "leavingInDays": null,
+  "leftDaysAgo": 2200,
+  "bio": "Their support number now reaches a pizzeria."
+ }
+]

@@ -1,0 +1,286 @@
+# Spare parts and vendor contacts, then the noise every tracker has.
+- id: is_121
+  summary: Order PSU for [[alder-l2-sw-09|nick]]
+  type: Request
+  status: Done
+  reporter: p_leena
+  assignee: p_leena
+  createdDaysAgo: 55
+  resolvedDaysAgo: 40
+  description: Ordered two. One for the switch, one for the shelf.
+  labels: [kind:spares]
+- id: is_122
+  summary: Spare CPU for dosing, [[rowan-l1-plc-03]]
+  type: Request
+  status: Open
+  reporter: p_ville
+  assignee: p_ville
+  createdDaysAgo: 260
+  description: The delivery documents say no spare. One page says there is one in box 12. Box 12 has cables.
+  labels: [kind:spares]
+- id: is_123
+  summary: Support contact for Kontrollitekniikka
+  type: Request
+  status: Open
+  reporter: p_sanna
+  assignee: null
+  createdDaysAgo: 900
+  description: The support number reaches a pizzeria. The pizza is fine.
+  labels: [kind:spares]
+- id: is_124
+  summary: Spare TP1500 for Spruce
+  type: Request
+  status: Done
+  reporter: p_mikko
+  assignee: p_mikko
+  createdDaysAgo: 350
+  resolvedDaysAgo: 300
+  description: Two in the store now. Labelled.
+  labels: [kind:spares]
+- id: is_125
+  summary: Spare CP 343-1 for line 2
+  type: Request
+  status: Open
+  reporter: p_pentti
+  assignee: null
+  createdDaysAgo: 400
+  description: none on the shelf. not sold new any more
+  labels: [kind:spares]
+- id: is_126
+  summary: Siemens service contract renewal
+  type: Request
+  status: Open
+  reporter: p_marja
+  assignee: p_marja
+  createdDaysAgo: 120
+  description: Ends 2027. Covers Spruce only. Ask about Birch.
+  labels: [kind:spares]
+- id: is_127
+  summary: Spare CPU for the cooling loop
+  type: Request
+  status: Done
+  reporter: p_antti
+  assignee: p_antti
+  createdDaysAgo: 1500
+  resolvedDaysAgo: 1400
+  description: Not stocked. Lead time 4 weeks, accepted for [[spruce-l1-plc-07]].
+  labels: [kind:spares]
+- id: is_128
+  summary: MP177 spares running out
+  type: Request
+  status: Open
+  reporter: p_leena
+  assignee: p_leena
+  createdDaysAgo: 300
+  description: Two left for [[alder-l2-hmi-01]] and its twin. Not sold new. Plan a replacement.
+  labels: [kind:spares]
+- id: is_129
+  summary: Order SFP modules
+  type: Request
+  status: Done
+  reporter: p_leena
+  assignee: p_leena
+  createdDaysAgo: 225
+  resolvedDaysAgo: 210
+  description: For [[alder-l2-sw-01]]. Bought four.
+  labels: [kind:spares]
+- id: is_130
+  summary: Test the S7-300 spares from the dismantled line
+  type: Task
+  status: Open
+  reporter: p_antti
+  assignee: p_antti
+  createdDaysAgo: 480
+  description: Two CPU 315-2 DP. Would fit [[spruce-l1-plc-19]]. Untested.
+  labels: [kind:spares, no-follow-up]
+- id: is_131
+  summary: Facility company contact for building automation
+  type: Request
+  status: Open
+  reporter: p_sanna
+  assignee: null
+  createdDaysAgo: 230
+  description: The contact person changed. The new one does not know about our network.
+  labels: [kind:spares]
+- id: is_132
+  summary: Copy of the kiln key
+  type: Request
+  status: Done
+  reporter: p_timo
+  assignee: p_timo
+  createdDaysAgo: 690
+  resolvedDaysAgo: 680
+  description: Second key made. Kept in the Pine office.
+  labels: [kind:spares]
+- id: is_133
+  summary: Spare panel for the Birch oven
+  type: Request
+  status: Done
+  reporter: p_antti
+  assignee: p_antti
+  createdDaysAgo: 175
+  resolvedDaysAgo: 160
+  description: Used the spare for [[birch-l2-hmi-02]]. Ordered a new spare.
+  labels: [kind:spares]
+- id: is_134
+  summary: F-CPU lead time
+  type: Request
+  status: Done
+  reporter: p_ville
+  assignee: p_ville
+  createdDaysAgo: 1250
+  resolvedDaysAgo: 1100
+  description: 12 weeks. Bought one sealed spare for [[rowan-l1-plc-04]] and its twin.
+  labels: [kind:spares]
+- id: is_135
+  summary: Spare thermocouples for the oven
+  type: Request
+  status: Done
+  reporter: p_pentti
+  assignee: p_pentti
+  createdDaysAgo: 1350
+  resolvedDaysAgo: 1340
+  description: in my car
+  labels: [kind:spares]
+- id: is_136
+  summary: Label broken on cabinet 2B
+  type: Task
+  status: Open
+  reporter: p_aino
+  assignee: null
+  createdDaysAgo: 400
+  description: It fell off. It said do not open.
+  labels: [kind:noise]
+- id: is_137
+  summary: Who owns this PLC
+  type: Task
+  status: Open
+  reporter: p_mikko
+  assignee: null
+  createdDaysAgo: 260
+  description: "[[spruce-l1-plc-13]]. Runs the lights. Nobody claims it."
+  labels: [kind:noise]
+- id: is_138
+  summary: Coffee machine on the plant network
+  type: Task
+  status: Done
+  reporter: p_sanna
+  assignee: p_sanna
+  createdDaysAgo: 140
+  resolvedDaysAgo: 139
+  description: Moved to the guest network. It complained.
+  labels: [kind:noise]
+- id: is_139
+  summary: Label broken
+  type: Task
+  status: Done
+  reporter: p_leena
+  assignee: p_leena
+  createdDaysAgo: 300
+  resolvedDaysAgo: 300
+  description: New label on [[alder-l2-sw-02|nick]].
+  labels: [kind:noise]
+- id: is_140
+  summary: Who owns this PLC
+  type: Task
+  status: Open
+  reporter: p_timo
+  assignee: null
+  createdDaysAgo: 1200
+  description: "[[a_goyjl|modelline]] in the Pine boiler house. Not in any list."
+  labels: [kind:noise]
+- id: is_141
+  summary: Printer on the line 1 network
+  type: Task
+  status: Open
+  reporter: p_sanna
+  assignee: null
+  createdDaysAgo: 333
+  description: Why.
+  labels: [kind:noise]
+- id: is_142
+  summary: Duplicate of the duplicate ticket
+  type: Task
+  status: Done
+  reporter: p_aino
+  assignee: p_aino
+  createdDaysAgo: 210
+  resolvedDaysAgo: 210
+  description: Closing.
+  labels: [kind:noise]
+- id: is_143
+  summary: Door sticks on cabinet 5
+  type: Task
+  status: Done
+  reporter: p_leena
+  assignee: p_leena
+  createdDaysAgo: 410
+  resolvedDaysAgo: 400
+  description: Hinge oiled.
+  labels: [kind:noise]
+- id: is_144
+  summary: Can we rename the boxes called Do Not Touch
+  type: Task
+  status: Open
+  reporter: p_sanna
+  assignee: null
+  createdDaysAgo: 180
+  description: There are three of them. Nobody wants to touch the rename either.
+  labels: [kind:noise]
+- id: is_145
+  summary: Test ticket
+  type: Task
+  status: Done
+  reporter: p_sanna
+  assignee: p_sanna
+  createdDaysAgo: 900
+  resolvedDaysAgo: 900
+  description: test
+  labels: [kind:noise]
+- id: is_146
+  summary: Alarm sound too loud now
+  type: Task
+  status: Open
+  reporter: p_mikko
+  assignee: null
+  createdDaysAgo: 110
+  description: "[[spruce-l1-hmi-11|nick]] used to whisper. Now it shouts."
+  labels: [kind:noise]
+- id: is_147
+  summary: Who owns this PLC
+  type: Task
+  status: Open
+  reporter: p_ville
+  assignee: null
+  createdDaysAgo: 1400
+  description: "[[rowan-l1-plc-09]]. No model, no program, still on."
+  labels: [kind:noise]
+- id: is_148
+  summary: Keyboard missing from the shift office PC
+  type: Task
+  status: Done
+  reporter: p_mikko
+  assignee: p_mikko
+  createdDaysAgo: 60
+  resolvedDaysAgo: 59
+  description: Found in the canteen.
+  labels: [kind:noise]
+- id: is_149
+  summary: Pentti's phone number in the runbooks
+  type: Task
+  status: Open
+  reporter: p_ville
+  assignee: null
+  createdDaysAgo: 45
+  description: Should it stay there after he leaves. Who do we call instead.
+  labels: [kind:noise]
+- id: is_150
+  summary: Label says spare, it is not
+  type: Task
+  status: Done
+  reporter: p_leena
+  assignee: p_leena
+  createdDaysAgo: 75
+  resolvedDaysAgo: 75
+  description: The spare switch on the shelf is connected to the network. Label changed.
+  labels: [kind:noise]

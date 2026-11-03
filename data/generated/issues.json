@@ -1,0 +1,3017 @@
+[
+ {
+  "id": "is_001",
+  "summary": "birch-l2-cp-04 stopped",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 2620,
+  "resolvedDaysAgo": 2620,
+  "description": "Restarted by hand, do not know why it works.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_d4mjq",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_002",
+  "summary": "birch-l2-plc-01 fault LED",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 640,
+  "resolvedDaysAgo": 639,
+  "description": "fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_8b1p8",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_003",
+  "summary": "birch-l2-plc-02 no comms",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 600,
+  "resolvedDaysAgo": 600,
+  "description": "fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_g8gpv",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_004",
+  "summary": "CP fault on birch-l2-plc-04 and birch-l2-plc-05",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 580,
+  "resolvedDaysAgo": 579,
+  "description": "fixed both",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_fzphu",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_ew79h",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_005",
+  "summary": "birch-l2-plc-06 in STOP",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 520,
+  "resolvedDaysAgo": 520,
+  "description": "fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_f5c2h",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_006",
+  "summary": "Kettu again",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 500,
+  "resolvedDaysAgo": 500,
+  "description": "fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_c3k3j",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_007",
+  "summary": "birch-l2-plc-09 and birch-l2-plc-10 lost the network",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 470,
+  "resolvedDaysAgo": 469,
+  "description": "fixed. same as last time",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_rlry5",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_s09jc",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_008",
+  "summary": "birch-l2-plc-11 slow",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 440,
+  "resolvedDaysAgo": 440,
+  "description": "did not power cycle. fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_85wgw",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_009",
+  "summary": "birch-l2-plc-13 fault",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 410,
+  "resolvedDaysAgo": 410,
+  "description": "fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_5etqg",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_010",
+  "summary": "birch-l2-plc-14 fault",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 380,
+  "resolvedDaysAgo": 379,
+  "description": "fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_gzl88",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_011",
+  "summary": "birch-l2-plc-15 in STOP after power dip",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 350,
+  "resolvedDaysAgo": 350,
+  "description": "fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_rp16h",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_012",
+  "summary": "birch-l2-plc-16, birch-l2-plc-17 comms",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 320,
+  "resolvedDaysAgo": 320,
+  "description": "fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_7j5w8",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_kubpr",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_013",
+  "summary": "birch-l2-plc-19 and birch-l2-plc-20 dropped off",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 290,
+  "resolvedDaysAgo": 290,
+  "description": "fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_x3ezj",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_120od",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_014",
+  "summary": "birch-l2-plc-21 fault",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 260,
+  "resolvedDaysAgo": 259,
+  "description": "fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_q2e4o",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_015",
+  "summary": "birch-l2-plc-22 birch-l2-plc-23",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 230,
+  "resolvedDaysAgo": 230,
+  "description": "fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_enq85",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_2b12v",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_016",
+  "summary": "Glue station, birch-l2-plc-24 and Hot Potato",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 200,
+  "resolvedDaysAgo": 199,
+  "description": "fixed. the potato was hot",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_l8her",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_wi3xv",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_017",
+  "summary": "Oven zone 1 and 2 lost comms, birch-l2-plc-26 birch-l2-plc-27",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 170,
+  "resolvedDaysAgo": 170,
+  "description": "fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_x2xyj",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_9opru",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_018",
+  "summary": "Ring alarm line 1, birch-l1-sw-01 birch-l1-sw-02",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 140,
+  "resolvedDaysAgo": 140,
+  "description": "fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_6pkp3",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_eqpxn",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_019",
+  "summary": "birch-l1-sw-03 birch-l1-sw-04 birch-l1-sw-05 port errors",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 110,
+  "resolvedDaysAgo": 109,
+  "description": "fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_ttx7d",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_88pen",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_tkmmw",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_020",
+  "summary": "The Philosopher thinking again",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 80,
+  "resolvedDaysAgo": 80,
+  "description": "fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_va6to",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_021",
+  "summary": "birch-l1-sw-07 and birch-l1-sw-08 link down",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 60,
+  "resolvedDaysAgo": 60,
+  "description": "fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_h3cmp",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_65xjy",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_022",
+  "summary": "birch-l1-sw-09",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 50,
+  "resolvedDaysAgo": 50,
+  "description": "fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_1e3i7",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_023",
+  "summary": "birch-l1-cp-01 lost connection to line 1",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 45,
+  "resolvedDaysAgo": 45,
+  "description": "fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_ttph7",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_024",
+  "summary": "Heating web server, Do Not Touch",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 40,
+  "resolvedDaysAgo": 40,
+  "description": "Touched it. fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_hak47",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_025",
+  "summary": "Hall heating boxes birch-l1-dev-01 birch-l1-dev-04",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 35,
+  "resolvedDaysAgo": 34,
+  "description": "fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_0rv6x",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_2d6dl",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_026",
+  "summary": "birch-l2-sw-01 birch-l2-sw-02 hot",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 30,
+  "resolvedDaysAgo": 30,
+  "description": "fixed. fan",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_lyiz1",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_5pqej",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_027",
+  "summary": "birch-l2-sw-03 second uplink unplugged by someone",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 20,
+  "resolvedDaysAgo": 20,
+  "description": "plugged back. also birch-l2-sw-04. fixed",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_vpole",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_u30pm",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_028",
+  "summary": "Oven zone 3 and 4, Two Cables Too Many and birch-l2-plc-29",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 15,
+  "resolvedDaysAgo": 15,
+  "description": "fixed. removed one cable",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_smvp5",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_yk0nk",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_029",
+  "summary": "Infeed jam, spruce-l1-plc-03 in fault",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_mikko",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 300,
+  "resolvedDaysAgo": 299,
+  "description": "Jam sensor gave a false signal, PLC went to fault as designed.\nCleaned the sensor, acknowledged on the panel. Line back in 40 minutes.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_01nmr",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_030",
+  "summary": "Press 1 stops at cycle start, spruce-l1-plc-04",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_mikko",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 250,
+  "resolvedDaysAgo": 248,
+  "description": "Safety door switch worn. Replaced from stock, shelf B4.\nChecked the program, no change needed.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_hq60u",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_031",
+  "summary": "Cold Start did not come up after the weekend",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_mikko",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 200,
+  "resolvedDaysAgo": 200,
+  "description": "Profinet cable at the cabinet door, again. Rerouted it this time.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_qq7sv",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_032",
+  "summary": "Blinky blinking red",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_mikko",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 150,
+  "resolvedDaysAgo": 149,
+  "description": "Diagnostic buffer said a module lost power. Loose terminal. Tightened.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_9xjh4",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_033",
+  "summary": "The Oracle frozen on the alarm screen",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_mikko",
+  "assigneeId": "p_mikko",
+  "createdDaysAgo": 100,
+  "resolvedDaysAgo": 100,
+  "description": "Restarted the panel. Alarm buffer was full. Cleared it.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_gemh5",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_034",
+  "summary": "Both mixers stopped, rowan-l1-plc-01 and rowan-l1-plc-02",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_ville",
+  "assigneeId": "p_ville",
+  "createdDaysAgo": 400,
+  "resolvedDaysAgo": 399,
+  "description": "Common power supply tripped. Reset, both PLCs restarted in RUN.\nOrdered a second supply so they do not share one.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_snn7j",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_a9mai",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_035",
+  "summary": "Filling stops mid batch, rowan-l1-plc-06",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_ville",
+  "assigneeId": "p_ville",
+  "createdDaysAgo": 330,
+  "resolvedDaysAgo": 328,
+  "description": "Level sensor drift. Calibrated. Added a check to the weekly list.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_l9w5o",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_036",
+  "summary": "Mr. Reboot rebooted itself",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_leena",
+  "assigneeId": "p_leena",
+  "createdDaysAgo": 60,
+  "resolvedDaysAgo": 60,
+  "description": "PSU, again. New PSU ordered, see the spares ticket.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_9fs2h",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_037",
+  "summary": "Alder line 2 down, alder-l2-plc-01 in STOP",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_leena",
+  "assigneeId": "p_leena",
+  "createdDaysAgo": 500,
+  "resolvedDaysAgo": 499,
+  "description": "Memory card error. Swapped to the spare card, restored the program from the share.\nTwo hours of downtime. The backup on the share was current.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_wdodn",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_038",
+  "summary": "Touch does not work on Temporary (2011)",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_aino",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 220,
+  "resolvedDaysAgo": 210,
+  "description": "Touch layer replaced. Calibrated.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_k3add",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_039",
+  "summary": "Oven panel birch-l2-hmi-02 black",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_aino",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 180,
+  "resolvedDaysAgo": 180,
+  "description": "Backlight. Swapped to the spare panel and restored the project from the archive.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_xxx3f",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_040",
+  "summary": "Robot cell interlock fault, spruce-l1-plc-08",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_mikko",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 90,
+  "resolvedDaysAgo": 90,
+  "description": "Restarted by hand, do not know why it works. Antti will look at the door switch logic.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_33jzs",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_041",
+  "summary": "Dosing stopped, rowan-l1-plc-03",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_ville",
+  "assigneeId": "p_ville",
+  "createdDaysAgo": 280,
+  "resolvedDaysAgo": 279,
+  "description": "Pump feedback lost. Cable damaged by a forklift. Replaced.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_bqg89",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_042",
+  "summary": "Capping torque alarm, rowan-l1-plc-07",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_ville",
+  "assigneeId": "p_ville",
+  "createdDaysAgo": 210,
+  "resolvedDaysAgo": 210,
+  "description": "Torque limit reached on worn caps. Not a PLC fault. Changed the cap supplier batch.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_l25jc",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_043",
+  "summary": "Remote IO on dosing skid offline, rowan-l1-io-02",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_ville",
+  "assigneeId": "p_ville",
+  "createdDaysAgo": 160,
+  "resolvedDaysAgo": 160,
+  "description": "Profinet connector loose. Reseated, added strain relief.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_5qsoe",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_044",
+  "summary": "Press 2 hydraulic alarm, spruce-l1-plc-06",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_mikko",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 330,
+  "resolvedDaysAgo": 330,
+  "description": "Pressure sensor faulty. Replaced. PLC fine.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_j4j45",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_045",
+  "summary": "Palletizer A and B both stopped, spruce-l1-plc-15 spruce-l1-plc-16",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_mikko",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 270,
+  "resolvedDaysAgo": 269,
+  "description": "Not both CPUs. A shared safety relay. Replaced.\nNo lottery ticket needed.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_jhev7",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_s7kvc",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_046",
+  "summary": "Kettu shows old values",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_mikko",
+  "assigneeId": "p_mikko",
+  "createdDaysAgo": 240,
+  "resolvedDaysAgo": 240,
+  "description": "Connection to press 1 PLC dropped. Restarted the panel runtime.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_8vmqy",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_047",
+  "summary": "Robot panel spruce-l1-hmi-04 reboot loop",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_mikko",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 190,
+  "resolvedDaysAgo": 188,
+  "description": "Corrupt project after a power cut. Restored from the archive.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_fnmnq",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_048",
+  "summary": "Outfeed panel The Whisperer alarm sound broken",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_mikko",
+  "assigneeId": "p_mikko",
+  "createdDaysAgo": 120,
+  "resolvedDaysAgo": 115,
+  "description": "Buzzer failed. Replaced. Now the quiet alarms are loud.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_9icl2",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_049",
+  "summary": "Alder line 2 core switch alder-l2-sw-01 uplink flapping",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_leena",
+  "assigneeId": "p_leena",
+  "createdDaysAgo": 230,
+  "resolvedDaysAgo": 230,
+  "description": "SFP replaced. The second uplink carried the traffic as designed.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_h1oij",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_050",
+  "summary": "Leftovers port 7 dead",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_leena",
+  "assigneeId": "p_leena",
+  "createdDaysAgo": 190,
+  "resolvedDaysAgo": 190,
+  "description": "Moved the panel to port 9. Labelled.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_ikmxt",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_051",
+  "summary": "SNMP stopped on alder-l2-sw-05",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_sanna",
+  "assigneeId": "p_leena",
+  "createdDaysAgo": 150,
+  "resolvedDaysAgo": 140,
+  "description": "Someone changed the community string. Changed it back and wrote it down this time.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_46wqb",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_052",
+  "summary": "Sauna Boy overheating",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_leena",
+  "assigneeId": "p_leena",
+  "createdDaysAgo": 250,
+  "resolvedDaysAgo": 249,
+  "description": "Fan replaced. Next to the dryer, so it will happen again.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_ez9vk",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_053",
+  "summary": "Alder panel alder-l2-hmi-01 touch drift",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_leena",
+  "assigneeId": "p_leena",
+  "createdDaysAgo": 420,
+  "resolvedDaysAgo": 420,
+  "description": "Recalibrated. MP177, old but fine.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_3g47n",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_054",
+  "summary": "Cooling tunnel panel birch-l2-hmi-04 lost connection",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_aino",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 140,
+  "resolvedDaysAgo": 139,
+  "description": "Panel pointed at an old PLC address after a restore. Fixed the connection in the project.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_h4km2",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_055",
+  "summary": "Crane comms down, The Gatekeeper",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_sanna",
+  "assigneeId": "p_sanna",
+  "createdDaysAgo": 310,
+  "resolvedDaysAgo": 309,
+  "description": "Power supply in the cabinet failed. Replaced. Both cranes back.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_rngwo",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_056",
+  "summary": "BMS workstation The Quiet One not reachable",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_sanna",
+  "assigneeId": "p_sanna",
+  "createdDaysAgo": 90,
+  "resolvedDaysAgo": 85,
+  "description": "Windows update rebooted it into a login prompt. Facility company logged in.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_el5mj",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_057",
+  "summary": "Kiln did not restart after power cut, pine-l1-plc-01",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_timo",
+  "assigneeId": "p_timo",
+  "createdDaysAgo": 700,
+  "resolvedDaysAgo": 699,
+  "description": "Followed the kiln restart page. The key was in the drawer. Worked.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_t6kmn",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_058",
+  "summary": "Conveyor box 10.3.1.30 restarts",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_ville",
+  "assigneeId": "p_ville",
+  "createdDaysAgo": 1500,
+  "resolvedDaysAgo": 1490,
+  "description": "Restarted by hand, do not know why it works.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_c1l2k",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_059",
+  "summary": "Dryer temperature controller 10.5.2.36 wrong reading",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_leena",
+  "assigneeId": "p_leena",
+  "createdDaysAgo": 1300,
+  "resolvedDaysAgo": 1290,
+  "description": "Thermocouple replaced.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_t6jdv",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_060",
+  "summary": "Saw line stopped, Saint Jari",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_timo",
+  "assigneeId": "p_timo",
+  "createdDaysAgo": 1200,
+  "resolvedDaysAgo": 1200,
+  "description": "Somebody looked at it. Restarted.",
+  "labels": [
+   "kind:breakdown"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_80lzh",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_061",
+  "summary": "Firmware update, spruce-l1-plc-03 and spruce-l1-plc-04",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_antti",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 160,
+  "resolvedDaysAgo": 150,
+  "description": "Updated in the September stop. Backup before and after. Both tested.",
+  "labels": [
+   "kind:change",
+   "firmware"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_01nmr",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_hq60u",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_062",
+  "summary": "Firmware update, Spruce batch S7-300 group",
+  "type": "Change",
+  "status": "Open",
+  "reporterId": "p_antti",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 470,
+  "resolvedDaysAgo": null,
+  "description": "The CP 343-1 modules in spruce-l1-plc-19, spruce-l1-plc-20 and spruce-l1-plc-22 have known issues.\nNeeds a stop of the batch side. Waiting for a stop.",
+  "labels": [
+   "kind:change",
+   "firmware",
+   "no-follow-up"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_qlnyh",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_pkh1i",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_y8sqf",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_063",
+  "summary": "AP firmware, birch-l2-dev-01 birch-l2-dev-02 birch-l2-dev-03",
+  "type": "Change",
+  "status": "Open",
+  "reporterId": "p_sanna",
+  "assigneeId": null,
+  "createdDaysAgo": 440,
+  "resolvedDaysAgo": null,
+  "description": "Needs a stop of line 2. Nobody owns the stop.",
+  "labels": [
+   "kind:change",
+   "firmware",
+   "no-follow-up"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_z25gz",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_uppdc",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_yenzs",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_064",
+  "summary": "Panel project update, Spruce HMIs",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_antti",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 380,
+  "resolvedDaysAgo": 375,
+  "description": "New alarm texts on spruce-l1-hmi-01 and spruce-l1-hmi-02. Others next time.",
+  "labels": [
+   "kind:change"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_gemh5",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_8vmqy",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_065",
+  "summary": "Rowan F-CPU firmware, rowan-l1-plc-04 rowan-l1-plc-05",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_ville",
+  "assigneeId": "p_ville",
+  "createdDaysAgo": 230,
+  "resolvedDaysAgo": 220,
+  "description": "Updated with Jukka present. New checksums signed off.",
+  "labels": [
+   "kind:change",
+   "firmware",
+   "safety"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_kle26",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_uhph4",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_066",
+  "summary": "Recipe change on spr1plc19",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_esa",
+  "assigneeId": "p_esa",
+  "createdDaysAgo": 2300,
+  "resolvedDaysAgo": 2300,
+  "description": "Changed recipe 12 online.",
+  "labels": [
+   "kind:change"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_qlnyh",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "is_067",
+  "summary": "New program version on spr1plc1",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_esa",
+  "assigneeId": "p_esa",
+  "createdDaysAgo": 1900,
+  "resolvedDaysAgo": 1900,
+  "description": "v2.3 loaded. Changes in the comments.",
+  "labels": [
+   "kind:change"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_kj1sa",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "is_068",
+  "summary": "Water treatment program, comments missing",
+  "type": "Change",
+  "status": "Open",
+  "reporterId": "p_antti",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 1400,
+  "resolvedDaysAgo": null,
+  "description": "The v2.3 program on Big Bertha has no comments. Esa said they were in the comments.",
+  "labels": [
+   "kind:change",
+   "no-follow-up"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_kj1sa",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_069",
+  "summary": "Switch config backup, Alder line 2",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_leena",
+  "assigneeId": "p_leena",
+  "createdDaysAgo": 95,
+  "resolvedDaysAgo": 95,
+  "description": "Exported alder-l2-sw-01, alder-l2-sw-02, alder-l2-sw-05, alder-l2-sw-09. Diffed. No changes.",
+  "labels": [
+   "kind:change"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_h1oij",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_ikmxt",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_46wqb",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_9fs2h",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_070",
+  "summary": "Alder 313C program change, dryer timing",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_leena",
+  "assigneeId": "p_leena",
+  "createdDaysAgo": 600,
+  "resolvedDaysAgo": 598,
+  "description": "Changed dryer start delay on alder-l2-plc-01. Backup before and after on the share.",
+  "labels": [
+   "kind:change"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_wdodn",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_071",
+  "summary": "Firmware on the old Birch CPs",
+  "type": "Change",
+  "status": "Open",
+  "reporterId": "p_marja",
+  "assigneeId": null,
+  "createdDaysAgo": 2100,
+  "resolvedDaysAgo": null,
+  "description": "Scanner report says the CPs on Birch line 2 need firmware. Who does this.",
+  "labels": [
+   "kind:change",
+   "firmware",
+   "no-follow-up"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_072",
+  "summary": "Oven program change, zone 1 compensation",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_kontro",
+  "assigneeId": "p_kontro",
+  "createdDaysAgo": 2350,
+  "resolvedDaysAgo": 2350,
+  "description": "Added offset for thermocouple 3 on bir2plc26.",
+  "labels": [
+   "kind:change"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_x2xyj",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "is_073",
+  "summary": "HMI project for The Hermit lost",
+  "type": "Change",
+  "status": "Open",
+  "reporterId": "p_ville",
+  "assigneeId": "p_ville",
+  "createdDaysAgo": 1250,
+  "resolvedDaysAgo": null,
+  "description": "The archive copy is older than the panel. Need to upload from the panel. Needs a stop.",
+  "labels": [
+   "kind:change",
+   "no-follow-up"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_uolvo",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_074",
+  "summary": "Palletizer program backup",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_antti",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 140,
+  "resolvedDaysAgo": 140,
+  "description": "Backups of spruce-l1-plc-15 and spruce-l1-plc-16 to the share.",
+  "labels": [
+   "kind:change"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_jhev7",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_s7kvc",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_075",
+  "summary": "Safety program change request, Rowan",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_jukka",
+  "assigneeId": "p_ville",
+  "createdDaysAgo": 900,
+  "resolvedDaysAgo": 880,
+  "description": "New light curtain on filling. Change on rowan-l1-plc-04, signed off.",
+  "labels": [
+   "kind:change",
+   "safety"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_kle26",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_076",
+  "summary": "Windows update on alder-l2-pc-01",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_sanna",
+  "assigneeId": "p_leena",
+  "createdDaysAgo": 1200,
+  "resolvedDaysAgo": 1190,
+  "description": "Updated. Recipe tool still starts.",
+  "labels": [
+   "kind:change"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_bv8d2",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_077",
+  "summary": "Engineering PC licence move",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_antti",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 1600,
+  "resolvedDaysAgo": 1600,
+  "description": "Moved the TIA licence from spruce-l1-pc-01 to spruce-l1-pc-02.",
+  "labels": [
+   "kind:change"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_lbs6f",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_o2p7d",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_078",
+  "summary": "Kiln F-CPU firmware",
+  "type": "Change",
+  "status": "Open",
+  "reporterId": "p_timo",
+  "assigneeId": null,
+  "createdDaysAgo": 1150,
+  "resolvedDaysAgo": null,
+  "description": "pine-l1-plc-02 has an old firmware. Needs Jukka and a stop. Neither available.",
+  "labels": [
+   "kind:change",
+   "firmware",
+   "safety",
+   "no-follow-up"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_kcmrc",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_079",
+  "summary": "Crane CP config",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_sanna",
+  "assigneeId": "p_sanna",
+  "createdDaysAgo": 1100,
+  "resolvedDaysAgo": 1100,
+  "description": "Changed addresses on 10.9.18.200 and 10.9.18.201 for the new warehouse switch.",
+  "labels": [
+   "kind:change"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_1dvsb",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_v1hu3",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "is_080",
+  "summary": "Glue program update",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_tiina",
+  "assigneeId": "p_tiina",
+  "createdDaysAgo": 1240,
+  "resolvedDaysAgo": 1240,
+  "description": "Updated glue_v7 on the CPU at 10.1.2.13.",
+  "labels": [
+   "kind:change"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_h0nda",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "is_081",
+  "summary": "Mixer torque limit",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_kontro",
+  "assigneeId": "p_kontro",
+  "createdDaysAgo": 2550,
+  "resolvedDaysAgo": 2550,
+  "description": "Hard coded torque limit on row1plc1 as agreed.",
+  "labels": [
+   "kind:change"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_snn7j",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "is_082",
+  "summary": "Panel screen saver off, birch-l2-hmi-02",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_aino",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 1700,
+  "resolvedDaysAgo": 1700,
+  "description": "Operators could not see alarms when it was dark.",
+  "labels": [
+   "kind:change"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_xxx3f",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_083",
+  "summary": "Remove old VPN account for Kontrollitekniikka",
+  "type": "Change",
+  "status": "Open",
+  "reporterId": "p_sanna",
+  "assigneeId": null,
+  "createdDaysAgo": 600,
+  "resolvedDaysAgo": null,
+  "description": "Account still active. Nobody knows what it can reach.",
+  "labels": [
+   "kind:change",
+   "no-follow-up"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_084",
+  "summary": "Weighing PLC recalibration",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_mikko",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 1350,
+  "resolvedDaysAgo": 1340,
+  "description": "New scale factors on spruce-l1-plc-21 and spruce-l1-plc-24.",
+  "labels": [
+   "kind:change"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_xgrkq",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_vk10j",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_085",
+  "summary": "Test bench calibration rig program",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_antti",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 1450,
+  "resolvedDaysAgo": 1450,
+  "description": "Updated Do Not Touch. It still says do not touch. It is right.",
+  "labels": [
+   "kind:change"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_cen04",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_086",
+  "summary": "Renumber Birch line 2",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_tiina",
+  "assigneeId": "p_tiina",
+  "createdDaysAgo": 1160,
+  "resolvedDaysAgo": 1150,
+  "description": "New address plan for line 2. Old addresses for reference:\n10.1.2.200, 10.1.2.201, 10.1.2.204, 10.1.2.208.\nRest in the diagram.",
+  "labels": [
+   "kind:network"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_8b1p8",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_g8gpv",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_f5c2h",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_85wgw",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "is_087",
+  "summary": "Line 2 HMIs point at old addresses",
+  "type": "Incident",
+  "status": "Done",
+  "reporterId": "p_tiina",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 1155,
+  "resolvedDaysAgo": 1100,
+  "description": "Panels still use 10.1.2.209 and 10.1.2.210. Pentti will fix.",
+  "labels": [
+   "kind:network"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_5etqg",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_gzl88",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "is_088",
+  "summary": "Duplicate IP on Rowan line 1, 10.3.1.26",
+  "type": "Incident",
+  "status": "Open",
+  "reporterId": "p_sanna",
+  "assigneeId": null,
+  "createdDaysAgo": 500,
+  "resolvedDaysAgo": null,
+  "description": "Scanner sees two controllers on one address. Same model, different MACs.\nOne of them is 10.3.1.26 too, as far as the scanner knows. Needs someone on site.",
+  "labels": [
+   "kind:network"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_2yq7i",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_6asq9",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_089",
+  "summary": "Second duplicate IP on Rowan line 1",
+  "type": "Incident",
+  "status": "Open",
+  "reporterId": "p_sanna",
+  "assigneeId": null,
+  "createdDaysAgo": 480,
+  "resolvedDaysAgo": null,
+  "description": "Same story at 10.3.1.27. Also 10.3.1.27. Probably the same cause.",
+  "labels": [
+   "kind:network"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_oqcmf",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_v4vfq",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_090",
+  "summary": "Segment Spruce line 1",
+  "type": "Change",
+  "status": "Open",
+  "reporterId": "p_sanna",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 300,
+  "resolvedDaysAgo": null,
+  "description": "Flat network. Engineering PC spruce-l1-pc-02 can reach every PLC and the office. Plan cells.",
+  "labels": [
+   "kind:network",
+   "no-follow-up"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_o2p7d",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_091",
+  "summary": "Unknown boxes on Spruce line 1",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_sanna",
+  "assigneeId": null,
+  "createdDaysAgo": 700,
+  "resolvedDaysAgo": null,
+  "description": "10.2.1.53 and 10.2.1.54 answer ping and nothing else. Who owns them.",
+  "labels": [
+   "kind:network"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_29s7w",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_ynwrt",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_092",
+  "summary": "Birch line 1 ring setup",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_kontro",
+  "assigneeId": "p_kontro",
+  "createdDaysAgo": 2800,
+  "resolvedDaysAgo": 2800,
+  "description": "Ring manager bir1sw6 configured. Test passed.",
+  "labels": [
+   "kind:network"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_va6to",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "is_093",
+  "summary": "Warehouse switch replaced",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_sanna",
+  "assigneeId": "p_sanna",
+  "createdDaysAgo": 200,
+  "resolvedDaysAgo": 199,
+  "description": "New switch annex-l4-sw-01. Old one kept as a spare.",
+  "labels": [
+   "kind:network"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_6j95k",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_094",
+  "summary": "Firewall rules between office and plants",
+  "type": "Change",
+  "status": "Open",
+  "reporterId": "p_sanna",
+  "assigneeId": "p_sanna",
+  "createdDaysAgo": 150,
+  "resolvedDaysAgo": null,
+  "description": "Today everything is allowed. First step, log what is used. Second step, decide.",
+  "labels": [
+   "kind:network"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_095",
+  "summary": "Alder VLAN cleanup",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_leena",
+  "assigneeId": "p_leena",
+  "createdDaysAgo": 1400,
+  "resolvedDaysAgo": 1390,
+  "description": "Management VLAN moved. Old management address 10.5.2.200 no longer used.",
+  "labels": [
+   "kind:network"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_h1oij",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "is_096",
+  "summary": "Rowan line 2 moved to the new hall",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_ville",
+  "assigneeId": "p_ville",
+  "createdDaysAgo": 1200,
+  "resolvedDaysAgo": 1180,
+  "description": "Saint Jari and Don't Ask moved with the line. Addresses kept. Names not set.",
+  "labels": [
+   "kind:network"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_992uo",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_w6dgi",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_097",
+  "summary": "Spruce address plan",
+  "type": "Change",
+  "status": "Done",
+  "reporterId": "p_esa",
+  "assigneeId": "p_esa",
+  "createdDaysAgo": 2700,
+  "resolvedDaysAgo": 2700,
+  "description": "Infeed PLC at 10.2.1.200. Others follow the list.",
+  "labels": [
+   "kind:network"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_01nmr",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "is_098",
+  "summary": "Remote access for Siemens support",
+  "type": "Request",
+  "status": "Open",
+  "reporterId": "p_antti",
+  "assigneeId": "p_sanna",
+  "createdDaysAgo": 60,
+  "resolvedDaysAgo": null,
+  "description": "Vendor wants a permanent VPN. Proposed a session based one instead.",
+  "labels": [
+   "kind:network"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_099",
+  "summary": "ET 200SP stations have no hostnames",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_tiina",
+  "assigneeId": null,
+  "createdDaysAgo": 1300,
+  "resolvedDaysAgo": null,
+  "description": "10.1.2.61 and 10.1.2.65 and the rest. Integrator did not set names.",
+  "labels": [
+   "kind:network"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_9zeqx",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_fp2rd",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_100",
+  "summary": "Fifty nameless devices on Alder line 2",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_sanna",
+  "assigneeId": "p_leena",
+  "createdDaysAgo": 100,
+  "resolvedDaysAgo": null,
+  "description": "Scanner sees them, nobody has a list. Starting with 10.5.2.81 and 10.5.2.84.",
+  "labels": [
+   "kind:network"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_jc0bx",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_kphw0",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_101",
+  "summary": "NIS2 gap: nobody owns the asset inventory",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_marja",
+  "assigneeId": null,
+  "createdDaysAgo": 120,
+  "resolvedDaysAgo": null,
+  "description": "Asset management is in Article 21. We have four lists and no owner.",
+  "labels": [
+   "kind:audit",
+   "nis2"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_102",
+  "summary": "Audit: CP 343-1 modules on Birch line 2 with critical findings",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_sanna",
+  "assigneeId": null,
+  "createdDaysAgo": 90,
+  "resolvedDaysAgo": null,
+  "description": "Scanner shows critical findings on the old CPs. No owner, no plan, no spares.",
+  "labels": [
+   "kind:audit",
+   "nis2"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_103",
+  "summary": "Audit: same password on all Spruce panels",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_jukka",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 300,
+  "resolvedDaysAgo": null,
+  "description": "Starting with spruce-l1-hmi-01. The page says removed. The password is not.",
+  "labels": [
+   "kind:audit"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_gemh5",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_104",
+  "summary": "Audit: no backups for Pine",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_marja",
+  "assigneeId": "p_timo",
+  "createdDaysAgo": 400,
+  "resolvedDaysAgo": null,
+  "description": "No program backups on the share for Pine line 1.",
+  "labels": [
+   "kind:audit"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_105",
+  "summary": "Audit: unsupported Windows on engineering PCs",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_sanna",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 250,
+  "resolvedDaysAgo": null,
+  "description": "spruce-l1-pc-01 and spruce-l1-pc-02 run Windows versions without updates.",
+  "labels": [
+   "kind:audit",
+   "nis2"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_lbs6f",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_o2p7d",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_106",
+  "summary": "Audit: safety program change log",
+  "type": "Task",
+  "status": "Done",
+  "reporterId": "p_jukka",
+  "assigneeId": "p_ville",
+  "createdDaysAgo": 500,
+  "resolvedDaysAgo": 480,
+  "description": "Change log for rowan-l1-plc-04 is complete. Other plants not checked.",
+  "labels": [
+   "kind:audit"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_kle26",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_107",
+  "summary": "NIS2: incident reporting contacts",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_marja",
+  "assigneeId": "p_sanna",
+  "createdDaysAgo": 200,
+  "resolvedDaysAgo": null,
+  "description": "Early warning within 24 hours needs a contact list that works at night.",
+  "labels": [
+   "kind:audit",
+   "nis2"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_108",
+  "summary": "NIS2: supplier access review",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_sanna",
+  "assigneeId": null,
+  "createdDaysAgo": 180,
+  "resolvedDaysAgo": null,
+  "description": "Integrator accounts still active. One of the integrators does not exist any more.",
+  "labels": [
+   "kind:audit",
+   "nis2"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_109",
+  "summary": "Audit: building automation passwords held by facility company",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_sanna",
+  "assigneeId": null,
+  "createdDaysAgo": 240,
+  "resolvedDaysAgo": null,
+  "description": "The Quiet One and the heating controllers. Asked twice.",
+  "labels": [
+   "kind:audit"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_el5mj",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_110",
+  "summary": "Audit: nobody knows what is in Hall C",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_marja",
+  "assigneeId": null,
+  "createdDaysAgo": 1000,
+  "resolvedDaysAgo": null,
+  "description": "A page says three controllers. Nobody has been there.",
+  "labels": [
+   "kind:audit"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_111",
+  "summary": "NIS2: vulnerability handling process",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_sanna",
+  "assigneeId": null,
+  "createdDaysAgo": 150,
+  "resolvedDaysAgo": null,
+  "description": "Scanner findings arrive every week. Nobody decides what to do with them.",
+  "labels": [
+   "kind:audit",
+   "nis2"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_112",
+  "summary": "Audit: many machines without a name",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_sanna",
+  "assigneeId": null,
+  "createdDaysAgo": 70,
+  "resolvedDaysAgo": null,
+  "description": "The scanner knows the box. Nobody knows the machine.",
+  "labels": [
+   "kind:audit",
+   "nis2"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_113",
+  "summary": "Audit: single person dependency, Birch",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_marja",
+  "assigneeId": null,
+  "createdDaysAgo": 30,
+  "resolvedDaysAgo": null,
+  "description": "Pentti is the only name on most Birch line 1 and line 2 tickets. He retires next year.",
+  "labels": [
+   "kind:audit"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_114",
+  "summary": "Audit: spare parts list for Alder",
+  "type": "Task",
+  "status": "Done",
+  "reporterId": "p_jukka",
+  "assigneeId": "p_leena",
+  "createdDaysAgo": 800,
+  "resolvedDaysAgo": 760,
+  "description": "List made. In the runbooks now.",
+  "labels": [
+   "kind:audit"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_115",
+  "summary": "Audit 2022: remote access without MFA",
+  "type": "Task",
+  "status": "Done",
+  "reporterId": "p_sanna",
+  "assigneeId": "p_sanna",
+  "createdDaysAgo": 1400,
+  "resolvedDaysAgo": 1200,
+  "description": "MFA on the office VPN. Plant VPN next. Plant VPN not done.",
+  "labels": [
+   "kind:audit"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_116",
+  "summary": "Audit 2021: no segmentation on Spruce",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_antti",
+  "assigneeId": null,
+  "createdDaysAgo": 1700,
+  "resolvedDaysAgo": null,
+  "description": "Same as the new ticket. Older.",
+  "labels": [
+   "kind:audit"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_117",
+  "summary": "Audit: F-CPU firmware out of date",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_jukka",
+  "assigneeId": null,
+  "createdDaysAgo": 1100,
+  "resolvedDaysAgo": null,
+  "description": "pine-l1-plc-02 at least. Others not checked.",
+  "labels": [
+   "kind:audit"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_kcmrc",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_118",
+  "summary": "NIS2: basic training for maintenance staff",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_marja",
+  "assigneeId": "p_sanna",
+  "createdDaysAgo": 90,
+  "resolvedDaysAgo": null,
+  "description": "One hour, once a year, with coffee.",
+  "labels": [
+   "kind:audit",
+   "nis2"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_119",
+  "summary": "Audit: who approves PLC program changes",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_jukka",
+  "assigneeId": null,
+  "createdDaysAgo": 600,
+  "resolvedDaysAgo": null,
+  "description": "Safety programs have a sign-off. Normal programs have whoever is there.",
+  "labels": [
+   "kind:audit"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_120",
+  "summary": "Audit: asset list does not match the scanner",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_sanna",
+  "assigneeId": null,
+  "createdDaysAgo": 20,
+  "resolvedDaysAgo": null,
+  "description": "Four lists, four answers. The scanner is the only one that is up to date, and it does not know names.",
+  "labels": [
+   "kind:audit",
+   "nis2"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_121",
+  "summary": "Order PSU for Mr. Reboot",
+  "type": "Request",
+  "status": "Done",
+  "reporterId": "p_leena",
+  "assigneeId": "p_leena",
+  "createdDaysAgo": 55,
+  "resolvedDaysAgo": 40,
+  "description": "Ordered two. One for the switch, one for the shelf.",
+  "labels": [
+   "kind:spares"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_9fs2h",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_122",
+  "summary": "Spare CPU for dosing, rowan-l1-plc-03",
+  "type": "Request",
+  "status": "Open",
+  "reporterId": "p_ville",
+  "assigneeId": "p_ville",
+  "createdDaysAgo": 260,
+  "resolvedDaysAgo": null,
+  "description": "The delivery documents say no spare. One page says there is one in box 12. Box 12 has cables.",
+  "labels": [
+   "kind:spares"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_bqg89",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_123",
+  "summary": "Support contact for Kontrollitekniikka",
+  "type": "Request",
+  "status": "Open",
+  "reporterId": "p_sanna",
+  "assigneeId": null,
+  "createdDaysAgo": 900,
+  "resolvedDaysAgo": null,
+  "description": "The support number reaches a pizzeria. The pizza is fine.",
+  "labels": [
+   "kind:spares"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_124",
+  "summary": "Spare TP1500 for Spruce",
+  "type": "Request",
+  "status": "Done",
+  "reporterId": "p_mikko",
+  "assigneeId": "p_mikko",
+  "createdDaysAgo": 350,
+  "resolvedDaysAgo": 300,
+  "description": "Two in the store now. Labelled.",
+  "labels": [
+   "kind:spares"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_125",
+  "summary": "Spare CP 343-1 for line 2",
+  "type": "Request",
+  "status": "Open",
+  "reporterId": "p_pentti",
+  "assigneeId": null,
+  "createdDaysAgo": 400,
+  "resolvedDaysAgo": null,
+  "description": "none on the shelf. not sold new any more",
+  "labels": [
+   "kind:spares"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_126",
+  "summary": "Siemens service contract renewal",
+  "type": "Request",
+  "status": "Open",
+  "reporterId": "p_marja",
+  "assigneeId": "p_marja",
+  "createdDaysAgo": 120,
+  "resolvedDaysAgo": null,
+  "description": "Ends 2027. Covers Spruce only. Ask about Birch.",
+  "labels": [
+   "kind:spares"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_127",
+  "summary": "Spare CPU for the cooling loop",
+  "type": "Request",
+  "status": "Done",
+  "reporterId": "p_antti",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 1500,
+  "resolvedDaysAgo": 1400,
+  "description": "Not stocked. Lead time 4 weeks, accepted for spruce-l1-plc-07.",
+  "labels": [
+   "kind:spares"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_xqogu",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_128",
+  "summary": "MP177 spares running out",
+  "type": "Request",
+  "status": "Open",
+  "reporterId": "p_leena",
+  "assigneeId": "p_leena",
+  "createdDaysAgo": 300,
+  "resolvedDaysAgo": null,
+  "description": "Two left for alder-l2-hmi-01 and its twin. Not sold new. Plan a replacement.",
+  "labels": [
+   "kind:spares"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_3g47n",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_129",
+  "summary": "Order SFP modules",
+  "type": "Request",
+  "status": "Done",
+  "reporterId": "p_leena",
+  "assigneeId": "p_leena",
+  "createdDaysAgo": 225,
+  "resolvedDaysAgo": 210,
+  "description": "For alder-l2-sw-01. Bought four.",
+  "labels": [
+   "kind:spares"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_h1oij",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_130",
+  "summary": "Test the S7-300 spares from the dismantled line",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_antti",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 480,
+  "resolvedDaysAgo": null,
+  "description": "Two CPU 315-2 DP. Would fit spruce-l1-plc-19. Untested.",
+  "labels": [
+   "kind:spares",
+   "no-follow-up"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_qlnyh",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_131",
+  "summary": "Facility company contact for building automation",
+  "type": "Request",
+  "status": "Open",
+  "reporterId": "p_sanna",
+  "assigneeId": null,
+  "createdDaysAgo": 230,
+  "resolvedDaysAgo": null,
+  "description": "The contact person changed. The new one does not know about our network.",
+  "labels": [
+   "kind:spares"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_132",
+  "summary": "Copy of the kiln key",
+  "type": "Request",
+  "status": "Done",
+  "reporterId": "p_timo",
+  "assigneeId": "p_timo",
+  "createdDaysAgo": 690,
+  "resolvedDaysAgo": 680,
+  "description": "Second key made. Kept in the Pine office.",
+  "labels": [
+   "kind:spares"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_133",
+  "summary": "Spare panel for the Birch oven",
+  "type": "Request",
+  "status": "Done",
+  "reporterId": "p_antti",
+  "assigneeId": "p_antti",
+  "createdDaysAgo": 175,
+  "resolvedDaysAgo": 160,
+  "description": "Used the spare for birch-l2-hmi-02. Ordered a new spare.",
+  "labels": [
+   "kind:spares"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_xxx3f",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_134",
+  "summary": "F-CPU lead time",
+  "type": "Request",
+  "status": "Done",
+  "reporterId": "p_ville",
+  "assigneeId": "p_ville",
+  "createdDaysAgo": 1250,
+  "resolvedDaysAgo": 1100,
+  "description": "12 weeks. Bought one sealed spare for rowan-l1-plc-04 and its twin.",
+  "labels": [
+   "kind:spares"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_kle26",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_135",
+  "summary": "Spare thermocouples for the oven",
+  "type": "Request",
+  "status": "Done",
+  "reporterId": "p_pentti",
+  "assigneeId": "p_pentti",
+  "createdDaysAgo": 1350,
+  "resolvedDaysAgo": 1340,
+  "description": "in my car",
+  "labels": [
+   "kind:spares"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_136",
+  "summary": "Label broken on cabinet 2B",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_aino",
+  "assigneeId": null,
+  "createdDaysAgo": 400,
+  "resolvedDaysAgo": null,
+  "description": "It fell off. It said do not open.",
+  "labels": [
+   "kind:noise"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_137",
+  "summary": "Who owns this PLC",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_mikko",
+  "assigneeId": null,
+  "createdDaysAgo": 260,
+  "resolvedDaysAgo": null,
+  "description": "spruce-l1-plc-13. Runs the lights. Nobody claims it.",
+  "labels": [
+   "kind:noise"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_6nwfi",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_138",
+  "summary": "Coffee machine on the plant network",
+  "type": "Task",
+  "status": "Done",
+  "reporterId": "p_sanna",
+  "assigneeId": "p_sanna",
+  "createdDaysAgo": 140,
+  "resolvedDaysAgo": 139,
+  "description": "Moved to the guest network. It complained.",
+  "labels": [
+   "kind:noise"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_139",
+  "summary": "Label broken",
+  "type": "Task",
+  "status": "Done",
+  "reporterId": "p_leena",
+  "assigneeId": "p_leena",
+  "createdDaysAgo": 300,
+  "resolvedDaysAgo": 300,
+  "description": "New label on Leftovers.",
+  "labels": [
+   "kind:noise"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_ikmxt",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_140",
+  "summary": "Who owns this PLC",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_timo",
+  "assigneeId": null,
+  "createdDaysAgo": 1200,
+  "resolvedDaysAgo": null,
+  "description": "the CPU 414-2 DP on line 1 in the Pine boiler house. Not in any list.",
+  "labels": [
+   "kind:noise"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_goyjl",
+    "kind": "model_line"
+   }
+  ]
+ },
+ {
+  "id": "is_141",
+  "summary": "Printer on the line 1 network",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_sanna",
+  "assigneeId": null,
+  "createdDaysAgo": 333,
+  "resolvedDaysAgo": null,
+  "description": "Why.",
+  "labels": [
+   "kind:noise"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_142",
+  "summary": "Duplicate of the duplicate ticket",
+  "type": "Task",
+  "status": "Done",
+  "reporterId": "p_aino",
+  "assigneeId": "p_aino",
+  "createdDaysAgo": 210,
+  "resolvedDaysAgo": 210,
+  "description": "Closing.",
+  "labels": [
+   "kind:noise"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_143",
+  "summary": "Door sticks on cabinet 5",
+  "type": "Task",
+  "status": "Done",
+  "reporterId": "p_leena",
+  "assigneeId": "p_leena",
+  "createdDaysAgo": 410,
+  "resolvedDaysAgo": 400,
+  "description": "Hinge oiled.",
+  "labels": [
+   "kind:noise"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_144",
+  "summary": "Can we rename the boxes called Do Not Touch",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_sanna",
+  "assigneeId": null,
+  "createdDaysAgo": 180,
+  "resolvedDaysAgo": null,
+  "description": "There are three of them. Nobody wants to touch the rename either.",
+  "labels": [
+   "kind:noise"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_145",
+  "summary": "Test ticket",
+  "type": "Task",
+  "status": "Done",
+  "reporterId": "p_sanna",
+  "assigneeId": "p_sanna",
+  "createdDaysAgo": 900,
+  "resolvedDaysAgo": 900,
+  "description": "test",
+  "labels": [
+   "kind:noise"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_146",
+  "summary": "Alarm sound too loud now",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_mikko",
+  "assigneeId": null,
+  "createdDaysAgo": 110,
+  "resolvedDaysAgo": null,
+  "description": "The Whisperer used to whisper. Now it shouts.",
+  "labels": [
+   "kind:noise"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_9icl2",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "is_147",
+  "summary": "Who owns this PLC",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_ville",
+  "assigneeId": null,
+  "createdDaysAgo": 1400,
+  "resolvedDaysAgo": null,
+  "description": "rowan-l1-plc-09. No model, no program, still on.",
+  "labels": [
+   "kind:noise"
+  ],
+  "mentions": [
+   {
+    "assetId": "a_39ej4",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "is_148",
+  "summary": "Keyboard missing from the shift office PC",
+  "type": "Task",
+  "status": "Done",
+  "reporterId": "p_mikko",
+  "assigneeId": "p_mikko",
+  "createdDaysAgo": 60,
+  "resolvedDaysAgo": 59,
+  "description": "Found in the canteen.",
+  "labels": [
+   "kind:noise"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_149",
+  "summary": "Pentti's phone number in the runbooks",
+  "type": "Task",
+  "status": "Open",
+  "reporterId": "p_ville",
+  "assigneeId": null,
+  "createdDaysAgo": 45,
+  "resolvedDaysAgo": null,
+  "description": "Should it stay there after he leaves. Who do we call instead.",
+  "labels": [
+   "kind:noise"
+  ],
+  "mentions": []
+ },
+ {
+  "id": "is_150",
+  "summary": "Label says spare, it is not",
+  "type": "Task",
+  "status": "Done",
+  "reporterId": "p_leena",
+  "assigneeId": "p_leena",
+  "createdDaysAgo": 75,
+  "resolvedDaysAgo": 75,
+  "description": "The spare switch on the shelf is connected to the network. Label changed.",
+  "labels": [
+   "kind:noise"
+  ],
+  "mentions": []
+ }
+]

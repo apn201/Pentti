@@ -1,0 +1,203 @@
+# Breakdowns on the lines that have owners.
+- id: is_041
+  summary: Dosing stopped, [[rowan-l1-plc-03]]
+  type: Incident
+  status: Done
+  reporter: p_ville
+  assignee: p_ville
+  createdDaysAgo: 280
+  resolvedDaysAgo: 279
+  description: Pump feedback lost. Cable damaged by a forklift. Replaced.
+  labels: [kind:breakdown]
+- id: is_042
+  summary: Capping torque alarm, [[rowan-l1-plc-07]]
+  type: Incident
+  status: Done
+  reporter: p_ville
+  assignee: p_ville
+  createdDaysAgo: 210
+  resolvedDaysAgo: 210
+  description: Torque limit reached on worn caps. Not a PLC fault. Changed the cap supplier batch.
+  labels: [kind:breakdown]
+- id: is_043
+  summary: Remote IO on dosing skid offline, [[rowan-l1-io-02]]
+  type: Incident
+  status: Done
+  reporter: p_ville
+  assignee: p_ville
+  createdDaysAgo: 160
+  resolvedDaysAgo: 160
+  description: Profinet connector loose. Reseated, added strain relief.
+  labels: [kind:breakdown]
+- id: is_044
+  summary: Press 2 hydraulic alarm, [[spruce-l1-plc-06]]
+  type: Incident
+  status: Done
+  reporter: p_mikko
+  assignee: p_antti
+  createdDaysAgo: 330
+  resolvedDaysAgo: 330
+  description: Pressure sensor faulty. Replaced. PLC fine.
+  labels: [kind:breakdown]
+- id: is_045
+  summary: Palletizer A and B both stopped, [[spruce-l1-plc-15]] [[spruce-l1-plc-16]]
+  type: Incident
+  status: Done
+  reporter: p_mikko
+  assignee: p_antti
+  createdDaysAgo: 270
+  resolvedDaysAgo: 269
+  description: |
+    Not both CPUs. A shared safety relay. Replaced.
+    No lottery ticket needed.
+  labels: [kind:breakdown]
+- id: is_046
+  summary: "[[spruce-l1-hmi-02|nick]] shows old values"
+  type: Incident
+  status: Done
+  reporter: p_mikko
+  assignee: p_mikko
+  createdDaysAgo: 240
+  resolvedDaysAgo: 240
+  description: Connection to press 1 PLC dropped. Restarted the panel runtime.
+  labels: [kind:breakdown]
+- id: is_047
+  summary: Robot panel [[spruce-l1-hmi-04]] reboot loop
+  type: Incident
+  status: Done
+  reporter: p_mikko
+  assignee: p_antti
+  createdDaysAgo: 190
+  resolvedDaysAgo: 188
+  description: Corrupt project after a power cut. Restored from the archive.
+  labels: [kind:breakdown]
+- id: is_048
+  summary: Outfeed panel [[spruce-l1-hmi-11|nick]] alarm sound broken
+  type: Incident
+  status: Done
+  reporter: p_mikko
+  assignee: p_mikko
+  createdDaysAgo: 120
+  resolvedDaysAgo: 115
+  description: Buzzer failed. Replaced. Now the quiet alarms are loud.
+  labels: [kind:breakdown]
+- id: is_049
+  summary: Alder line 2 core switch [[alder-l2-sw-01]] uplink flapping
+  type: Incident
+  status: Done
+  reporter: p_leena
+  assignee: p_leena
+  createdDaysAgo: 230
+  resolvedDaysAgo: 230
+  description: SFP replaced. The second uplink carried the traffic as designed.
+  labels: [kind:breakdown]
+- id: is_050
+  summary: "[[alder-l2-sw-02|nick]] port 7 dead"
+  type: Incident
+  status: Done
+  reporter: p_leena
+  assignee: p_leena
+  createdDaysAgo: 190
+  resolvedDaysAgo: 190
+  description: Moved the panel to port 9. Labelled.
+  labels: [kind:breakdown]
+- id: is_051
+  summary: SNMP stopped on [[alder-l2-sw-05]]
+  type: Incident
+  status: Done
+  reporter: p_sanna
+  assignee: p_leena
+  createdDaysAgo: 150
+  resolvedDaysAgo: 140
+  description: Someone changed the community string. Changed it back and wrote it down this time.
+  labels: [kind:breakdown]
+- id: is_052
+  summary: "[[alder-l2-sw-03|nick]] overheating"
+  type: Incident
+  status: Done
+  reporter: p_leena
+  assignee: p_leena
+  createdDaysAgo: 250
+  resolvedDaysAgo: 249
+  description: Fan replaced. Next to the dryer, so it will happen again.
+  labels: [kind:breakdown]
+- id: is_053
+  summary: Alder panel [[alder-l2-hmi-01]] touch drift
+  type: Incident
+  status: Done
+  reporter: p_leena
+  assignee: p_leena
+  createdDaysAgo: 420
+  resolvedDaysAgo: 420
+  description: Recalibrated. MP177, old but fine.
+  labels: [kind:breakdown]
+- id: is_054
+  summary: Cooling tunnel panel [[birch-l2-hmi-04]] lost connection
+  type: Incident
+  status: Done
+  reporter: p_aino
+  assignee: p_antti
+  createdDaysAgo: 140
+  resolvedDaysAgo: 139
+  description: Panel pointed at an old PLC address after a restore. Fixed the connection in the project.
+  labels: [kind:breakdown]
+- id: is_055
+  summary: Crane comms down, [[annex-l18-cp-03|nick]]
+  type: Incident
+  status: Done
+  reporter: p_sanna
+  assignee: p_sanna
+  createdDaysAgo: 310
+  resolvedDaysAgo: 309
+  description: Power supply in the cabinet failed. Replaced. Both cranes back.
+  labels: [kind:breakdown]
+- id: is_056
+  summary: BMS workstation [[annex-l21-pc-01|nick]] not reachable
+  type: Incident
+  status: Done
+  reporter: p_sanna
+  assignee: p_sanna
+  createdDaysAgo: 90
+  resolvedDaysAgo: 85
+  description: Windows update rebooted it into a login prompt. Facility company logged in.
+  labels: [kind:breakdown]
+- id: is_057
+  summary: Kiln did not restart after power cut, [[pine-l1-plc-01]]
+  type: Incident
+  status: Done
+  reporter: p_timo
+  assignee: p_timo
+  createdDaysAgo: 700
+  resolvedDaysAgo: 699
+  description: Followed the kiln restart page. The key was in the drawer. Worked.
+  labels: [kind:breakdown]
+- id: is_058
+  summary: Conveyor box [[a_c1l2k|ip]] restarts
+  type: Incident
+  status: Done
+  reporter: p_ville
+  assignee: p_ville
+  createdDaysAgo: 1500
+  resolvedDaysAgo: 1490
+  description: Restarted by hand, do not know why it works.
+  labels: [kind:breakdown]
+- id: is_059
+  summary: Dryer temperature controller [[a_t6jdv|ip]] wrong reading
+  type: Incident
+  status: Done
+  reporter: p_leena
+  assignee: p_leena
+  createdDaysAgo: 1300
+  resolvedDaysAgo: 1290
+  description: Thermocouple replaced.
+  labels: [kind:breakdown]
+- id: is_060
+  summary: Saw line stopped, [[a_80lzh|nick]]
+  type: Incident
+  status: Done
+  reporter: p_timo
+  assignee: p_timo
+  createdDaysAgo: 1200
+  resolvedDaysAgo: 1200
+  description: Somebody looked at it. Restarted.
+  labels: [kind:breakdown]

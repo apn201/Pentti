@@ -1,0 +1,1886 @@
+[
+ {
+  "id": "pg_001",
+  "title": "Spruce line 1 - PLC runbook",
+  "space": "OPS",
+  "authorId": "p_antti",
+  "class": "gold",
+  "lastEditedDaysAgo": 120,
+  "bodyMarkdown": "Owner: Antti Rantanen. Backup owner: Mikko Nieminen.\nLast full test: September, restore from backup on the bench, all programs loaded and ran.\n\n## Controllers\n\n| Host | What it runs | Spare on shelf | Last backup |\n|---|---|---|---|\n| spruce-l1-plc-03 | Infeed conveyors | Yes, shelf B4 | 3 weeks ago |\n| spruce-l1-plc-04 | Press 1 | Yes, shelf B4 | 3 weeks ago |\n| spruce-l1-plc-06 | Press 2 | Shared with plc-04 | 3 weeks ago |\n| spruce-l1-plc-07 | Cooling loop | No, order 4 weeks lead | 3 weeks ago |\n| spruce-l1-plc-08 | Robot cell interlocks | Yes, shelf B5 | 3 weeks ago |\n| spruce-l1-plc-09 | Packing, called Cold Start on the floor | Yes, shelf B5 | 3 weeks ago |\n| spruce-l1-plc-10 | Labeling | No | 3 weeks ago |\n| spruce-l1-plc-15 | Palletizer A | Yes, shelf B6 | 3 weeks ago |\n| spruce-l1-plc-16 | Palletizer B | Shared with plc-15 | 3 weeks ago |\n| spruce-l1-plc-17 | Wrapper | No | 3 weeks ago |\n| spruce-l1-plc-18 | Outfeed. Blinky because of the status LED | Yes, shelf B6 | 3 weeks ago |\n\n## Restart order\n1. Cooling loop first, wait for flow OK on the panel.\n2. Presses, then robot cell interlocks.\n3. Packing and outfeed last. If Cold Start does not come up, check the profinet cable at the cabinet door, it gets pinched.\n\n## Vendor contact\nSiemens support through the service contract, number on the cabinet door. Contract ends in 2027.\n",
+  "mentions": [
+   {
+    "assetId": "a_01nmr",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_hq60u",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_j4j45",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_xqogu",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_33jzs",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_qq7sv",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_qq7sv",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_vzgmi",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_jhev7",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_s7kvc",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_6p5oy",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_9xjh4",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_9xjh4",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_qq7sv",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "pg_002",
+  "title": "Rowan line 1 - controllers and remote IO",
+  "space": "OPS",
+  "authorId": "p_ville",
+  "class": "gold",
+  "lastEditedDaysAgo": 200,
+  "bodyMarkdown": "Owner: Ville Hamalainen. Tested a cold start in the spring shutdown, took 14 minutes.\n\n| Host | Address | Role | Spare |\n|---|---|---|---|\n| rowan-l1-plc-01 | 10.3.1.11 | Mixer A | Yes |\n| rowan-l1-plc-02 | 10.3.1.12 | Mixer B | Yes |\n| rowan-l1-plc-03 | 10.3.1.13 | Dosing | No, ordered |\n| rowan-l1-plc-04 | 10.3.1.14 | Safety, F-CPU | Yes, sealed box |\n| rowan-l1-plc-05 | 10.3.1.15 | Safety, F-CPU, called The Oracle | Same box |\n| rowan-l1-plc-06 | 10.3.1.16 | Filling | Yes |\n| rowan-l1-plc-07 | 10.3.1.17 | Capping | Yes |\n| rowan-l1-io-01 | 10.3.1.18 | Remote IO, tank farm | No |\n| rowan-l1-io-02 | 10.3.1.21 | Remote IO, dosing skid | No |\n\nSafety programs are signed off by Jukka Salminen. Do not load a safety program without him.\n\nBackups are on the engineering laptop and on the share, folder Rowan/L1. The share copy is the one that counts.\n",
+  "mentions": [
+   {
+    "assetId": "a_snn7j",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_snn7j",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_a9mai",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_a9mai",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_bqg89",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_bqg89",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_kle26",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_kle26",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_uhph4",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_uhph4",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_uhph4",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_l9w5o",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_l9w5o",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_l25jc",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_l25jc",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_vk3t1",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_vk3t1",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_5qsoe",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_5qsoe",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_003",
+  "title": "Alder line 2 - switch runbook",
+  "space": "OPS",
+  "authorId": "p_leena",
+  "class": "gold",
+  "lastEditedDaysAgo": 90,
+  "bodyMarkdown": "Owner: Leena Koskinen. Configs exported last month, diffed against the previous export, no surprises.\n\n- alder-l2-sw-01: core of the line. Two uplinks, both labelled. Spare: one SF200 in the store.\n- alder-l2-sw-02: Leftovers. Came from the old packing line. Works. Spare: same as sw-01.\n- alder-l2-sw-05: the only managed switch with a working SNMP community. Spare: none.\n- alder-l2-sw-09: Mr. Reboot. Power cycle fixes it, the root cause is a bad PSU. New PSU ordered.\n- alder-l2-sw-03: Sauna Boy, next to the dryer. Runs hot. Fan replaced in March.\n- alder-l2-sw-04: access switch for the panels.\n\nTest: pulled each uplink in turn during the October stop. The line kept running.\n",
+  "mentions": [
+   {
+    "assetId": "a_h1oij",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_ikmxt",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_ikmxt",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_46wqb",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_9fs2h",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_9fs2h",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_ez9vk",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_ez9vk",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_lc9pq",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_004",
+  "title": "Birch line 2 - operator panels",
+  "space": "OPS",
+  "authorId": "p_antti",
+  "class": "gold",
+  "lastEditedDaysAgo": 300,
+  "bodyMarkdown": "Owner: Antti Rantanen. Panel projects are in the TIA archive, Birch/L2/HMI, one per panel.\n\n| Panel | Where | Notes |\n|---|---|---|\n| birch-l2-hmi-01 | Press station. Everyone calls it Temporary (2011), it was meant to be | Touch layer replaced, works |\n| birch-l2-hmi-02 | Oven | Screen saver off on purpose |\n| birch-l2-hmi-03 | Oven, second station | |\n| birch-l2-hmi-04 | Cooling tunnel | |\n| birch-l2-hmi-05 | Packing | Small panel, the 7 inch one |\n| birch-l2-hmi-06 | Packing, operator side | |\n| birch-l2-hmi-07 | Line supervisor desk | |\n| birch-l2-hmi-08 | Spare station by the door | Rarely used |\n\nLast test: restored hmi-02 and hmi-04 from the archive onto spare panels. Both came up.\nSpare panels: one TP1500 and one TP700 in the engineering room.\n",
+  "mentions": [
+   {
+    "assetId": "a_k3add",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_k3add",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_xxx3f",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_rfaia",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_h4km2",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_dgl5o",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_8byzi",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_o9wl5",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_69d9y",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_005",
+  "title": "Spruce line 1 - HMI panels",
+  "space": "OPS",
+  "authorId": "p_mikko",
+  "class": "gold",
+  "lastEditedDaysAgo": 400,
+  "bodyMarkdown": "Owner: Mikko Nieminen for daily use, Antti Rantanen for projects.\n\nAll thirteen are TP1500 Comfort. Same project, different screens.\n\n- spruce-l1-hmi-01 (The Oracle): shows every alarm. Look here first.\n- spruce-l1-hmi-02 (Kettu): press 1.\n- spruce-l1-hmi-03: press 2.\n- spruce-l1-hmi-04 (The Diplomat): robot cell. Talks the robot people out of things.\n- spruce-l1-hmi-05, spruce-l1-hmi-06, spruce-l1-hmi-07: packing.\n- spruce-l1-hmi-08, spruce-l1-hmi-09: palletizers.\n- spruce-l1-hmi-10: wrapper.\n- spruce-l1-hmi-11 (The Whisperer): outfeed. Quiet alarms, read them.\n- spruce-l1-hmi-12, spruce-l1-hmi-13: shift office.\n\nSpare: two TP1500 in the store. Restore tested on hmi-12 last year.\n",
+  "mentions": [
+   {
+    "assetId": "a_gemh5",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_gemh5",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_8vmqy",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_8vmqy",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_qawqb",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_fnmnq",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_fnmnq",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_wel7u",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_c5a26",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_msqyz",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_5vgjj",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_6xcds",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_0uz58",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_9icl2",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_9icl2",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_ylw9f",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_vclpc",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_006",
+  "title": "Alder line 2 - controllers and panels",
+  "space": "OPS",
+  "authorId": "p_leena",
+  "class": "gold",
+  "lastEditedDaysAgo": 150,
+  "bodyMarkdown": "Owner: Leena Koskinen.\n\n- alder-l2-plc-01: the 313C that runs the whole line. Program backup on the share, Alder/L2. Spare CPU in the store, tested in May.\n- alder-l2-plc-02: The Witness. Logs the dryer temperatures. Nobody reads them, but the auditor likes that they exist.\n- alder-l2-hmi-01 and alder-l2-hmi-02: MP177 panels. Old, but there are two spares.\n- alder-l2-pc-01: line PC, runs the recipe tool. Windows image on the share.\n- alder-l2-dev-03: barcode gateway.\n\nRestart: plc-01 first, panels follow on their own.\n",
+  "mentions": [
+   {
+    "assetId": "a_wdodn",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_46227",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_46227",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_3g47n",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_kxlba",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_bv8d2",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_5mtmd",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_007",
+  "title": "Spruce line 1 - the other controllers",
+  "space": "OPS",
+  "authorId": "p_antti",
+  "class": "ok",
+  "lastEditedDaysAgo": 610,
+  "bodyMarkdown": "These are not in the main runbook yet.\n\n- spruce-l1-plc-01, Big Bertha: water treatment. Program by Esa, backup from 2022.\n- spruce-l1-plc-02: compressor house.\n- spruce-l1-plc-05: dust extraction.\n- spruce-l1-plc-11 and spruce-l1-plc-12: the two 1511C units for the test bench. plc-12 is Do Not Touch, it runs the calibration rig.\n- spruce-l1-plc-13, spruce-l1-plc-14: lighting and doors.\n- spruce-l1-plc-25: the 414 in the energy cabinet.\n- spruce-l1-plc-26 (Midsummer Special) and spruce-l1-plc-27: small 1212C boxes on the summer cooling units.\n\nTODO: spares, owners, test dates.\n",
+  "mentions": [
+   {
+    "assetId": "a_kj1sa",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_kj1sa",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_hjrvd",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_0o37w",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_mlejh",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_cen04",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_cen04",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_6nwfi",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_fha2x",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_37dmm",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_7t3gu",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_7t3gu",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_j2qja",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_008",
+  "title": "Spruce line 1 - the old S7-300 group",
+  "space": "OPS",
+  "authorId": "p_antti",
+  "class": "ok",
+  "lastEditedDaysAgo": 480,
+  "bodyMarkdown": "Six S7-300 racks still run the batch side. Replacement is in the budget plan, not in the budget.\n\n| Host | CPU | Comment |\n|---|---|---|\n| spruce-l1-plc-19 | CPU 315-2 DP | Batch 1 |\n| spruce-l1-plc-20 | CPU 315-2 DP | Batch 2 |\n| spruce-l1-plc-22 | CPU 315-2 DP | Batch 3 |\n| spruce-l1-plc-21 | CPU 314C-2 DP | Weighing |\n| spruce-l1-plc-23 | CPU 314C-2 DP | Weighing, Wednesday |\n| spruce-l1-plc-24 | CPU 314C-2 DP | Weighing |\n\nEach rack has a CP 343-1 for the plant network. The CPs carry most of the scanner findings.\nSpares: two CPU 315-2 DP from a dismantled line, untested.\n",
+  "mentions": [
+   {
+    "assetId": "a_qlnyh",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_qlnyh",
+    "kind": "model"
+   },
+   {
+    "assetId": "a_pkh1i",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_pkh1i",
+    "kind": "model"
+   },
+   {
+    "assetId": "a_y8sqf",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_y8sqf",
+    "kind": "model"
+   },
+   {
+    "assetId": "a_xgrkq",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_xgrkq",
+    "kind": "model"
+   },
+   {
+    "assetId": "a_fhn3w",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_fhn3w",
+    "kind": "model"
+   },
+   {
+    "assetId": "a_fhn3w",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_vk10j",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_vk10j",
+    "kind": "model"
+   }
+  ]
+ },
+ {
+  "id": "pg_009",
+  "title": "Rowan line 1 - panels",
+  "space": "OPS",
+  "authorId": "p_ville",
+  "class": "ok",
+  "lastEditedDaysAgo": 520,
+  "bodyMarkdown": "Four panels on Rowan line 1.\n\n- rowan-l1-hmi-01: mixers.\n- rowan-l1-hmi-02: dosing.\n- rowan-l1-hmi-03: filling. Known as The Hermit, it sits alone behind the tank.\n- rowan-l1-hmi-04: capping.\n\nProjects are in the archive, but the archive copy of hmi-03 is older than the panel. Ask Ville before restoring it.\n",
+  "mentions": [
+   {
+    "assetId": "a_tj5nw",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_neimq",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_uolvo",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_uolvo",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_k1kml",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_010",
+  "title": "Pine line 1 - overview",
+  "space": "OPS",
+  "authorId": "p_timo",
+  "class": "ok",
+  "lastEditedDaysAgo": 300,
+  "bodyMarkdown": "Pine is small. One line, six named controllers and a few without names.\n\n- pine-l1-plc-01, pine-l1-plc-02: kiln control. Old S7-300, F-CPU on plc-02.\n- pine-l1-plc-03, pine-l1-plc-04: the two 416 racks, redundant pair for the boilers.\n- pine-l1-plc-05: remote IO head for the yard.\n- pine-l1-plc-06 (The Accountant): counts boards. Accurate, they say.\n- the CPU 414-2 DP on line 1 in the boiler house has no name in any list.\n\nOwner: Timo Mattila, as far as anyone is. Pentti knows the boilers.\n",
+  "mentions": [
+   {
+    "assetId": "a_t6kmn",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_kcmrc",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_q2zn3",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_6z4r4",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_vq1m7",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_yjpya",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_yjpya",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_goyjl",
+    "kind": "model_line"
+   }
+  ]
+ },
+ {
+  "id": "pg_011",
+  "title": "Rowan line 1 - the small 1212C boxes",
+  "space": "OPS",
+  "authorId": "p_ville",
+  "class": "ok",
+  "lastEditedDaysAgo": 700,
+  "bodyMarkdown": "Four small S7-1200 controllers on the conveyor sections. None of them has a name in the inventory.\n\n| Address | What it does |\n|---|---|\n| 10.3.1.26 | Conveyor section 1 |\n| 10.3.1.27 | Conveyor section 2 |\n\nThe scanner says each address has two machines behind it. We only know of one per address. Something is bridged, or someone added a box. Not checked yet.\n\nAlso on the line: rowan-l1-plc-08 and rowan-l1-plc-09, no model in the scanner. Probably the old dosing pumps.\n",
+  "mentions": [
+   {
+    "assetId": "a_2yq7i",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_oqcmf",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_uf0of",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_39ej4",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_012",
+  "title": "Alder line 2 - access switches",
+  "space": "OPS",
+  "authorId": "p_leena",
+  "class": "ok",
+  "lastEditedDaysAgo": 420,
+  "bodyMarkdown": "The small switches in the field cabinets. Unmanaged, so the scanner sees them only by MAC.\n\n- alder-l2-sw-06: cabinet 3.\n- alder-l2-sw-07: cabinet 5.\n- alder-l2-sw-08: cabinet 6. Called Old Reliable, has not been touched since the line was built.\n- alder-l2-sw-10: dryer cabinet.\n\nSpares: two 8 port units in the store. Any brand will do.\n",
+  "mentions": [
+   {
+    "assetId": "a_cqm30",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_8lstx",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_44o4b",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_44o4b",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_7yfaq",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_013",
+  "title": "Annex - comms cabinets in the warehouse",
+  "space": "OPS",
+  "authorId": "p_sanna",
+  "class": "ok",
+  "lastEditedDaysAgo": 400,
+  "bodyMarkdown": "The warehouse has four communication processors in one cabinet, row 18.\n\n- annex-l18-cp-01: crane 1.\n- annex-l18-cp-02: crane 2.\n- annex-l18-cp-03: The Gatekeeper. Every packet to the cranes goes through it.\n- annex-l18-cp-04: spare that someone connected.\n\nKey for the cabinet is at the warehouse office. Ask for the red tag.\n",
+  "mentions": [
+   {
+    "assetId": "a_1dvsb",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_v1hu3",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_rngwo",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_rngwo",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_i84jd",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_014",
+  "title": "Spruce line 3 - test cell",
+  "space": "OPS",
+  "authorId": "p_mikko",
+  "class": "ok",
+  "lastEditedDaysAgo": 380,
+  "bodyMarkdown": "Line 3 is the test cell. Two machines.\n\n- spruce-l3-hmi-01, known as Plan B: the panel we use when the real one is broken.\n- The controller at 10.2.3.12: no name, no model in the scanner. It runs the test sequence. Program is on the panel PC, not on the share.\n",
+  "mentions": [
+   {
+    "assetId": "a_7071o",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_7071o",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_xe322",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_015",
+  "title": "Rowan line 2 - what is there",
+  "space": "OPS",
+  "authorId": "p_ville",
+  "class": "ok",
+  "lastEditedDaysAgo": 480,
+  "bodyMarkdown": "Line 2 was moved from the old hall. Nothing on it has a hostname.\n\n- Saint Jari: the controller by the mixer. Nobody remembers why the name.\n- Don't Ask: the one in the locked cabinet. The name is the answer.\n- 10.3.2.37: unknown box on the line 2 network.\n- 10.3.2.39: unknown box on the line 2 network.\n\nVille will walk the line with a laptop when there is time.\n",
+  "mentions": [
+   {
+    "assetId": "a_992uo",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_w6dgi",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_l8x5o",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_s5pqh",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_016",
+  "title": "Annex - building automation",
+  "space": "OPS",
+  "authorId": "p_sanna",
+  "class": "ok",
+  "lastEditedDaysAgo": 250,
+  "bodyMarkdown": "Heating, ventilation and the doors in the Annex buildings. Contract with the facility company, but the boxes are on our network.\n\n- annex-l21-pc-01 (The Quiet One): the BMS workstation.\n- annex-l21-dev-01 (Spare (Not Spare)): heating controller, building A.\n- annex-l21-dev-02 (Temporary (2011)): heating controller, building B. Installed in 2011, temporarily.\n- Blinky: ventilation, blinks when the filter is due.\n- Mr. Reboot: door controller. Reboots itself on Sundays.\n\nThe facility company has the passwords. Sanna has asked for them twice.\n",
+  "mentions": [
+   {
+    "assetId": "a_el5mj",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_el5mj",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_tporz",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_tporz",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_in5y8",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_in5y8",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_xdd4w",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_6nzke",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "pg_017",
+  "title": "Birch line 2 - wireless access points",
+  "space": "NET",
+  "authorId": "p_sanna",
+  "class": "ok",
+  "lastEditedDaysAgo": 450,
+  "bodyMarkdown": "Three SCALANCE access points for the AGVs.\n\n- birch-l2-dev-01: north end.\n- birch-l2-dev-02: middle, called The Oracle because it knows where every AGV is.\n- birch-l2-dev-03: south end, by the dock.\n\nFirmware is old. The update needs a stop of line 2, so it waits.\n",
+  "mentions": [
+   {
+    "assetId": "a_z25gz",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_uppdc",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_uppdc",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_yenzs",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_018",
+  "title": "Spruce line 1 - network notes",
+  "space": "NET",
+  "authorId": "p_antti",
+  "class": "ok",
+  "lastEditedDaysAgo": 820,
+  "bodyMarkdown": "Line 1 is one flat network. Everything talks to everything.\n\n- spruce-l1-pc-01 and spruce-l1-pc-02: engineering PCs. Both have TIA Portal. pc-02 has the licence.\n- 10.2.1.53 and 10.2.1.54: two boxes with no name. They answer ping and nothing else.\n\nPlan: split the line into cells. Plan date: last year.\n",
+  "mentions": [
+   {
+    "assetId": "a_lbs6f",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_o2p7d",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_29s7w",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_ynwrt",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_019",
+  "title": "Alder line 2 - boxes without names, partial list",
+  "space": "OPS",
+  "authorId": "p_leena",
+  "class": "ok",
+  "lastEditedDaysAgo": 500,
+  "bodyMarkdown": "The scanner finds about fifty critical devices on Alder line 2 that have no hostname. This is the part we have walked to.\n\n| Address | Found | What it is |\n|---|---|---|\n| 10.5.2.54 | Cabinet 2 | Drive |\n| 10.5.2.32 | Cabinet 2 | Drive |\n| 10.5.2.47 | Cabinet 3 | Drive |\n| 10.5.2.31 | Cabinet 3 | IO module |\n| 10.5.2.35 | Cabinet 4 | Barcode reader |\n| 10.5.2.34 | Cabinet 4 | Drive |\n| 10.5.2.36 | Dryer | Temperature controller |\n| 10.5.2.37 | Dryer | Temperature controller |\n| 10.5.2.38 | Packing | Scale |\n| 10.5.2.39 | Packing | Scale |\n| 10.5.2.40 | Packing | Label printer head |\n| 10.5.2.33 | Cabinet 1 | Unknown, has a fan |\n\nAlso known by name only: Sleeping Beauty, wakes up when the line starts, and Little Brother, next to the big drive.\nThe rest: not walked yet.\n",
+  "mentions": [
+   {
+    "assetId": "a_1jb20",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_3v6sb",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_47fji",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_e4jx3",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_eqp82",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_i8lw1",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_t6jdv",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_tqkiz",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_m9hud",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_kzxfb",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_6of8a",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_8ryh7",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_77t33",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_dmz6s",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "pg_020",
+  "title": "Annex - sawmill hall controllers",
+  "space": "OPS",
+  "authorId": "p_timo",
+  "class": "ok",
+  "lastEditedDaysAgo": 330,
+  "bodyMarkdown": "The old sawmill hall has a row of controllers on network 8. No hostnames, so by address.\n\n- Saint Jari at 10.9.8.12: the saw line. Works if nobody looks at it.\n- Half Past Broken: the conveyor. Stops at half past, every hour, for two seconds. Nobody knows why.\n- 10.9.8.13, 10.9.8.14, 10.9.8.15: the debarker group.\n\nTimo visits once a month.\n",
+  "mentions": [
+   {
+    "assetId": "a_80lzh",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_80lzh",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_xa691",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_uc9x4",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_qey7o",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_wepkd",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_021",
+  "title": "Birch line 2 - communication cabinet",
+  "space": "OPS",
+  "authorId": "p_pentti",
+  "class": "stale",
+  "lastEditedDaysAgo": 3050,
+  "bodyMarkdown": "The CP rack in cabinet 2B. CP 343-1, the oldest thing on the line.\n\nPeople call it Old Faithful.\n\nIf it stops: power off, wait, power on. Wait for the green LED. Then call Pentti.\n\nSpare: none.\n",
+  "mentions": [
+   {
+    "assetId": "a_d4mjq",
+    "kind": "model"
+   },
+   {
+    "assetId": "a_d4mjq",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "pg_022",
+  "title": "Birch line 2 - IP list (2019)",
+  "space": "NET",
+  "authorId": "p_tiina",
+  "class": "stale",
+  "lastEditedDaysAgo": 2500,
+  "bodyMarkdown": "Exported from the old switch config. Before the renumbering.\n\n| Address | Device |\n|---|---|\n| 10.1.2.200 | CPU 410 |\n| 10.1.2.201 | CP Lean |\n| 10.1.2.202 | CP |\n| 10.1.2.203 | CP Advanced |\n| 10.1.2.204 | CPU 315 PN |\n| 10.1.2.205 | CPU 312 |\n| 10.1.2.206 | CP Advanced |\n| 10.1.2.207 | CP Advanced |\n| 10.1.2.208 | CPU 416 |\n| 10.1.2.13 | ET 200SP |\n| 10.1.2.209 | CPU 1513 |\n| 10.1.2.210 | CPU 1518 |\n| 10.1.2.211 | CPU 313C |\n| 10.1.2.212 | CP Advanced |\n| 10.1.2.213 | CPU 315 |\n| 10.1.2.214 | CP Advanced |\n| 10.1.2.215 | CP Advanced |\n| 10.1.2.216 | CP Advanced |\n| 10.1.2.217 | CP Advanced |\n| 10.1.2.218 | CP Advanced |\n\nGateway was .1. Probably still is.\n",
+  "mentions": [
+   {
+    "assetId": "a_8b1p8",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_g8gpv",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_fzphu",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_ew79h",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_f5c2h",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_c3k3j",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_rlry5",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_s09jc",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_85wgw",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_h0nda",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_5etqg",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_gzl88",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_rp16h",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_7j5w8",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_kubpr",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_x3ezj",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_120od",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_q2e4o",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_enq85",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_2b12v",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "pg_023",
+  "title": "Birch line 2 - renumbering weekend",
+  "space": "NET",
+  "authorId": "p_tiina",
+  "class": "stale",
+  "lastEditedDaysAgo": 1150,
+  "bodyMarkdown": "Line 2 moved to the new address plan over one weekend. All controllers got new addresses.\n\nDone:\n- birch-l2-plc-24, birch-l2-plc-25 (Hot Potato): the 1215C pair for the glue station.\n- birch-l2-plc-26, birch-l2-plc-27, birch-l2-plc-28, birch-l2-plc-29: the four 1515 units for the ovens. plc-28 is Two Cables Too Many, see the cabinet.\n- birch-l2-plc-30, Ghost of Line 2: the XC224 that nobody ordered.\n\nNot done: the HMIs still point at some old addresses. Pentti said he would fix them.\nThe diagram is on my laptop.\n",
+  "mentions": [
+   {
+    "assetId": "a_l8her",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_wi3xv",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_wi3xv",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_x2xyj",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_9opru",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_smvp5",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_yk0nk",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_smvp5",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_at1yu",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_at1yu",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "pg_024",
+  "title": "Birch line 2 - switches",
+  "space": "NET",
+  "authorId": "p_tiina",
+  "class": "stale",
+  "lastEditedDaysAgo": 1400,
+  "bodyMarkdown": "Seven unmanaged switches in the line 2 cabinets.\n\nbirch-l2-sw-01, birch-l2-sw-02, birch-l2-sw-03, birch-l2-sw-04, birch-l2-sw-05, birch-l2-sw-06, birch-l2-sw-07.\n\nsw-03 is the one with two uplinks. Do not unplug the second one, it is not a loop, it is on purpose. Probably.\n",
+  "mentions": [
+   {
+    "assetId": "a_lyiz1",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_5pqej",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_vpole",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_u30pm",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_uz82n",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_8dztx",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_org0k",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_025",
+  "title": "Birch line 1 - network and boxes",
+  "space": "NET",
+  "authorId": "p_kontro",
+  "class": "stale",
+  "lastEditedDaysAgo": 2900,
+  "bodyMarkdown": "Delivered by Kontrollitekniikka Oy with the line 1 upgrade.\n\nSwitches: bir1sw1, bir1sw2, bir1sw3, bir1sw4, bir1sw5.\nSecond cabinet: bir1sw7, bir1sw8, bir1sw9.\nCore: bir1sw6, with the ring manager.\n\nCommunication processor: bir1cp1 at 10.1.1.200.\n\nSupport: call our service number. 24 hours.\n",
+  "mentions": [
+   {
+    "assetId": "a_6pkp3",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_eqpxn",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_ttx7d",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_88pen",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_tkmmw",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_h3cmp",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_65xjy",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_1e3i7",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_va6to",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_ttph7",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_ttph7",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "pg_026",
+  "title": "Birch line 1 - the heating web server",
+  "space": "OPS",
+  "authorId": "p_pentti",
+  "class": "stale",
+  "lastEditedDaysAgo": 2200,
+  "bodyMarkdown": "The Web Server OZW772.04 is the web server for the hall heating. It is called Do Not Touch and that is good advice.\n\nIt is not a PLC, whatever the scanner says. The two boxes next to it are birch-l1-dev-01 and birch-l1-dev-04. They are for the heating too.\n",
+  "mentions": [
+   {
+    "assetId": "a_hak47",
+    "kind": "model"
+   },
+   {
+    "assetId": "a_hak47",
+    "kind": "nick"
+   },
+   {
+    "assetId": "a_0rv6x",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_2d6dl",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_027",
+  "title": "Spruce line 1 - address list (2018)",
+  "space": "NET",
+  "authorId": "p_esa",
+  "class": "stale",
+  "lastEditedDaysAgo": 3000,
+  "bodyMarkdown": "For the PLC programs. Use these addresses in the project.\n\n| PLC | Address |\n|---|---|\n| Infeed | 10.2.1.200 |\n| Press 1 | 10.2.1.201 |\n| Press 2 | 10.2.1.202 |\n| Cooling | 10.2.1.203 |\n| Robot | 10.2.1.204 |\n| Packing | 10.2.1.205 |\n| Labels | 10.2.1.206 |\n| Batch 1 | 10.2.1.207 |\n| Batch 2 | 10.2.1.208 |\n| Batch 3 | 10.2.1.209 |\n| Weighing | 10.2.1.210 |\n| Water | 10.2.1.211 |\n| Compressors | 10.2.1.212 |\n| Dust | 10.2.1.213 |\n\nEsa\n",
+  "mentions": [
+   {
+    "assetId": "a_01nmr",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_hq60u",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_j4j45",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_xqogu",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_33jzs",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_qq7sv",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_vzgmi",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_qlnyh",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_pkh1i",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_y8sqf",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_xgrkq",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_kj1sa",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_hjrvd",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_0o37w",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "pg_028",
+  "title": "Rowan line 1 - controller names",
+  "space": "OPS",
+  "authorId": "p_kontro",
+  "class": "stale",
+  "lastEditedDaysAgo": 2600,
+  "bodyMarkdown": "Naming used in the delivery documents.\n\n- row1plc1 and row1plc2: mixers.\n- row1plc3: dosing.\n- row1plc4 and row1plc5: safety.\n- row1plc6, row1plc7: filling and capping.\n- The three unnamed conveyor boxes: 10.3.1.30, 10.3.1.29 and the one called The Intern.\n",
+  "mentions": [
+   {
+    "assetId": "a_snn7j",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_a9mai",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_bqg89",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_kle26",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_uhph4",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_l9w5o",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_l25jc",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_c1l2k",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_x54zp",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_o1p8x",
+    "kind": "nick"
+   }
+  ]
+ },
+ {
+  "id": "pg_029",
+  "title": "Pine - boiler house",
+  "space": "OPS",
+  "authorId": "p_pentti",
+  "class": "stale",
+  "lastEditedDaysAgo": 1800,
+  "bodyMarkdown": "Two 416 racks in a redundant pair. pin1plc3 is master, pin1plc4 is standby.\n\nIf the master fails, the standby takes over. Has happened twice. Both times it worked.\n\nThe two small boxes on the wall, 10.4.1.20 and 10.4.1.19, read the flue gas. Do not move them.\n",
+  "mentions": [
+   {
+    "assetId": "a_q2zn3",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_6z4r4",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_79agl",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_qxoj7",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_030",
+  "title": "Birch line 2 - ET 200SP stations",
+  "space": "OPS",
+  "authorId": "p_tiina",
+  "class": "stale",
+  "lastEditedDaysAgo": 1300,
+  "bodyMarkdown": "The small ET 200SP CPUs that came with the oven upgrade. They have no hostnames, the integrator never set them.\n\n- 10.1.2.61 and 10.1.2.65: oven zone 1 and 2.\n- 10.1.2.63: oven zone 3.\n- 10.1.2.59 and 10.1.2.64: the two F-CPUs for the oven doors. Safety.\n- 10.1.2.62 and 10.1.2.60: something on the same switch. Not ours, as far as I know.\n",
+  "mentions": [
+   {
+    "assetId": "a_9zeqx",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_fp2rd",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_sfm3n",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_44mng",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_fjwki",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_a8kli",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_tpysm",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_031",
+  "title": "Spruce line 1 - batch recipes (2017)",
+  "space": "OPS",
+  "authorId": "p_esa",
+  "class": "stale",
+  "lastEditedDaysAgo": 3200,
+  "bodyMarkdown": "Recipes are stored in DB100 on each batch PLC.\n\n- spr1plc19: recipes 1 to 40.\n- spr1plc20: recipes 41 to 80.\n- spr1plc22: test recipes. Do not use in production.\n\nTo change a recipe: edit the DB online. Make a backup first. Or do not.\n",
+  "mentions": [
+   {
+    "assetId": "a_qlnyh",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_pkh1i",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_y8sqf",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "pg_032",
+  "title": "Alder line 2 - commissioning notes",
+  "space": "OPS",
+  "authorId": "p_kontro",
+  "class": "stale",
+  "lastEditedDaysAgo": 3300,
+  "bodyMarkdown": "Commissioning protocol, short version.\n\n1. ald2plc1 loaded with project version 1.4.\n2. Panels ald2hmi1 and ald2hmi2 connected and tested.\n3. Customer accepted the line. Open items: see list, to be closed in the warranty period.\n\nThe list is not attached.\n",
+  "mentions": [
+   {
+    "assetId": "a_wdodn",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_3g47n",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_kxlba",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "pg_033",
+  "title": "Rowan line 1 - safety sign-off 2020",
+  "space": "SAFE",
+  "authorId": "p_jukka",
+  "class": "stale",
+  "lastEditedDaysAgo": 2200,
+  "bodyMarkdown": "Safety program versions accepted on Rowan line 1.\n\n- rowan-l1-plc-04: F-program checksum on file, signed.\n- rowan-l1-plc-05: F-program checksum on file, signed.\n\nAny change to these programs needs a new sign-off. Changes since: none that I was told about.\n",
+  "mentions": [
+   {
+    "assetId": "a_kle26",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_uhph4",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_034",
+  "title": "Birch line 2 - HMI address fix list",
+  "space": "OPS",
+  "authorId": "p_pentti",
+  "class": "stale",
+  "lastEditedDaysAgo": 1100,
+  "bodyMarkdown": "After the renumbering. Panels that still pointed at old addresses.\n\n- birch-l2-hmi-01: pointed at 10.1.2.209. Fixed.\n- birch-l2-hmi-02: pointed at 10.1.2.210. Fixed.\n- birch-l2-hmi-03: fixed.\n- birch-l2-hmi-04: fixed.\n\nPentti\n",
+  "mentions": [
+   {
+    "assetId": "a_k3add",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_5etqg",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_xxx3f",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_gzl88",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_rfaia",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_h4km2",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_035",
+  "title": "Spruce line 1 - panel passwords (removed)",
+  "space": "OPS",
+  "authorId": "p_antti",
+  "class": "stale",
+  "lastEditedDaysAgo": 1200,
+  "bodyMarkdown": "The passwords that were on this page have been removed. Ask Antti.\n\nThey were the same for every panel, starting with spruce-l1-hmi-01. They still are.\n",
+  "mentions": [
+   {
+    "assetId": "a_gemh5",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_036",
+  "title": "Pine - kiln restart",
+  "space": "OPS",
+  "authorId": "p_pentti",
+  "class": "stale",
+  "lastEditedDaysAgo": 2000,
+  "bodyMarkdown": "After a power cut the kiln does not restart on its own.\n\n1. Check that pin1plc1 is in RUN.\n2. Then pin1plc2, the safety one. It needs the key.\n3. Acknowledge on the panel. Twice.\n\nThe key is in the drawer under the panel. If it is not, call Pentti.\n",
+  "mentions": [
+   {
+    "assetId": "a_t6kmn",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_kcmrc",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "pg_037",
+  "title": "Birch line 2 - oven controllers",
+  "space": "OPS",
+  "authorId": "p_kontro",
+  "class": "stale",
+  "lastEditedDaysAgo": 2400,
+  "bodyMarkdown": "Delivered with the oven upgrade. Four S7-1500.\n\n| Name | Zone |\n|---|---|\n| bir2plc26 | Zone 1 |\n| bir2plc27 | Zone 2 |\n| bir2plc28 | Zone 3 |\n| bir2plc29 | Zone 4 |\n\nWarranty 24 months. Service contract offered, not signed.\n",
+  "mentions": [
+   {
+    "assetId": "a_x2xyj",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_9opru",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_smvp5",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_yk0nk",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "pg_038",
+  "title": "Annex - crane network",
+  "space": "NET",
+  "authorId": "p_sanna",
+  "class": "stale",
+  "lastEditedDaysAgo": 1100,
+  "bodyMarkdown": "The cranes have their own small network behind the CPs.\n\n- Crane 1 CP: 10.9.18.200.\n- Crane 2 CP: 10.9.18.201.\n\nAddresses changed when the warehouse got a new switch. This page was not updated then. Sanna will update it.\n",
+  "mentions": [
+   {
+    "assetId": "a_1dvsb",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_v1hu3",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "pg_039",
+  "title": "Alder line 2 - switch VLANs (2019)",
+  "space": "NET",
+  "authorId": "p_kontro",
+  "class": "stale",
+  "lastEditedDaysAgo": 2700,
+  "bodyMarkdown": "VLAN 10 for controllers, VLAN 20 for panels, VLAN 99 for management.\n\nManagement addresses:\n- 10.5.2.200\n- 10.5.2.201\n- 10.5.2.202\n\nDefault passwords changed. New passwords sent by email.\n",
+  "mentions": [
+   {
+    "assetId": "a_h1oij",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_ikmxt",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_46wqb",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "pg_040",
+  "title": "Spruce line 1 - robot cell",
+  "space": "OPS",
+  "authorId": "p_esa",
+  "class": "stale",
+  "lastEditedDaysAgo": 2900,
+  "bodyMarkdown": "Robot cell interlocks run on spr1plc8. The operator panel is spruce-l1-hmi-04.\n\nIf the robot stops with a door alarm and the door is closed: the door switch on the left needs a push. Hard.\n",
+  "mentions": [
+   {
+    "assetId": "a_33jzs",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_fnmnq",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_041",
+  "title": "PLC at 10.1.2.13 - runbook",
+  "space": "OPS",
+  "authorId": "p_tiina",
+  "class": "wrong-ref",
+  "lastEditedDaysAgo": 1250,
+  "bodyMarkdown": "The ET 200SP CPU that runs the glue dosing on line 2.\n\n- Address: 10.1.2.13.\n- Program: glue_v7, backup on the share.\n- If dosing stops: check the pressure switch first, then restart the CPU from the panel.\n\nSpare: one CPU 1510SP in the engineering room.\n",
+  "mentions": [
+   {
+    "assetId": "a_h0nda",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_h0nda",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "pg_042",
+  "title": "Spruce cooling loop - PLC notes",
+  "space": "OPS",
+  "authorId": "p_antti",
+  "class": "wrong-ref",
+  "lastEditedDaysAgo": 900,
+  "bodyMarkdown": "The cooling loop PLC is at 10.2.1.203.\n\nFlow alarm below 40 l/min. The pump has a manual override in the cabinet. Use it, then tell someone.\n",
+  "mentions": [
+   {
+    "assetId": "a_xqogu",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "pg_043",
+  "title": "Rowan mixer A",
+  "space": "OPS",
+  "authorId": "p_ville",
+  "class": "wrong-ref",
+  "lastEditedDaysAgo": 760,
+  "bodyMarkdown": "Mixer A runs on row1plc1.\n\nSpeed setpoint comes from the recipe. Torque limit is hard coded. Do not ask why.\n",
+  "mentions": [
+   {
+    "assetId": "a_snn7j",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "pg_044",
+  "title": "Alder dryer temperature logger",
+  "space": "OPS",
+  "authorId": "p_leena",
+  "class": "wrong-ref",
+  "lastEditedDaysAgo": 900,
+  "bodyMarkdown": "The logger is at 10.5.2.203. It writes a CSV every hour to the share.\n\nIf the CSV stops, the logger lost its time sync. Set the time on the panel.\n",
+  "mentions": [
+   {
+    "assetId": "a_46227",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "pg_045",
+  "title": "Birch line 1 - ring manager",
+  "space": "NET",
+  "authorId": "p_pentti",
+  "class": "wrong-ref",
+  "lastEditedDaysAgo": 1700,
+  "bodyMarkdown": "The ring manager switch is at 10.1.1.201.\n\nIf the ring breaks, line 1 keeps running on the backup path. The red LED tells you. Fix the cable within a shift, there is no second backup.\n",
+  "mentions": [
+   {
+    "assetId": "a_va6to",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "pg_046",
+  "title": "Spruce palletizers",
+  "space": "OPS",
+  "authorId": "p_mikko",
+  "class": "wrong-ref",
+  "lastEditedDaysAgo": 1000,
+  "bodyMarkdown": "Palletizer A is spr1plc15, palletizer B is spr1plc16.\n\nThey share one spare CPU. If both fail on the same day, buy a lottery ticket.\n",
+  "mentions": [
+   {
+    "assetId": "a_jhev7",
+    "kind": "old"
+   },
+   {
+    "assetId": "a_s7kvc",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "pg_047",
+  "title": "Annex heating, building A",
+  "space": "OPS",
+  "authorId": "p_sanna",
+  "class": "wrong-ref",
+  "lastEditedDaysAgo": 800,
+  "bodyMarkdown": "Heating controller for building A is at 10.9.21.200. The facility company manages it.\n\nNight setback 16 degrees. Weekend setback 14 degrees.\n",
+  "mentions": [
+   {
+    "assetId": "a_tporz",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "pg_048",
+  "title": "Birch oven zone 1 - controller",
+  "space": "OPS",
+  "authorId": "p_pentti",
+  "class": "wrong-ref",
+  "lastEditedDaysAgo": 1400,
+  "bodyMarkdown": "Zone 1 controller: 10.1.2.219.\n\nThermocouple 3 reads 4 degrees high. Known. Compensated in the program.\n",
+  "mentions": [
+   {
+    "assetId": "a_x2xyj",
+    "kind": "old"
+   }
+  ]
+ },
+ {
+  "id": "pg_049",
+  "title": "Spruce energy cabinet - S7-400",
+  "space": "OPS",
+  "authorId": "p_antti",
+  "class": "duplicate-conflict",
+  "lastEditedDaysAgo": 1500,
+  "bodyMarkdown": "spruce-l1-plc-25 controls the compressors. Start and stop sequence, pressure setpoint 7 bar.\n\nDo not stop it during production, the compressors stop with it.\n",
+  "mentions": [
+   {
+    "assetId": "a_37dmm",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_050",
+  "title": "Spruce energy metering",
+  "space": "OPS",
+  "authorId": "p_esa",
+  "class": "duplicate-conflict",
+  "lastEditedDaysAgo": 2600,
+  "bodyMarkdown": "spruce-l1-plc-25 only reads the energy meters. It controls nothing.\n\nSafe to stop at any time. The meters keep counting on their own.\n",
+  "mentions": [
+   {
+    "assetId": "a_37dmm",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_051",
+  "title": "Rowan dosing PLC - spare parts",
+  "space": "OPS",
+  "authorId": "p_ville",
+  "class": "duplicate-conflict",
+  "lastEditedDaysAgo": 1300,
+  "bodyMarkdown": "rowan-l1-plc-03: spare CPU on the shelf in the Rowan store, box 12. Firmware matches.\n",
+  "mentions": [
+   {
+    "assetId": "a_bqg89",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_052",
+  "title": "Rowan dosing - delivery documents",
+  "space": "OPS",
+  "authorId": "p_kontro",
+  "class": "duplicate-conflict",
+  "lastEditedDaysAgo": 2500,
+  "bodyMarkdown": "rowan-l1-plc-03: no spare delivered. Customer to order a spare CPU if wanted. Lead time 12 weeks.\n",
+  "mentions": [
+   {
+    "assetId": "a_bqg89",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_053",
+  "title": "Hall C - Melsec controllers",
+  "space": "OPS",
+  "authorId": null,
+  "class": "orphan",
+  "lastEditedDaysAgo": 3500,
+  "bodyMarkdown": "Three Melsec controllers in Hall C. Program on floppy disks in the cabinet.\n\nHall C was converted to storage. Nobody has checked if the controllers are still there.\n",
+  "mentions": []
+ },
+ {
+  "id": "pg_054",
+  "title": "Old packing line - network",
+  "space": "NET",
+  "authorId": null,
+  "class": "orphan",
+  "lastEditedDaysAgo": 3100,
+  "bodyMarkdown": "Packing line network, before the move.\n\nSwitch PK-SW1 in the corner, PK-SW2 under the conveyor. Uplink to the office through the yellow cable.\n\nThe yellow cable is still there. The packing line is not.\n",
+  "mentions": []
+ },
+ {
+  "id": "pg_055",
+  "title": "Project Lumi - pilot",
+  "space": "PROJ",
+  "authorId": null,
+  "class": "orphan",
+  "lastEditedDaysAgo": 2800,
+  "bodyMarkdown": "Pilot for remote monitoring of the S5 controller on the snow melting system.\n\nStatus: pilot running. Next step: decide.\n",
+  "mentions": []
+ },
+ {
+  "id": "pg_056",
+  "title": "Untitled page (copy)",
+  "space": "OPS",
+  "authorId": null,
+  "class": "orphan",
+  "lastEditedDaysAgo": 2000,
+  "bodyMarkdown": "Copy of the copy. See original.\n",
+  "mentions": []
+ },
+ {
+  "id": "pg_057",
+  "title": "READ ME FIRST (final v3)",
+  "space": "OPS",
+  "authorId": "p_marja",
+  "class": "fun",
+  "lastEditedDaysAgo": 60,
+  "bodyMarkdown": "New here? Start with these.\n\n1. The runbooks marked as owned. They are the good ones.\n2. Everything else is history. Some of it is still true.\n3. If a page and a machine disagree, the machine wins.\n4. If two pages disagree, ask Pentti while you can.\n\nFinal v1 and final v2 are archived. This one is final.\n",
+  "mentions": []
+ },
+ {
+  "id": "pg_058",
+  "title": "Line 3 - ask Pentti",
+  "space": "OPS",
+  "authorId": "p_aino",
+  "class": "fun",
+  "lastEditedDaysAgo": 1900,
+  "bodyMarkdown": "Ask Pentti.\n",
+  "mentions": []
+ },
+ {
+  "id": "pg_059",
+  "title": "Do not power cycle (see below)",
+  "space": "OPS",
+  "authorId": "p_pentti",
+  "class": "fun",
+  "lastEditedDaysAgo": 2500,
+  "bodyMarkdown": "Do not power cycle birch-l2-plc-11.\n\nReason below.\n",
+  "mentions": [
+   {
+    "assetId": "a_85wgw",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_060",
+  "title": "Linja 2 - yövuoron muistiinpanot",
+  "space": "OPS",
+  "authorId": "p_aino",
+  "class": "fun",
+  "lastEditedDaysAgo": 200,
+  "bodyMarkdown": "Yövuoron asiat, Birch linja 2.\n\n- Pakkauksen paneeli birch-l2-hmi-05 jumittuu joskus kolmen jälkeen. Paneelin takaa virrat pois ja päälle, minuutti odotusta.\n- birch-l2-hmi-06 näyttää väärää kellonaikaa. Ei haittaa, kukaan ei katso sitä.\n- Jos uunin hälytys tulee eikä mitään näy, soita Pentille. Hän vastaa aina. Toistaiseksi.\n\nAino\n",
+  "mentions": [
+   {
+    "assetId": "a_dgl5o",
+    "kind": "exact"
+   },
+   {
+    "assetId": "a_8byzi",
+    "kind": "exact"
+   }
+  ]
+ },
+ {
+  "id": "pg_061",
+  "title": "NIS2 - what applies to us",
+  "space": "SAFE",
+  "authorId": "p_marja",
+  "class": "reference",
+  "lastEditedDaysAgo": 45,
+  "bodyMarkdown": "Plain words summary. Not legal advice. The official text wins: Directive (EU) 2022/2555, https://eur-lex.europa.eu/eli/dir/2022/2555/oj\n\n## Are we in scope\nManufacturing of machinery, electrical equipment and some other products is listed in Annex II of the directive. Whether a company is in scope depends on its sector and its size. Medium and large companies in those sectors usually are. Ask legal to confirm for Tervaniemi Works.\n\n## What the directive asks for (Article 21)\nRisk management measures, including:\n- risk analysis and information system security policies\n- incident handling\n- business continuity, backups and crisis management\n- supply chain security\n- security in acquisition, development and maintenance, including vulnerability handling\n- ways to check that the measures work\n- basic cyber hygiene and training\n- cryptography where it makes sense\n- human resources security, access control and asset management\n- multi-factor authentication where it makes sense\n\n## Reporting significant incidents (Article 23)\n- early warning within 24 hours\n- incident notification within 72 hours\n- final report within one month\n\n## What this means here\nAsset management is on the list. We cannot protect machines we do not know we have. That is the reason for the inventory work.\n",
+  "mentions": []
+ }
+]
