@@ -1,0 +1,24 @@
+# raw export never goes to git
+data/raw/
+*.zip
+
+# secrets
+.env
+.env.*
+!.env.example
+
+# node / build
+node_modules/
+dist/
+build/
+
+# python
+.venv/
+__pycache__/
+.pytest_cache/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

@@ -1,0 +1,74 @@
+# All names here are fictional. Change freely, then run `npm run dataset`.
+app: Pentti
+agent: Ask Pentti
+company: Tervaniemi Works
+seed: 2026
+
+plants:
+  # raw site code (from the anonymized export) -> fictional plant. Ordered by OT host count.
+  QMYMN1: Birch
+  QDJKP1: Spruce
+  XBGIA1: Rowan
+  QKSRR1: Pine
+  QKRTT1: Alder
+annex_name: Annex   # every other site
+
+hostname_pattern: "{plant}-{line}-{role}-{nn}"   # birch-l3-plc-07
+
+roles:               # device type in the export -> role word in the hostname
+  PLC: plc
+  HMI: hmi
+  Switch: sw
+  Communication Device: cp
+  Communications Adapter: cp
+  Remote IO: io
+  Industrial Computer: pc
+  Industrial PC: pc
+  Engineering Station: pc
+  IP Camera: cam
+  Camera: cam
+  Printer: prn
+  PrintDeviceType: prn
+  default: dev
+
+nickname_share: 0.25   # share of OT assets that also carry a nickname
+nicknames:             # extend to about 60
+  - Old Faithful
+  - The Philosopher
+  - Do Not Touch
+  - Grumpy
+  - Sleeping Beauty
+  - Lucky Number Seven
+  - The Intern
+  - Mr. Reboot
+  - Blinky
+  - The Oracle
+  - Sauna Boy
+  - "Kalle's Mistake"
+  - "Don't Ask"
+  - Probably Fine
+  - Temporary (2011)
+  - Final Final
+  - Spare (Not Spare)
+  - The Gatekeeper
+  - Hot Potato
+  - The Whisperer
+  - Third Shift Special
+  - Mystery Box
+  - Two Cables Too Many
+  - Last One Standing
+  - The Cousin
+  - Duct Tape Edition
+  - Wednesday
+  - "Nobody's Fault"
+  - The Quiet One
+  - Rusty
+
+people:                # the rest (about 11) are written in slice S2
+  - id: p_pentti
+    name: Pentti Vaisanen
+    role: Maintenance electrician
+    plant: Birch
+    started_years_ago: 38
+    leaving_in_days: 150
+    bio: "Has the manuals in his head and the spare fuses in his car."

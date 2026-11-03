@@ -1,0 +1,21 @@
+{
+  "name": "pentti",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Forge app that measures what a factory does not know about its own machines. Codegeist 2026.",
+  "license": "MIT",
+  "scripts": {
+    "dataset": "python scripts/build_dataset.py",
+    "check": "python tools/check_publishable.py",
+    "hashes": "python tools/check_publishable.py --write-hashes",
+    "test": "node -e \"console.log('no tests yet, added in S1 and S3')\"",
+    "deploy": "forge deploy",
+    "forge-install": "forge install",
+    "logs": "forge logs"
+  },
+  "dependencies": {
+    "@forge/api": "^8.4.0",
+    "@forge/kvs": "^2.1.1",
+    "@forge/teamwork-graph": "^5.3.2"
+  }
+}
