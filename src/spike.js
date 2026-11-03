@@ -33,7 +33,7 @@ function assetCard(id, issueKeys, extraAssociations = []) {
     url: `https://example.com/pentti/asset/${id}`,
     createdAt: ts,
     lastUpdatedAt: ts,
-    permissions: [{ accessControls: [{ principals: [{ type: 'ATLASSIAN_WORKSPACE' }] }] }],
+    permissions: [{ accessControls: [{ principals: [{ type: 'EVERYONE' }] }] }],
     'atlassian:document': {
       type: { category: 'DOCUMENT', mimeType: 'text/plain' },
       content: { mimeType: 'text/plain', text: `Asset ${id}. Old Faithful spike. CP 343-1. Nobody knows.` },
