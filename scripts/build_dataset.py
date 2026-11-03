@@ -333,7 +333,9 @@ def build(raw: Path, root: Path, cfg=None, narrative_root=None):
         },
         "dates": "All dates are days before the newest timestamp in the source file. Resolve against the install date.",
     }
+    scoring = yaml.safe_load((root / "config" / "scoring.yml").read_text(encoding="utf-8"))
     return {
+        "scoring.json": scoring,
         "assets.json": assets, "findings.json": findings, "people.json": people,
         "pages.json": pages, "issues.json": issues, "meta.json": meta,
     }

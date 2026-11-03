@@ -16,3 +16,13 @@ jobs:
         run: python scripts/check_dataset.py
       - name: Generator tests
         run: python -m pytest -q tests
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".node-version"
+          cache: npm
+      - name: Install node deps
+        run: npm ci
+      - name: Typecheck
+        run: npx tsc --noEmit
+      - name: Scoring and matcher tests
+        run: npx vitest run

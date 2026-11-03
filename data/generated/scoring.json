@@ -1,0 +1,39 @@
+{
+ "knowledge": {
+  "name": 10,
+  "owner": 20,
+  "owner_leaving": 8,
+  "doc": 25,
+  "doc_fresh": 15,
+  "history": 15,
+  "firmware": 5,
+  "confirmed": 10
+ },
+ "windows_months": {
+  "owner_activity": 24,
+  "doc_fresh": 18,
+  "history": 36,
+  "confirmed": 12
+ },
+ "leaving_days_threshold": 180,
+ "risk": {
+  "crit_weight": {
+   "Critical": 1.0,
+   "High": 0.7,
+   "other": 0.3
+  },
+  "base": 60,
+  "findings_factor": 8,
+  "findings_cap": 40,
+  "exploit_bonus": 10,
+  "exploit_threshold": 60
+ },
+ "effort_hours": {
+  "name": 0.5,
+  "owner": 0.5,
+  "doc": 2,
+  "doc_fresh": 1,
+  "confirmed": 0.5
+ },
+ "match_min_confidence": 0.5
+}

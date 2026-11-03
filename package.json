@@ -8,14 +8,20 @@
     "dataset": "python scripts/build_dataset.py",
     "check": "python tools/check_publishable.py && python scripts/check_dataset.py",
     "hashes": "python tools/check_publishable.py --write-hashes",
-    "test": "python -m pytest -q tests",
+    "test": "python -m pytest -q tests && vitest run",
     "deploy": "forge deploy",
     "forge-install": "forge install",
-    "logs": "forge logs"
+    "logs": "forge logs",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@forge/api": "^8.4.0",
     "@forge/kvs": "^2.1.1",
     "@forge/teamwork-graph": "^5.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.7"
   }
 }
