@@ -15,13 +15,13 @@ Start with slice S0 only, unless told otherwise.
 - If a Forge doc fact is marked VERIFY, test it with code and write the result to `docs/limits.md`. Do not guess.
 
 ## Platform
-Windows. There is no `make`. Use the npm scripts in `package.json`. Python is `python` (3.12). Install dev deps with `pip install -r requirements-dev.txt`.
+Windows. There is no `make`. Use the npm scripts in `package.json`. Python is `python` (CI runs 3.12, local 3.14 works). Node 24.22.2 via fnm (`.node-version`), Forge CLI 15 needs it. Install dev deps with `pip install -r requirements-dev.txt`.
 
 ## Commands (npm scripts)
-- `npm run dataset`        raw -> data/generated, deterministic (script arrives in S1)
-- `npm run check`          leak check (`tools/check_publishable.py`), more checks join in S1 and S2
+- `npm run dataset`        raw -> data/generated, deterministic
+- `npm run check`          leak check plus `scripts/check_dataset.py` (S2 adds the distribution targets)
 - `npm run hashes`         rebuild `tools/token_hashes.txt` from data/raw (CI uses the hashes)
-- `npm test`               placeholder until S1 and S3 add pytest and vitest
+- `npm test`               pytest for the generator (S3 adds vitest)
 - `npm run deploy`         forge deploy
 - `npm run forge-install`  forge install (dev site)
 - `npm run logs`           forge logs

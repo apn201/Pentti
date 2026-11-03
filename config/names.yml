@@ -17,14 +17,23 @@ hostname_pattern: "{plant}-{line}-{role}-{nn}"   # birch-l3-plc-07
 
 roles:               # device type in the export -> role word in the hostname
   PLC: plc
+  Industrial Control Device: plc
+  Controller: plc
+  Motor Controller: plc
   HMI: hmi
   Switch: sw
   Communication Device: cp
   Communications Adapter: cp
+  Gateway: cp
   Remote IO: io
+  Sensor: io
   Industrial Computer: pc
   Industrial PC: pc
   Engineering Station: pc
+  Computer: pc
+  User Workstation: pc
+  Endpoint: pc
+  Server: pc
   IP Camera: cam
   Camera: cam
   Printer: prn
@@ -32,7 +41,7 @@ roles:               # device type in the export -> role word in the hostname
   default: dev
 
 nickname_share: 0.25   # share of OT assets that also carry a nickname
-nicknames:             # extend to about 60
+nicknames:             # unique within a plant, may repeat across plants
   - Old Faithful
   - The Philosopher
   - Do Not Touch
@@ -63,6 +72,36 @@ nicknames:             # extend to about 60
   - "Nobody's Fault"
   - The Quiet One
   - Rusty
+  - Big Bertha
+  - The Night Watch
+  - Kettu
+  - Ghost of Line 2
+  - The Accountant
+  - Leftovers
+  - Little Brother
+  - Monday Morning
+  - The Diplomat
+  - Do Not Update
+  - Saint Jari
+  - The Lighthouse
+  - Half Past Broken
+  - The Tourist
+  - Spaghetti Junction
+  - Cold Start
+  - Uncle Matti
+  - The Witness
+  - Noisy Neighbour
+  - Midsummer Special
+  - The Bookkeeper
+  - Plan B
+  - Frosty
+  - The Survivor
+  - Borrowed Time
+  - The Night Owl
+  - Old Reliable
+  - Version Zero
+  - The Hermit
+  - Snowplough
 
 people:                # the rest (about 11) are written in slice S2
   - id: p_pentti

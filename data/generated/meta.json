@@ -1,0 +1,22 @@
+{
+ "PENTTI_SEED": 2026,
+ "generatorVersion": 1,
+ "company": "Tervaniemi Works",
+ "plants": [
+  "Birch",
+  "Spruce",
+  "Rowan",
+  "Pine",
+  "Alder",
+  "Annex"
+ ],
+ "counts": {
+  "assets": 522,
+  "otAssets": 301,
+  "findings": 2194,
+  "rawInventoryRows": 4695,
+  "rawFindingRows": 2194,
+  "inventoryWithoutHostname": 874
+ },
+ "dates": "All dates are days before the newest timestamp in the source file. Resolve against the install date."
+}

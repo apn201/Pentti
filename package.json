@@ -6,9 +6,9 @@
   "license": "MIT",
   "scripts": {
     "dataset": "python scripts/build_dataset.py",
-    "check": "python tools/check_publishable.py",
+    "check": "python tools/check_publishable.py && python scripts/check_dataset.py",
     "hashes": "python tools/check_publishable.py --write-hashes",
-    "test": "node -e \"console.log('no tests yet, added in S1 and S3')\"",
+    "test": "python -m pytest -q tests",
     "deploy": "forge deploy",
     "forge-install": "forge install",
     "logs": "forge logs"
