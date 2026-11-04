@@ -111,6 +111,13 @@ modules:
         - who-knows
         - gap-report
         - create-gap-tasks
+  rovo:mcp:
+    - key: pentti-mcp
+      name: Pentti
+      tools:
+        - find-asset
+        - explain-asset
+        - gap-report
   graph:connector:
     - key: pentti-assets
       name: Pentti asset cards

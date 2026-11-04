@@ -71,3 +71,11 @@ Seeded-content and API quirks found later go below.
 - Rovo Chat with Ask Pentti now writes machine names as links to the asset card, for example birch-l2-cp-04 (Old Faithful) to `/asset/a_d4mjq`. Rovo also turned a fictional person's name into an @mention, the prompt now forbids that.
 - The connector icon is still a manifest path and shows broken. A hosted icon url needs a public host, planned for S9 when the repo goes public.
 
+## MCP (S8, 2026-11-04)
+
+- `rovo:mcp` with find-asset, explain-asset, gap-report deployed. The endpoint `https://mcp.atlassian.com/forge/<appId>` answers 401 with `WWW-Authenticate` pointing at OAuth protected resource metadata, so discovery works.
+- Admin path for the switch, as of today: Atlassian Administration, Apps, Sites, the site, Connected apps, the app, Details, TOOLS, "Expose tools to MCP-compatible apps", Enable tools. During Preview it exposes every tool in the module, no per-tool choice.
+- Known Preview bug, reported in the developer community the same day: when the app is installed in Jira and connected to Confluence at the moment tools are enabled, clients connect but list no tools. Workaround from that thread: disconnect Confluence, Disable tools, Enable tools, then connect Confluence again. Our first try showed this symptom in Claude (connected, no tools).
+- MCP Inspector from npm could not be run here: the local safety check blocks running downloaded code. The client test uses Claude's custom connector.- Workaround applied 2026-11-04: `forge uninstall -p confluence`, admin pressed Disable tools then Enable tools, the Claude connector reconnected and listed the three tools, then `forge install -p confluence` again. The tools kept working after Confluence came back.
+- Third-party client run (Claude custom connector, tools named `find-asset_development` and so on): find-asset "Old Faithful" returned a_d4mjq with its deep link, find-asset "The Oracle" returned three machines with "Never pick", gap-report Birch n 3 returned 3 assets, 6.5 hours, 4.7 percent, explain-asset a_8bjia returned the full not known list with no sources. Tool names carry the environment as a suffix.
+
