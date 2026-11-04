@@ -21,6 +21,7 @@
     "src/**/*.ts",
     "tests/**/*.ts",
     "static/*/src/**/*.tsx",
-    "static/*/vite.config.ts"
+    "static/*/vite.config.ts",
+    "static/*/src/**/*.d.ts"
   ]
 }

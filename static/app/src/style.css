@@ -94,3 +94,7 @@ tr.hot td:first-child { box-shadow: inset 4px 0 0 var(--red); }
 .tip { position: fixed; pointer-events: none; background: var(--ds-surface-overlay, #fff); border: 1px solid var(--line); box-shadow: 0 4px 12px #0003; border-radius: 4px; padding: 6px 8px; font-size: 12px; z-index: 10; max-width: 280px; }
 .banner { padding: 8px 12px; border-radius: 4px; background: var(--ds-background-warning, #fff7d6); margin: 0 0 12px; }
 .ok { color: var(--ds-text-success, #216e4e); }
+.brand { display: flex; align-items: center; gap: 16px; margin: 0 0 4px; }
+.brand img { height: 56px; width: auto; border-radius: 6px; background: #fff; padding: 2px 6px; flex: none; }
+.brand p { margin: 0; max-width: 560px; }
+

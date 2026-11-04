@@ -7,6 +7,7 @@ import { Closing } from './Closing';
 import { GapMap, type Overview } from './GapMap';
 import { People } from './People';
 import { call, Chip, Empty, errorText } from './ui';
+import logo from './logo-tervaniemi.png';
 import './style.css';
 
 type Tab = 'map' | 'closing' | 'asset' | 'people';
@@ -48,9 +49,12 @@ function App() {
 
   return (
     <main>
-      <p className="muted small">
-        Tervaniemi Works is a fictional company. Machines from a real anonymized scan <Chip k="SCAN" />, pages, tickets and people generated <Chip k="GEN" />, scores computed <Chip k="SCORE" />.
-      </p>
+      <header className="brand">
+        <img src={logo} alt="Tervaniemi Works logo" />
+        <p className="muted small">
+          Tervaniemi Works is a fictional company. Machines from a real anonymized scan <Chip k="SCAN" />, pages, tickets and people generated <Chip k="GEN" />, scores computed <Chip k="SCORE" />.
+        </p>
+      </header>
       <nav className="tabs">
         {TABS.map(([key, title]) => (
           <button key={key} className={tab === key ? 'on' : ''} onClick={() => setTab(key)}>{title}</button>

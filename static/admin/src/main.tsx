@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { invoke, view } from '@forge/bridge';
+import logo from './logo-tervaniemi.png';
 import './style.css';
 
 type Count = { done: number; total: number };
@@ -101,6 +102,7 @@ function App() {
 
   return (
     <main>
+      <img className="brand" src={logo} alt="Tervaniemi Works logo" />
       <h1>Load the factory</h1>
       <p>
         Creates the demo content for Tervaniemi Works, a fictional company: {p ? p.pages.total : '...'} Confluence pages and{' '}

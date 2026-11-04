@@ -6,22 +6,31 @@ Numbers below are what the app shows right after a fresh "Load the factory". The
 
 ## Before recording
 
-1. **Reset and load, on the day you record.** Jira settings, Apps, Pentti: Reset, then Load the factory into TVW and TVW. Dates count from the load, so "leaves in 150 days" is only 150 on load day. Reset also removes the gap tasks and "I checked this" clicks from testing, so "Create tasks" shows new keys on camera. Film the load itself: it is the last clip (2:40).
+1. **Reset and load, on the day you record.** Jira settings, Apps, Pentti: Reset, then Load the factory into TVW and TVW. Dates count from the load, so "leaves in 150 days" is only 150 on load day. Reset also removes the gap tasks and "I checked this" clicks from testing, so "Create tasks" shows new keys on camera. Film the load itself: it is the last clip (2:35).
 2. **Wait 5 minutes** after the load. The asset cards resync on their own and Rovo Search needs 3 to 4 minutes to index them.
 3. **Warm up.** Open the Pentti page once and ask Ask Pentti one throwaway question in a chat you will not film. The first call after idle takes 8 to 12 seconds.
 4. **Browser.** One window, 1920x1080, zoom about 110 percent, bookmarks bar hidden, notifications off, no other tabs.
 5. **Never show `data/raw/`** or any file from it. The hook numbers are said or captioned, not shown from the export.
 6. Optional: rename the site first (cosmetic), then press "Sync asset cards now" on the admin page.
+7. Opening pictures: the logo (`static/brand/tervaniemi-logo-160h.png` is small, use the original file for full screen) and the photo of Pentti. If the photo shows a real person, have their consent, the app says its people are generated.
 
 ## Shots
 
-### 0:00 to 0:15 Hook
+### 0:00 to 0:12 This is Pentti
 
-On screen: the Pentti page, Gap map tab. The counter line reads "522 assets. 60 are Critical and nobody knows anything about them."
+Style: an old industrial training film. Calm narrator, still pictures, nothing moves that does not have to.
 
-Line: "A scanner export with 4,695 rows, 874 of them without a hostname. The scanner knows the box. Nobody knows the machine."
+On screen: the Tervaniemi Works logo, then the photo of Pentti at the control cabinet.
 
-### 0:15 to 0:50 Rovo Chat, Old Faithful
+Line: "This is Pentti. We usually ask him when something in OT does not work. He is the one that knows. The only one. That is a problem, as in 150 days he goes on retirement."
+
+### 0:12 to 0:25 The problem
+
+On screen: the Pentti page, Gap map tab, logo in the header. The counter line reads "522 assets. 60 are Critical and nobody knows anything about them."
+
+Line: "Tervaniemi Works is a fictional company, but there are many real ones like that. Industrial manufacturing. A lot of OT systems, but very little ownership, control and documentation."
+
+### 0:25 to 0:55 Rovo Chat, Old Faithful
 
 Open Rovo Chat, agent Ask Pentti, new chat. Type: `What happens if Old Faithful dies?`
 
@@ -33,25 +42,25 @@ On screen (check before you keep the take):
 
 Click the Old Faithful link. The Pentti page opens on its asset card: knowledge 40, risk 95, danger 57.
 
-### 0:50 to 1:30 Gap map and people
+### 0:55 to 1:30 Gap map and people
 
 Gap map tab. Point at the shaded top right corner, "Risky and nobody knows: 98 assets". Hover one dot, click a dark ringed one in the corner. Card shows knowledge 5, risk 100, danger 95 for the nameless plc at 10.4.1.18, every line of "What is not known" filled.
 
 People tab. Pentti Vaisanen's row is red: only name on 39 machines, 34 of them Critical, leaves in 150 days.
 
-### 1:30 to 2:15 Closing list
+### 1:30 to 2:10 Closing list
 
 Closing list tab, plant Birch, 10 assets. Total line: "10 assets, 22.5 hours, removes 15.1 percent of the danger in Birch."
 
 Press "Create tasks for 10 assets", then "Yes, create". Keys appear in the Task column and the green line lists them. Click one key, the Jira issue opens.
 
-### 2:15 to 2:40 Graph and honesty
+### 2:10 to 2:35 Graph and honesty
 
 Rovo Search: `Old Faithful`, filter App: Pentti asset cards. The asset card is the first result.
 
 Back in Rovo Chat: `What do we know about the PLC at 10.4.1.18?` The answer says nobody touched it, no page, no ticket, no owner. Optional: the same question in Claude through the MCP connector.
 
-### 2:40 to 3:00 Install
+### 2:35 to 2:55 Install
 
 The admin page clip from the prep: Load the factory, the bar fills, "Done. 216 objects created." Line: "Fictional company, real machine mix."
 
