@@ -4,6 +4,8 @@
 import Resolver from '@forge/resolver';
 import { bundledDataset } from '../store/dataset';
 import { isJiraAdmin, listTargets, loadStep, resetStep, status } from '../seed/seed';
+import { connectionId, LAST_SYNC_KEY, syncAll } from '../connector/graph';
+import { kvs } from '@forge/kvs';
 
 const data = bundledDataset();
 const resolver = new Resolver();
@@ -35,14 +37,24 @@ resolver.define('loadStep', admin(async ({ payload }) => {
   if (!KEY.test(projectKey) || !SPACE.test(spaceKey)) return { error: 'Pick a Jira project and a Confluence space.' };
   const r = await loadStep(data, { projectKey, spaceKey, first: payload.first === true });
   console.log('loadStep', r.ms, 'ms', r.created.length, 'created', r.errors.length, 'errors');
+  // Cards carry the new Jira keys as associations, so they follow the load.
+  if (r.done && r.created.length > 0) return { ...r, graph: await syncAll().catch((e) => ({ error: String(e) })) };
   return r;
 }));
 
 resolver.define('resetStep', admin(async ({ payload }) => {
   const r = await resetStep(data, { first: payload.first === true });
   console.log('resetStep', r.ms, 'ms', r.deleted.length, 'deleted', r.errors.length, 'errors');
+  if (r.done && r.deleted.length > 0) return { ...r, graph: await syncAll().catch((e) => ({ error: String(e) })) };
   return r;
 }));
+
+resolver.define('graphStatus', admin(async () => ({
+  connected: !!(await connectionId()),
+  lastSync: (await kvs.get(LAST_SYNC_KEY)) ?? null,
+})));
+
+resolver.define('graphSync', admin(async () => syncAll()));
 
 // Diagnostics: how long can a Custom UI resolver run. Result goes into docs/limits.md. Removed in S9.
 resolver.define('probe', admin(async ({ payload }) => {

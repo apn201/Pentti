@@ -8,6 +8,7 @@ import { findAsset, gapReport } from '../actions/core';
 import { assetView, overview, peopleView } from '../actions/views';
 import { createGapTasks, existingGapTasks } from '../actions/tasks';
 import { lights } from '../score/bands';
+import { syncOne } from '../connector/graph';
 
 const resolver = new Resolver();
 
@@ -32,7 +33,10 @@ resolver.define('overview', safe('overview', async () => {
   return overview(snap.index, snap.scores);
 }));
 
-resolver.define('find', safe('find', async ({ payload }) => findAsset((await snapshot()).index, String(payload.query ?? ''))));
+resolver.define('find', safe('find', async ({ payload }) => {
+  const snap = await snapshot();
+  return findAsset(snap.index, String(payload.query ?? ''), snap.site);
+}));
 
 resolver.define('asset', safe('asset', async ({ payload }) => {
   const snap = await snapshot();
@@ -73,6 +77,7 @@ resolver.define('confirm', safe('confirm', async ({ payload, context }) => {
   const id = String(payload.assetId ?? '');
   if (!snap.index.asset(id)) return { error: `Unknown asset id ${id}.` };
   await kvs.set(CONFIRM_PREFIX + id, { accountId: context.accountId, at: new Date().toISOString() });
+  await syncOne(id).catch((e) => console.error('syncOne', e));
   return { ok: true, assetId: id };
 }));
 

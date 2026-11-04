@@ -13,6 +13,7 @@ export type Chip = 'SCAN' | 'GEN' | 'SCORE';
 
 export interface Site {
   baseUrl: string | null;    // https://<site>.atlassian.net, null when not known
+  appUrl?: string | null;    // the Pentti page, <baseUrl>/jira/apps/<app>/<env>, null when not known
   seeded: SeededMap;         // dataset id -> Jira key or Confluence page id
   elapsedDays: number;       // days since "Load the factory"
 }
@@ -31,10 +32,16 @@ export function label(a: Asset): string {
   return a.hostname ?? (a.nickname ? `${a.nickname} (no hostname)` : `nameless ${a.role} at ${a.ip}`);
 }
 
-function brief(a: Asset) {
+/** Deep link to the asset card on the Pentti page. Agent answers and graph cards use it. */
+export function assetUrl(site: Pick<Site, 'appUrl'> | undefined, assetId: string): string | null {
+  return site?.appUrl ? `${site.appUrl}/asset/${assetId}` : null;
+}
+
+function brief(a: Asset, site?: Site) {
   return {
     assetId: a.id,
     name: label(a),
+    url: assetUrl(site, a.id),
     hostname: a.hostname,
     nickname: a.nickname,
     plant: a.plant,
@@ -80,7 +87,7 @@ function personRef(p: Person | undefined, elapsed: number) {
 
 // ---------- find-asset ----------
 
-export function findAsset(index: Index, text: string) {
+export function findAsset(index: Index, text: string, site?: Site) {
   const q = String(text ?? '').trim();
   if (!q) return { error: 'Give a hostname, nickname, IP address or model.' };
   const hits = index.search(q);
@@ -93,7 +100,7 @@ export function findAsset(index: Index, text: string) {
   }
   return {
     query: q,
-    candidates: hits.map((h) => ({ ...brief(h.asset), matchedOn: h.why })),
+    candidates: hits.map((h) => ({ ...brief(h.asset, site), matchedOn: h.why })),
     note: hits.length > 1 ? 'Several machines match. Ask which one. Never pick.' : 'One match.',
   };
 }
@@ -246,7 +253,7 @@ export function explainAsset(index: Index, score: AssetScore, site: Site) {
   ];
 
   return {
-    asset: brief(a),
+    asset: brief(a, site),
     known,
     not_known: notKnown,
     searched,
@@ -276,10 +283,10 @@ function subnet(ip: string): string {
   return ip.split('.').slice(0, 3).join('.');
 }
 
-export function blastRadius(index: Index, scores: Map<string, AssetScore>, assetId: string) {
+export function blastRadius(index: Index, scores: Map<string, AssetScore>, assetId: string, site?: Site) {
   const a = index.asset(assetId)!;
   const row = (b: Asset) => ({
-    ...brief(b),
+    ...brief(b, site),
     openCriticalOrHigh: scores.get(b.id)?.riskDetail.openCriticalOrHigh ?? 0,
     danger: round1(scores.get(b.id)?.danger ?? 0),
   });
@@ -289,7 +296,7 @@ export function blastRadius(index: Index, scores: Map<string, AssetScore>, asset
   const sameSubnet = index.assets.filter((b) => b.id !== a.id && subnet(b.ip) === net).map(row).sort(byDanger);
   const cap = 25;
   return {
-    asset: brief(a),
+    asset: brief(a, site),
     sentence: BLAST_SENTENCE,
     sameLine: { chip: 'SCAN', count: sameLine.length, critical: sameLine.filter((b) => b.criticality === 'Critical').length, assets: sameLine.slice(0, cap) },
     sameSubnet: { chip: 'SCAN', subnet: `${net}.0/24`, count: sameSubnet.length, critical: sameSubnet.filter((b) => b.criticality === 'Critical').length, assets: sameSubnet.slice(0, cap) },
@@ -316,7 +323,7 @@ export function whoKnows(index: Index, assetId: string, site: Site) {
   });
   const active = people.filter((p) => !p.left);
   return {
-    asset: brief(a),
+    asset: brief(a, site),
     people,
     not_known: active.length ? [] : ['Nobody who is still here has touched this machine in any page or ticket.'],
     note: active.length === 1 ? 'One person still here knows it.' : undefined,
@@ -325,7 +332,7 @@ export function whoKnows(index: Index, assetId: string, site: Site) {
 
 // ---------- gap-report ----------
 
-export function gapReport(index: Index, scores: AssetScore[], plant: string, n: number) {
+export function gapReport(index: Index, scores: AssetScore[], plant: string, n: number, site?: Site) {
   const plants = [...new Set(index.assets.map((a) => a.plant))].sort();
   const p = String(plant ?? '').trim();
   const all = !p || p.toLowerCase() === 'all';
@@ -342,7 +349,7 @@ export function gapReport(index: Index, scores: AssetScore[], plant: string, n: 
       const a = index.asset(it.assetId)!;
       return {
         rank: i + 1,
-        ...brief(a),
+        ...brief(a, site),
         knowledge: it.knowledge,
         risk: it.risk,
         danger: round1(it.danger),

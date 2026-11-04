@@ -11,6 +11,8 @@ type Status = { config: { projectKey: string; spaceKey: string } | null; install
 type Step = { progress: Progress; done: boolean; created: string[]; deleted: string[]; errors: { id: string; message: string }[]; ms: number };
 type Targets = { projects: { key: string; name: string; type: string }[]; spaces: { key: string; name: string }[] };
 type Failure = { error: string };
+type Sync = { connected: boolean; cards: number; accepted: number; rejected: number; errors: string[]; at: string; ms: number };
+type GraphStatus = { connected: boolean; lastSync: Sync | null };
 
 const failed = (r: unknown): r is Failure => !!r && typeof r === 'object' && 'error' in r;
 
@@ -31,6 +33,24 @@ function App() {
   const [message, setMessage] = useState('');
   const [errors, setErrors] = useState<string[]>([]);
   const [probe, setProbe] = useState('');
+  const [graph, setGraph] = useState<GraphStatus | null>(null);
+  const [syncing, setSyncing] = useState(false);
+  const [graphMsg, setGraphMsg] = useState('');
+
+  const loadGraph = () => call<GraphStatus>('graphStatus').then(setGraph).catch((e) => setGraphMsg(text(e)));
+  const sync = async () => {
+    setSyncing(true);
+    setGraphMsg('');
+    try {
+      const r = await call<Sync>('graphSync');
+      setGraphMsg(r.errors.length ? `${r.accepted} of ${r.cards} cards accepted. ${r.errors[0]}` : r.connected ? `${r.accepted} of ${r.cards} cards accepted in ${r.ms} ms.` : 'Not connected yet.');
+      await loadGraph();
+    } catch (e) {
+      setGraphMsg(text(e));
+    } finally {
+      setSyncing(false);
+    }
+  };
 
   const refresh = async () => {
     const s = await call<Status>('status');
@@ -45,6 +65,7 @@ function App() {
     view.theme.enable().catch(() => undefined);
     refresh().catch((e) => setMessage(text(e)));
     call<Targets>('targets').then(setTargets).catch((e) => setMessage(text(e)));
+    loadGraph();
   }, []);
 
   const run = async (kind: 'load' | 'reset') => {
@@ -65,6 +86,7 @@ function App() {
         if (stalled >= 2) throw new Error('Stopped. Two steps in a row changed nothing.');
       }
       await refresh();
+      await loadGraph();
       if (kind === 'load') setMessage(changed ? `Done. ${changed} objects created.` : 'Already loaded. Nothing changed.');
       else setMessage(changed ? `Done. ${changed} objects removed.` : 'Nothing to remove.');
     } catch (e) {
@@ -141,6 +163,22 @@ function App() {
       )}
       {message && <p>{message}</p>}
       {errors.length > 0 && <pre className="errors">{errors.join('\n')}</pre>}
+
+      <h2>Teamwork Graph</h2>
+      <p className="muted">
+        One asset card per machine goes into the graph, so Rovo Search and Rovo Chat find the machines. An org admin connects it once:
+        admin.atlassian.com, Connectors, Add connector, Pentti asset cards. Cards follow every load and reset.
+      </p>
+      {graph && (
+        <p>
+          {graph.connected ? 'Connected.' : 'Not connected yet.'}
+          {graph.lastSync ? ` Last sync ${graph.lastSync.at.slice(0, 16).replace('T', ' ')} UTC, ${graph.lastSync.accepted} of ${graph.lastSync.cards} cards accepted.` : ''}
+        </p>
+      )}
+      <button className="subtle" disabled={!!busy || syncing || !graph?.connected} onClick={sync}>
+        {syncing ? 'Syncing' : 'Sync asset cards now'}
+      </button>
+      {graphMsg && <p>{graphMsg}</p>}
 
       <details>
         <summary>Diagnostics</summary>

@@ -17,7 +17,7 @@ function assetOrError(snap: Snapshot, input: unknown): { id: string } | { error:
   const id = String(input ?? '').trim();
   if (!id) return { error: 'Give an asset id. Use find-asset to get one.' };
   if (snap.index.asset(id)) return { id };
-  const found = findAsset(snap.index, id);
+  const found = findAsset(snap.index, id, snap.site);
   return { error: `Unknown asset id "${id}". Asset ids look like a_d4mjq. Use find-asset first, then pass its assetId.`, candidates: 'candidates' in found ? found.candidates : [] };
 }
 
@@ -34,7 +34,10 @@ async function run<T>(name: string, fn: () => Promise<T>): Promise<T | { error: 
 }
 
 export const findAssetAction = (payload: Payload) =>
-  run('find-asset', async () => findAsset((await snapshot()).index, String(payload.query ?? '')));
+  run('find-asset', async () => {
+    const snap = await snapshot();
+    return findAsset(snap.index, String(payload.query ?? ''), snap.site);
+  });
 
 export const explainAssetAction = (payload: Payload) =>
   run('explain-asset', async () => {
@@ -49,7 +52,7 @@ export const blastRadiusAction = (payload: Payload) =>
     const snap = await snapshot();
     const r = assetOrError(snap, payload.assetId);
     if ('error' in r) return r;
-    return blastRadius(snap.index, snap.byId, r.id);
+    return blastRadius(snap.index, snap.byId, r.id, snap.site);
   });
 
 export const whoKnowsAction = (payload: Payload) =>
@@ -63,7 +66,7 @@ export const whoKnowsAction = (payload: Payload) =>
 export const gapReportAction = (payload: Payload) =>
   run('gap-report', async () => {
     const snap = await snapshot();
-    return gapReport(snap.index, snap.scores, String(payload.plant ?? 'all'), Number(payload.n ?? 10));
+    return gapReport(snap.index, snap.scores, String(payload.plant ?? 'all'), Number(payload.n ?? 10), snap.site);
   });
 
 // ---------- create-gap-tasks ----------

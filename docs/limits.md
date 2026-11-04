@@ -62,3 +62,12 @@ Seeded-content and API quirks found later go below.
 - Not run live: Reset clearing the confirmations. Covered by code review only, Reset would empty the loaded demo site.
 - Atlassian rendered surfaces cannot carry custom visuals: Rovo Chat answers are markdown text, graph cards are text. Jira and Confluence content can use ADF status lozenges and panels, not used yet.
 
+## Teamwork Graph connector (S7, 2026-11-04)
+
+- The S0 graph connection did not survive the S4 installation change (separate Confluence install removed, `compatibility` added). `setObjects` answers "Bad Request - Connection not found". An org admin has to add the connector again, `onConnectionChange` then delivers a new connection id. The app now treats "Connection not found" as disconnected and says so on the admin page.
+- `deleteObjectsByExternalId` caps at 100 ids per call, like `setObjects`. 101 ids throw "Bulk object deletion supports maximum 100 objects".
+- Deep links into a Jira global page work: `<site>/jira/apps/<appId>/<envId>/asset/<assetId>` opens the page and `view.createHistory()` gives `/asset/<assetId>` as the location. The app id and environment id come from `getAppContext()` in the function, never from input.- After the admin added the connector again: `onConnectionChange` CREATED with a new id, the sync wrote 522 cards, 522 accepted, 0 rejected, in 6 s. The spike card cleanup (101 ids in two calls) reported no error, and no spike card showed in the filtered search.
+- Rovo Search, about 4 minutes later: "Old Faithful" with the App filter "Pentti asset cards" lists birch-l2-cp-04 (Old Faithful) first, with hostname, nickname, IP and plant in the snippet. Without the filter the Jira issues rank first, as in S0.
+- Rovo Chat with Ask Pentti now writes machine names as links to the asset card, for example birch-l2-cp-04 (Old Faithful) to `/asset/a_d4mjq`. Rovo also turned a fictional person's name into an @mention, the prompt now forbids that.
+- The connector icon is still a manifest path and shows broken. A hosted icon url needs a public host, planned for S9 when the repo goes public.
+

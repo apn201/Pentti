@@ -1,6 +1,6 @@
 // What every action and UI resolver needs: the index over the bundled dataset (built once per
 // container, the links never change), the scores for today, and a few facts from storage.
-import api, { route } from '@forge/api';
+import api, { getAppContext, route } from '@forge/api';
 import { kvs, WhereConditions } from '@forge/kvs';
 import { computeLinks } from '../match/link';
 import { Index } from '../store/index';
@@ -21,6 +21,20 @@ export function appIndex(): Index {
     index = new Index(data, computeLinks(data));
   }
   return index;
+}
+
+/** The Pentti page: <baseUrl>/jira/apps/<appId>/<envId>. Ids come from the runtime, never from input. */
+export function appPageUrl(base: string | null, appId: string | undefined, envId: string | undefined): string | null {
+  return base && appId && envId ? `${base}/jira/apps/${appId}/${envId}` : null;
+}
+
+function currentAppUrl(base: string | null): string | null {
+  try {
+    const c = getAppContext();
+    return appPageUrl(base, c.appAri.appId, c.environmentAri.environmentId);
+  } catch {
+    return null;
+  }
 }
 
 export function daysSince(iso: string | null | undefined, now = Date.now()): number {
@@ -75,5 +89,5 @@ export async function snapshot(): Promise<Snapshot> {
   ]);
   const elapsedDays = daysSince(installedAt);
   const scores = scoreAll(ix, confirmations, elapsedDays);
-  return { index: ix, site: { baseUrl: url, seeded, elapsedDays }, scores, byId: new Map(scores.map((s) => [s.assetId, s])), confirmations };
+  return { index: ix, site: { baseUrl: url, appUrl: currentAppUrl(url), seeded, elapsedDays }, scores, byId: new Map(scores.map((s) => [s.assetId, s])), confirmations };
 }

@@ -1,5 +1,5 @@
 // Pentti page (FACTORY_BUILD.md section 10): gap map, closing list, asset card, people.
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { view } from '@forge/bridge';
 import { AssetCard } from './AssetCard';
@@ -20,14 +20,30 @@ function App() {
 
   const loadOverview = () => call<Overview>('overview').then(setOverview).catch((e) => setError(errorText(e)));
 
+  // Deep links: <page>/asset/<assetId> opens that card. Agent answers and graph cards link here.
+  const history = useRef<Awaited<ReturnType<typeof view.createHistory>> | null>(null);
+  const follow = (path: string) => {
+    const m = /^\/asset\/([a-z0-9_]+)$/.exec(path);
+    if (m) {
+      setAssetId(m[1]);
+      setTab('asset');
+    }
+  };
+
   useEffect(() => {
     view.theme.enable().catch(() => undefined);
     loadOverview();
+    view.createHistory().then((h) => {
+      history.current = h;
+      follow(h.location.pathname);
+      h.listen(() => follow(h.location.pathname));
+    }).catch(() => undefined);
   }, []);
 
   const open = (id: string) => {
     setAssetId(id);
     setTab('asset');
+    history.current?.push(`/asset/${id}`);
   };
 
   return (

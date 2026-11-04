@@ -115,7 +115,7 @@ export function assetView(
   const cfg = index.data.scoring;
   const a = index.asset(score.assetId)!;
   const explain = explainAsset(index, score, site);
-  const blast = blastRadius(index, byId, a.id);
+  const blast = blastRadius(index, byId, a.id, site);
   const findings = index.findingsFor(a.id)
     .filter((f) => OPEN.has(f.status))
     .sort((x, y) => (y.score ?? 0) - (x.score ?? 0) || x.cve.localeCompare(y.cve))
