@@ -9,19 +9,28 @@
     "check": "python tools/check_publishable.py && python scripts/check_dataset.py",
     "hashes": "python tools/check_publishable.py --write-hashes",
     "test": "python -m pytest -q tests && vitest run",
-    "deploy": "forge deploy",
+    "deploy": "npm run build:ui && forge deploy",
     "forge-install": "forge install",
     "logs": "forge logs",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build:ui": "vite build --config static/admin/vite.config.ts"
   },
   "dependencies": {
     "@forge/api": "^8.4.0",
+    "@forge/bridge": "^7.2.1",
     "@forge/kvs": "^2.1.1",
-    "@forge/teamwork-graph": "^5.3.2"
+    "@forge/resolver": "^2.0.2",
+    "@forge/teamwork-graph": "^5.3.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
     "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^5.2.0",
     "typescript": "^5.9.3",
+    "vite": "^7.3.7",
     "vitest": "^3.2.7"
   }
 }

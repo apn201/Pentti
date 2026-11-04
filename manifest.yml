@@ -93,26 +93,35 @@ modules:
       datasource:
         onConnectionChange:
           function: onConnectionChange
-  webtrigger:
-    - key: spike
-      function: spikeTrigger
-      response:
-        type: dynamic
+  jira:adminPage:
+    - key: pentti-admin
+      title: Pentti
+      resource: admin
+      resolver:
+        function: adminResolver
   function:
     - key: onConnectionChange
       handler: index.onConnectionChange
-    - key: spikeTrigger
-      handler: index.spikeTrigger
+    - key: adminResolver
+      handler: index.adminResolver
     - key: fetchComments
       handler: index.fetchComments
     - key: addCommentToIssue
       handler: index.addComment
+resources:
+  - key: admin
+    path: static/admin/dist
 app:
   runtime:
     name: nodejs24.x
     memoryMB: 256
     architecture: arm64
   id: ari:cloud:ecosystem::app/d2fcbee5-3e1f-41db-8db4-e4360bef4b93
+  compatibility:
+    jira:
+      required: true
+    confluence:
+      required: false
 permissions:
   scopes:
     - write:jira-work
@@ -121,3 +130,11 @@ permissions:
     - read:object:jira
     - write:object:jira
     - delete:object:jira
+    - read:space:confluence
+    - read:page:confluence
+    - write:page:confluence
+    - delete:page:confluence
+    - read:label:confluence
+    - write:label:confluence
+    - search:confluence
+    - read:content-details:confluence

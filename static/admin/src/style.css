@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  font-family: var(--ds-font-family-body, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  font-size: 14px;
+  color: var(--ds-text, #172b4d);
+  background: var(--ds-surface, #fff);
+}
+main { max-width: 640px; padding: 8px 4px 32px; }
+h1 { font-size: 20px; margin: 0 0 8px; }
+p { line-height: 1.45; margin: 0 0 12px; }
+.muted { color: var(--ds-text-subtle, #44546f); }
+label { display: block; font-weight: 600; margin: 12px 0 4px; }
+select { width: 100%; padding: 6px; font: inherit; color: inherit; background: var(--ds-background-input, #fff); border: 1px solid var(--ds-border-input, #8590a2); border-radius: 3px; }
+.row { display: flex; gap: 8px; margin: 16px 0; }
+button { font: inherit; padding: 6px 12px; border-radius: 3px; border: 1px solid transparent; cursor: pointer; }
+button.primary { background: var(--ds-background-brand-bold, #0c66e4); color: var(--ds-text-inverse, #fff); }
+button.subtle { background: var(--ds-background-neutral, #091e420f); color: inherit; }
+button.danger { background: var(--ds-background-danger-bold, #c9372c); color: var(--ds-text-inverse, #fff); }
+button:disabled { opacity: 0.5; cursor: default; }
+.bar { height: 8px; background: var(--ds-background-neutral, #091e420f); border-radius: 4px; overflow: hidden; margin: 8px 0; }
+.bar > div { height: 100%; background: var(--ds-background-success-bold, #1f845a); transition: width 0.2s; }
+.errors { color: var(--ds-text-danger, #ae2e24); font-size: 13px; white-space: pre-wrap; }
+details { margin-top: 32px; }
+code { font-size: 12px; }
