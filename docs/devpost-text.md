@@ -77,3 +77,14 @@ Ask Pentti uses six actions: find-asset, explain-asset, blast-radius, who-knows,
 ## Bonus: Best Atlassian MCP
 
 `rovo:mcp` exposes find-asset, explain-asset and gap-report. Read only on purpose, writes stay inside Rovo where the user confirms them. Tested with Claude as the client: find Old Faithful, list the three Oracles in three plants, Birch closing list, and the honest answer for the nameless PLC.
+
+## Submission checklist
+
+- [ ] Video public on YouTube, under 3 minutes of content, link in the form.
+- [ ] Every `[fill: ...]` above replaced or removed.
+- [ ] Category: Apps for Specialized Industries.
+- [ ] Bonus categories selected: Best Agents (Rovo), Best Teamwork Graph integration, Best Atlassian MCP. Paste the three write-ups above.
+- [ ] Install link (from the README) and the public repo link in the form.
+- [ ] Screenshots: gap map, asset card, closing list with keys, People with Pentti in red, Rovo Chat answer.
+- [ ] Submit by Dec 20, deadline Dec 22 12:00 PST (22:00 Helsinki).
+- [ ] Reopen the submission page from a logged-out browser and check the video plays and the links open.
