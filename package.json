@@ -6,10 +6,10 @@
   "license": "MIT",
   "scripts": {
     "dataset": "python scripts/build_dataset.py",
-    "check": "python tools/check_publishable.py && python scripts/check_dataset.py",
+    "check": "python tools/check_publishable.py && python scripts/check_dataset.py && python tools/sync_prompt.py --check",
     "hashes": "python tools/check_publishable.py --write-hashes",
     "test": "python -m pytest -q tests && vitest run",
-    "deploy": "npm run build:ui && forge deploy",
+    "deploy": "python tools/sync_prompt.py && npm run build:ui && forge deploy",
     "forge-install": "forge install",
     "logs": "forge logs",
     "typecheck": "tsc --noEmit",

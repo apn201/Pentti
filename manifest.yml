@@ -1,83 +1,114 @@
 modules:
   action:
-    - key: fetch-comments
-      name: Fetch Comments from an Issue
-      function: fetchComments
-      description: Fetches comments from an issue.
-      inputs:
-        issueId:
-          title: Issue Id
-          type: string
-          description: The issue id for the Jira issue id that the comments are being
-            retrieved for.
-          required: true
+    - key: find-asset
+      name: Find asset
+      function: findAsset
       actionVerb: GET
-    - key: add-comment
-      name: Add Comment on an Issue
-      function: addCommentToIssue
-      description: adds comment on an issue.
+      description: Finds factory machines by hostname, nickname, IP address, old IP, former name or model. Returns up to five candidates with their asset ids, never one guess.
       inputs:
-        issueId:
-          title: Issue Id
+        query:
+          title: Query
           type: string
-          description: The issue id for the Jira issue id where a comments needs to be added
           required: true
-        comment:
-          title: Comment
+          description: The words the user used for the machine, for example Old Faithful, birch-l2-cp-04 or 10.1.2.13.
+    - key: explain-asset
+      name: Explain asset
+      function: explainAsset
+      actionVerb: GET
+      description: Everything known and not known about one machine, the sources searched, linked pages and tickets, people, findings and the knowledge, risk and danger scores.
+      inputs:
+        assetId:
+          title: Asset id
           type: string
-          description: The comment that needs to be added to the issue
           required: true
+          description: Pentti asset id such as a_d4mjq, taken from find-asset or gap-report. Never invent one.
+    - key: blast-radius
+      name: Blast radius
+      function: blastRadius
+      actionVerb: GET
+      description: Other machines on the same line and in the same subnet as one machine, with criticality, open findings and danger. Reachability is not verified.
+      inputs:
+        assetId:
+          title: Asset id
+          type: string
+          required: true
+          description: Pentti asset id such as a_d4mjq, taken from find-asset or gap-report. Never invent one.
+    - key: who-knows
+      name: Who knows
+      function: whoKnows
+      actionVerb: GET
+      description: People who touched one machine in pages or tickets, most recent first, with a flag when someone is leaving or has left.
+      inputs:
+        assetId:
+          title: Asset id
+          type: string
+          required: true
+          description: Pentti asset id such as a_d4mjq, taken from find-asset or gap-report. Never invent one.
+    - key: gap-report
+      name: Gap report
+      function: gapReport
+      actionVerb: GET
+      description: The closing list. The machines to document first for a plant or the whole factory, with hours per step, the total hours and the percent of danger removed.
+      inputs:
+        plant:
+          title: Plant
+          type: string
+          required: false
+          description: Plant name (Birch, Spruce, Rowan, Pine, Alder, Annex) or all. Default all.
+        n:
+          title: Number of assets
+          type: integer
+          required: false
+          description: How many assets to list, 1 to 25. Default 10.
+    - key: create-gap-tasks
+      name: Create gap tasks
+      function: createGapTasks
       actionVerb: CREATE
+      description: Creates one Jira task per machine to close its knowledge gap, in the project the factory was loaded into. Idempotent, a machine that already has a task gets the existing key back. Only after the user confirmed the list.
+      inputs:
+        assetIds:
+          title: Asset ids
+          type: string
+          required: true
+          description: Up to 10 Pentti asset ids from gap-report, comma separated, for example a_8bjia,a_d4mjq.
   rovo:agent:
-    - key: pentti-hello-world-agent
-      name: pentti
-      description: A simple agent to demonstrate the use of actions.
-      prompt: >
-        You are a helpful agent that demonstrates how to use actions.
+    - key: ask-pentti
+      name: Ask Pentti
+      description: A maintenance veteran's memory for the factory. Says what is known about a machine, what is not, and where it looked.
+      prompt: |
+        You are Pentti, a maintenance veteran's memory for a factory. You answer questions about machines.
+        Rules:
+        - Use only what the actions return. Never use your own knowledge to fill a gap about a specific machine.
+        - Always answer in three parts: What is known (with source ids), What is not known, Where I looked.
+        - If an action says not_known, say so plainly. "Nobody knows" is a valid answer.
+        - If a query matches several machines, list them and ask which one. Never pick.
+        - Keep it short. Dry is fine. Jokes about the machine are fine, jokes about the numbers are not.
+        - Numbers come from the action output. Do not round, estimate or invent them.
+        - Before creating Jira tasks, show the list and ask for confirmation.
 
-
-        You can perform the following jobs:
-
-        a. Summarise comments on an issue
-
-        b. Add a comment to an issue
-
-
-        I'll separate the instructions for each job with a. '---' on a new line,
-        followed by the job title.
-
-
-        ---
-
-        a. Summarise comments on an issue
-
-        To do this, follow these steps:
-
-        1. If there is not an issue key in the context, ask for one
-
-        2. fetch the comments using the fetch-comments action
-
-        3. summarize the comments
-
-        4. return the summary to the user
-
-        ---
-
-        b. Add a comment to an issue
-
-        To do this, follow these steps:
-
-        1. If the user hasn't provided a comment, ask for one
-
-        2. If there is not an issue key in the context, ask for one
-
-        3. Add the comment to the issue using the add-comment action
+        How to work:
+        - A machine named by the user: call find-asset with the words they used. One candidate: go on with its assetId. Several: list them with plant, line and role, ask which one. None: say nobody knows that name, and say what was searched.
+        - To explain a machine: call explain-asset with the assetId. Known facts come from the known part, each with its label: SCAN for the scan, GEN for pages, tickets and people, SCORE for knowledge, risk and danger. Give page and ticket titles with their links or ids. Not known comes from the not_known list, every line of it. Where I looked comes from the searched list.
+        - Items under maybe are mentions the matcher is not sure about. Name them as maybe, never as known.
+        - "What happens if it dies", "what else is affected": also call blast-radius and repeat its sentence word for word.
+        - "Who knows it", "who to call": call who-knows. Say when someone is leaving or has left.
+        - "What should we document first", "closing list", "gap report": call gap-report with a plant name or all, n is 10 unless the user says otherwise. Show rank, name, hours and steps, then the sentence it returns.
+        - Creating tasks: show the assets, hours and the total from gap-report, ask "Create these tasks?", and only after a yes call create-gap-tasks with the assetIds, comma separated. Then list the issue keys with their links. Tasks that already existed are not new, say so.
+        - Never add up, average or convert numbers yourself. Use the totals the actions give.
+        - Tervaniemi Works is a fictional company and its people are generated. The machines come from a real, anonymized scan. Say so when asked.
+        - Write plain sentences. No exclamation marks.
       conversationStarters:
-        - add a comment to this issue
-        - summarise the comments on this issue
+        - What happens if Old Faithful dies?
+        - Which machines are Critical and nobody knows anything about?
+        - Who knows the most about Birch line 2?
+        - Give me ten assets to fix this quarter.
       actions:
-        - fetch-comments
-        - add-comment
+        - find-asset
+        - explain-asset
+        - blast-radius
+        - who-knows
+        - gap-report
+        - create-gap-tasks
   graph:connector:
     - key: pentti-assets
       name: Pentti asset cards
@@ -104,10 +135,18 @@ modules:
       handler: index.onConnectionChange
     - key: adminResolver
       handler: index.adminResolver
-    - key: fetchComments
-      handler: index.fetchComments
-    - key: addCommentToIssue
-      handler: index.addComment
+    - key: findAsset
+      handler: index.findAssetAction
+    - key: explainAsset
+      handler: index.explainAssetAction
+    - key: blastRadius
+      handler: index.blastRadiusAction
+    - key: whoKnows
+      handler: index.whoKnowsAction
+    - key: gapReport
+      handler: index.gapReportAction
+    - key: createGapTasks
+      handler: index.createGapTasksAction
 resources:
   - key: admin
     path: static/admin/dist

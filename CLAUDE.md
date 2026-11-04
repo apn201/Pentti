@@ -19,12 +19,12 @@ Windows. There is no `make`. Use the npm scripts in `package.json`. Python is `p
 
 ## Commands (npm scripts)
 - `npm run dataset`        raw -> data/generated, deterministic
-- `npm run check`          leak check plus `scripts/check_dataset.py` (S2 adds the distribution targets)
+- `npm run check`          leak check, `scripts/check_dataset.py`, agent prompt in sync (`tools/sync_prompt.py --check`)
 - `npm run hashes`         rebuild `tools/token_hashes.txt` from data/raw (CI uses the hashes)
 - `npm test`               pytest for the generator, then vitest for matcher, scores and store
 - `npm run typecheck`      tsc --noEmit
 - `npm run build:ui`       vite build of the Custom UI in `static/admin` (dist is gitignored)
-- `npm run deploy`         build:ui, then forge deploy
+- `npm run deploy`         sync the agent prompt, build:ui, then forge deploy
 - `npm run forge-install`  forge install (dev site)
 - `npm run logs`           forge logs
 

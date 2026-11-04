@@ -136,7 +136,9 @@ export async function reconcile(map: SeededMap, cfg: SeedConfig | undefined): Pr
         : route`/rest/api/3/search/jql?jql=${jql}&fields=labels&maxResults=100`,
     );
     for (const i of res.issues) {
-      const id = idFromLabels(i.fields.labels);
+      // Gap tasks from create-gap-tasks carry pentti-demo too, so Reset removes them as extra leaves.
+      const gap = i.fields.labels.find((l) => l.startsWith('pentti-gap-'));
+      const id = idFromLabels(i.fields.labels) ?? (gap ? `gap_${gap.slice('pentti-gap-'.length)}` : null);
       if (id && !map[id]) {
         map[id] = { kind: 'issue', remoteId: i.id, key: i.key };
         await remember(id, map[id]);

@@ -45,3 +45,11 @@ Seeded-content and API quirks found later go below.
 - `tsconfig.json` must not set `noEmit`: the Forge bundler (ts-loader) then emits nothing and the deploy fails with "TypeScript emitted no output". `npm run typecheck` passes `--noEmit` on the command line instead.
 - Removing the spike web trigger put the app back in the Runs on Atlassian program. Adding Confluence scopes needs `--approve MAJOR_VERSION_RULE` again and `forge install --upgrade`.
 - Vite 8 needs `@vitejs/plugin-react` 6, vitest 3 pins Vite 7. The repo uses Vite 7 with plugin-react 5.
+
+## Agent and actions (S5, 2026-11-04)
+
+- Rovo Chat run on the dev site, agent Ask Pentti: "What happens if Old Faithful dies?" called find-asset, explain-asset and blast-radius and answered in three parts with links to the seeded page and Jira issue. "Closing list for the whole factory" called gap-report: 10 assets, 18.5 hours, 2.3 percent, the frozen numbers. After "yes" Rovo showed its own review card for the CREATE action, then create-gap-tasks made TVW-301 to TVW-310 as the signed-in user. Asking again for Old Faithful returned TVW-305 as existing, nothing new. The nameless PLC at 10.4.1.18 got an honest answer: every gap under not known, no owner, no page, nobody who knows it.
+- Action timings from the logs: GET actions 1 to 2.2 s with a cold index, create-gap-tasks 12.6 s for 10 issues (sequential search and create, as the user), 1.2 s for one existing.
+- `api.asUser()` works inside Rovo actions without a separate consent step for the user who installed the app.
+- In the agent picker, a development agent is listed by its manifest name, no environment suffix.
+
