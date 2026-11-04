@@ -79,3 +79,11 @@ Seeded-content and API quirks found later go below.
 - MCP Inspector from npm could not be run here: the local safety check blocks running downloaded code. The client test uses Claude's custom connector.- Workaround applied 2026-11-04: `forge uninstall -p confluence`, admin pressed Disable tools then Enable tools, the Claude connector reconnected and listed the three tools, then `forge install -p confluence` again. The tools kept working after Confluence came back.
 - Third-party client run (Claude custom connector, tools named `find-asset_development` and so on): find-asset "Old Faithful" returned a_d4mjq with its deep link, find-asset "The Oracle" returned three machines with "Never pick", gap-report Birch n 3 returned 3 assets, 6.5 hours, 4.7 percent, explain-asset a_8bjia returned the full not known list with no sources. Tool names carry the environment as a suffix.
 
+## Judge readiness (S9, 2026-11-04)
+
+- Production deploy done. The install link comes from the developer console, Manage, Distribution, Edit, status Sharing. The form asks for company, support contact, privacy policy, terms of service and whether the app stores personal data. Pentti stores account ids of people who press "I checked this".
+- The console shows "This app will be installed on Jira, can also be connected to Confluence", matching the `compatibility` block.
+- `git push` of a tag failed twice with a GitHub server error, creating the tag through the REST API worked.
+- Leak-check hashes are unsalted. Accepted, the raw export was anonymized already (D41).
+- The temporary resolver timeout probe and its Diagnostics section are removed from the admin page.
+

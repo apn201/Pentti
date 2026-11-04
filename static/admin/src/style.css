@@ -21,5 +21,4 @@ button:disabled { opacity: 0.5; cursor: default; }
 .bar { height: 8px; background: var(--ds-background-neutral, #091e420f); border-radius: 4px; overflow: hidden; margin: 8px 0; }
 .bar > div { height: 100%; background: var(--ds-background-success-bold, #1f845a); transition: width 0.2s; }
 .errors { color: var(--ds-text-danger, #ae2e24); font-size: 13px; white-space: pre-wrap; }
-details { margin-top: 32px; }
 code { font-size: 12px; }

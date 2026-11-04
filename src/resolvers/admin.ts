@@ -56,12 +56,4 @@ resolver.define('graphStatus', admin(async () => ({
 
 resolver.define('graphSync', admin(async () => syncAll()));
 
-// Diagnostics: how long can a Custom UI resolver run. Result goes into docs/limits.md. Removed in S9.
-resolver.define('probe', admin(async ({ payload }) => {
-  const seconds = Math.min(120, Math.max(0, Number(payload.seconds) || 0));
-  const t0 = Date.now();
-  await new Promise((r) => setTimeout(r, seconds * 1000));
-  return { slept: Date.now() - t0 };
-}));
-
 export const handler = resolver.getDefinitions();

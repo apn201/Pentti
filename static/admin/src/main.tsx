@@ -32,7 +32,6 @@ function App() {
   const [busy, setBusy] = useState<'load' | 'reset' | null>(null);
   const [message, setMessage] = useState('');
   const [errors, setErrors] = useState<string[]>([]);
-  const [probe, setProbe] = useState('');
   const [graph, setGraph] = useState<GraphStatus | null>(null);
   const [syncing, setSyncing] = useState(false);
   const [graphMsg, setGraphMsg] = useState('');
@@ -93,22 +92,6 @@ function App() {
       setMessage(text(e));
     } finally {
       setBusy(null);
-    }
-  };
-
-  const runProbe = async () => {
-    const lines: string[] = [];
-    for (const seconds of [10, 20, 26, 30, 45, 60]) {
-      const t0 = Date.now();
-      try {
-        await call('probe', { seconds });
-        lines.push(`${seconds} s: ok`);
-      } catch (e) {
-        lines.push(`${seconds} s: failed after ${Math.round((Date.now() - t0) / 1000)} s, ${text(e).slice(0, 120)}`);
-        setProbe(lines.join('\n'));
-        break;
-      }
-      setProbe(lines.join('\n'));
     }
   };
 
@@ -180,12 +163,6 @@ function App() {
       </button>
       {graphMsg && <p>{graphMsg}</p>}
 
-      <details>
-        <summary>Diagnostics</summary>
-        <p className="muted">Measures how long one resolver call may run. Takes up to three minutes.</p>
-        <button className="subtle" disabled={!!busy} onClick={runProbe}>Measure resolver time limit</button>
-        {probe && <pre>{probe}</pre>}
-      </details>
     </main>
   );
 }
