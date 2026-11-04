@@ -53,3 +53,12 @@ Seeded-content and API quirks found later go below.
 - `api.asUser()` works inside Rovo actions without a separate consent step for the user who installed the app.
 - In the agent picker, a development agent is listed by its manifest name, no environment suffix.
 
+## UI (S6, 2026-11-04)
+
+- Jira global page `jira:globalPage`, Custom UI with React and Vite, hand drawn SVG for the gap map. No chart library, no external requests, so the default Custom UI content security policy is enough.
+- Run from the UI on the dev site: gap map loads (522 assets, 60 Critical with nothing known, 98 in the red corner), a click opens the asset card, People shows Pentti in red as the only name on 39 machines (34 Critical), the closing list for Rowan created TVW-311 to TVW-315 from the "Create tasks" button and showed the keys as links, "I checked this" on rowan-l1-plc-02 moved knowledge from 90 to 100 and danger from 9.7 to 0.
+- First load after a deploy takes 8 to 12 s (cold container, the matcher runs once). Later loads take 1 to 2 s.
+- Native select popups and the Jira chrome both work inside the Custom UI iframe. `window.confirm` is not used, confirmations are inline buttons.
+- Not run live: Reset clearing the confirmations. Covered by code review only, Reset would empty the loaded demo site.
+- Atlassian rendered surfaces cannot carry custom visuals: Rovo Chat answers are markdown text, graph cards are text. Jira and Confluence content can use ADF status lozenges and panels, not used yet.
+

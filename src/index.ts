@@ -4,3 +4,4 @@ export {
 } from './actions/handlers';
 export { onConnectionChange } from './connector/graph';
 export { handler as adminResolver } from './resolvers/admin';
+export { handler as appResolver } from './resolvers/app';

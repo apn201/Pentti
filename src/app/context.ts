@@ -6,12 +6,11 @@ import { computeLinks } from '../match/link';
 import { Index } from '../store/index';
 import { bundledDataset } from '../store/dataset';
 import { scoreAll, type AssetScore } from '../score';
-import { INSTALLED_AT_KEY, readSeeded } from '../seed/seed';
+import { CONFIRM_PREFIX, INSTALLED_AT_KEY, readSeeded } from '../seed/seed';
 import type { Site } from '../actions/core';
 import type { Confirmation } from '../types';
 
 const DAY = 24 * 60 * 60 * 1000;
-export const CONFIRM_PREFIX = 'confirm:';
 
 let index: Index | null = null;
 let baseUrl: string | null | undefined;
@@ -62,6 +61,7 @@ export interface Snapshot {
   site: Site;
   scores: AssetScore[];
   byId: Map<string, AssetScore>;
+  confirmations: Confirmation[];
 }
 
 /** Index, site facts and every score, computed on read (section 8). Never stored. */
@@ -75,5 +75,5 @@ export async function snapshot(): Promise<Snapshot> {
   ]);
   const elapsedDays = daysSince(installedAt);
   const scores = scoreAll(ix, confirmations, elapsedDays);
-  return { index: ix, site: { baseUrl: url, seeded, elapsedDays }, scores, byId: new Map(scores.map((s) => [s.assetId, s])) };
+  return { index: ix, site: { baseUrl: url, seeded, elapsedDays }, scores, byId: new Map(scores.map((s) => [s.assetId, s])), confirmations };
 }

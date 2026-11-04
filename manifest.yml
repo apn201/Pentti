@@ -124,6 +124,12 @@ modules:
       datasource:
         onConnectionChange:
           function: onConnectionChange
+  jira:globalPage:
+    - key: pentti-app
+      title: Pentti
+      resource: app
+      resolver:
+        function: appResolver
   jira:adminPage:
     - key: pentti-admin
       title: Pentti
@@ -135,6 +141,8 @@ modules:
       handler: index.onConnectionChange
     - key: adminResolver
       handler: index.adminResolver
+    - key: appResolver
+      handler: index.appResolver
     - key: findAsset
       handler: index.findAssetAction
     - key: explainAsset
@@ -150,6 +158,8 @@ modules:
 resources:
   - key: admin
     path: static/admin/dist
+  - key: app
+    path: static/app/dist
 app:
   runtime:
     name: nodejs24.x

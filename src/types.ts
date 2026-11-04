@@ -99,6 +99,11 @@ export interface ScoringConfig {
   };
   effort_hours: { name: number; owner: number; doc: number; doc_fresh: number; confirmed: number };
   match_min_confidence: number;
+  bands: {
+    risk: { red: number; amber: number };
+    danger: { red: number; amber: number };
+    knowledge: { green: number; amber: number };
+  };
 }
 
 export interface Dataset {

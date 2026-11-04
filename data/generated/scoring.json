@@ -35,5 +35,19 @@
   "doc_fresh": 1,
   "confirmed": 0.5
  },
- "match_min_confidence": 0.5
+ "match_min_confidence": 0.5,
+ "bands": {
+  "risk": {
+   "red": 80,
+   "amber": 60
+  },
+  "danger": {
+   "red": 50,
+   "amber": 25
+  },
+  "knowledge": {
+   "green": 60,
+   "amber": 30
+  }
+ }
 }

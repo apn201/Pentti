@@ -1,0 +1,52 @@
+// Pentti page (FACTORY_BUILD.md section 10): gap map, closing list, asset card, people.
+import { useEffect, useState } from 'react';
+import { createRoot } from 'react-dom/client';
+import { view } from '@forge/bridge';
+import { AssetCard } from './AssetCard';
+import { Closing } from './Closing';
+import { GapMap, type Overview } from './GapMap';
+import { People } from './People';
+import { call, Chip, Empty, errorText } from './ui';
+import './style.css';
+
+type Tab = 'map' | 'closing' | 'asset' | 'people';
+const TABS: [Tab, string][] = [['map', 'Gap map'], ['closing', 'Closing list'], ['asset', 'Asset card'], ['people', 'People']];
+
+function App() {
+  const [tab, setTab] = useState<Tab>('map');
+  const [overview, setOverview] = useState<Overview | null>(null);
+  const [assetId, setAssetId] = useState<string | null>(null);
+  const [error, setError] = useState('');
+
+  const loadOverview = () => call<Overview>('overview').then(setOverview).catch((e) => setError(errorText(e)));
+
+  useEffect(() => {
+    view.theme.enable().catch(() => undefined);
+    loadOverview();
+  }, []);
+
+  const open = (id: string) => {
+    setAssetId(id);
+    setTab('asset');
+  };
+
+  return (
+    <main>
+      <p className="muted small">
+        Tervaniemi Works is a fictional company. Machines from a real anonymized scan <Chip k="SCAN" />, pages, tickets and people generated <Chip k="GEN" />, scores computed <Chip k="SCORE" />.
+      </p>
+      <nav className="tabs">
+        {TABS.map(([key, title]) => (
+          <button key={key} className={tab === key ? 'on' : ''} onClick={() => setTab(key)}>{title}</button>
+        ))}
+      </nav>
+      {error && <p className="err">{error}</p>}
+      {tab === 'map' && (overview ? <GapMap data={overview} onOpen={open} /> : !error && <Empty>Loading.</Empty>)}
+      {tab === 'closing' && <Closing plants={overview?.plants ?? []} onOpen={open} />}
+      {tab === 'asset' && <AssetCard assetId={assetId} onOpen={open} onChanged={loadOverview} />}
+      {tab === 'people' && <People />}
+    </main>
+  );
+}
+
+createRoot(document.getElementById('root')!).render(<App />);

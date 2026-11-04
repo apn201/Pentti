@@ -15,6 +15,7 @@ export const STEP_SIZE = 10;
 const OBJ_PREFIX = 'seed:obj:';
 const CONFIG_KEY = 'seed:config';
 export const INSTALLED_AT_KEY = 'meta:installedAt';
+export const CONFIRM_PREFIX = 'confirm:';   // "I checked this" clicks, cleared by Reset
 
 export interface SeedConfig {
   projectId: string;
@@ -49,6 +50,14 @@ export async function readSeeded(): Promise<SeededMap> {
 }
 
 const remember = (id: string, s: Seeded) => kvs.set(OBJ_PREFIX + id, s);
+
+async function clearPrefix(prefix: string): Promise<void> {
+  for (;;) {
+    const page = await kvs.query().where('key', WhereConditions.beginsWith(prefix)).limit(100).getMany();
+    if (!page.results.length) return;
+    await Promise.all(page.results.map((r) => kvs.delete(r.key)));
+  }
+}
 const forget = (id: string) => kvs.delete(OBJ_PREFIX + id);
 
 export const readConfig = () => kvs.get<SeedConfig>(CONFIG_KEY);
@@ -327,6 +336,7 @@ export async function resetStep(data: Dataset, opts: { first: boolean }): Promis
   if (left === 0 && errors.length === 0) {
     await kvs.delete(CONFIG_KEY);
     await kvs.delete(INSTALLED_AT_KEY);
+    await clearPrefix(CONFIRM_PREFIX);
   }
   return { progress: progress(all, map), done: left === 0, created: [], deleted: deleted.sort(), errors, ms: Date.now() - t0 };
 }

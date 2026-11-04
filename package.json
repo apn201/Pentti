@@ -13,7 +13,7 @@
     "forge-install": "forge install",
     "logs": "forge logs",
     "typecheck": "tsc --noEmit",
-    "build:ui": "vite build --config static/admin/vite.config.ts"
+    "build:ui": "vite build --config static/admin/vite.config.ts && vite build --config static/app/vite.config.ts"
   },
   "dependencies": {
     "@forge/api": "^8.4.0",
