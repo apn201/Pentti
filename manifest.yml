@@ -122,8 +122,8 @@ modules:
     - key: pentti-assets
       name: Pentti asset cards
       icons:
-        light: static/connector-icon.svg
-        dark: static/connector-icon.svg
+        light: https://cdn.jsdelivr.net/gh/apn201/Pentti@a28d785d04c7d4f7880988b54696696114c3b284/static/connector-icon.svg
+        dark: https://cdn.jsdelivr.net/gh/apn201/Pentti@a28d785d04c7d4f7880988b54696696114c3b284/static/connector-icon.svg
       objectTypes:
         - atlassian:document
       capabilities:

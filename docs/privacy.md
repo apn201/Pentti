@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-04.
 
-Pentti is a free Forge app for Jira and Confluence, built for Atlassian Codegeist 2026 by [fill: your name or company]. Contact: [fill: contact email].
+Pentti is a free Forge app for Jira and Confluence, built for Atlassian Codegeist 2026 by Juha Lilja, info@apn201.com
 
 ## What Pentti stores
 

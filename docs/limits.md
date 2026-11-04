@@ -86,4 +86,5 @@ Seeded-content and API quirks found later go below.
 - `git push` of a tag failed twice with a GitHub server error, creating the tag through the REST API worked.
 - Leak-check hashes are unsalted. Accepted, the raw export was anonymized already (D41).
 - The temporary resolver timeout probe and its Diagnostics section are removed from the admin page.
+- Repo made public 2026-11-04. The connector icon now points at jsDelivr (`cdn.jsdelivr.net/gh/apn201/Pentti@<commit>/static/connector-icon.svg`), which serves it as `image/svg+xml`. Raw GitHub serves SVG as `text/plain` and would not render. Forge lint and deploy accept an https url for `graph:connector` icons. Not yet checked in Rovo Search.
 
