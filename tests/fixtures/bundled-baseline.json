@@ -1,0 +1,40 @@
+{
+  "counts": {
+    "assets": 522,
+    "findings": 2194,
+    "pages": 61,
+    "issues": 150,
+    "people": 13,
+    "links": 435
+  },
+  "dataset": "f9ac3ec90dab6d22cd8dcf35",
+  "links": "3cb58dc4c89d75ec1fb2fb41",
+  "seedPlan": "da3b2c00373a1522d63ab6df",
+  "seedBodies": "fd39a9458b9e07ef97d2b205",
+  "atInstall": {
+    "scores": "495c3315d6d105f5959108fd",
+    "explain": "e3b3cb5975e8cda96bef1f3d",
+    "blast": "5bb5753123f06dd986c0bd4c",
+    "who": "18ef5bf116eb2575d6b9b522",
+    "assetView": "3384806481b49213bab574a8",
+    "cards": "272cb12f859e5eee44053fd7",
+    "gapTasks": "a92fdaa2a499d1b7d7fac1c7",
+    "gapReports": "5c61d15656522149d66c6bff",
+    "overview": "b6f8e7662980cb44fce7f776",
+    "people": "f74a5ac7dcf8f8ddd6d89219",
+    "find": "2e17fc227eb258b0b650afc7"
+  },
+  "after30Days": {
+    "scores": "79d1c9d51d79fbbd42e4b8e6",
+    "explain": "cf2868f54ca9bb89d30540eb",
+    "blast": "8dcaae750f8fa610031b1a38",
+    "who": "1b00bc1651639fc1d457c0ad",
+    "assetView": "e83cf52a131da7398757daa4",
+    "cards": "483c50f8af96b6810bfddd12",
+    "gapTasks": "7c10349e281a427a2c6a8c84",
+    "gapReports": "2472d5c7a560f27ea6f87102",
+    "overview": "a2f28364f3d065fc9358ca45",
+    "people": "4af459a7333130038e600a6f",
+    "find": "2e17fc227eb258b0b650afc7"
+  }
+}
