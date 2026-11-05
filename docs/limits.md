@@ -88,3 +88,9 @@ Seeded-content and API quirks found later go below.
 - The temporary resolver timeout probe and its Diagnostics section are removed from the admin page.
 - Repo made public 2026-11-04. The connector icon now points at jsDelivr (`cdn.jsdelivr.net/gh/apn201/Pentti@<commit>/static/connector-icon.svg`), which serves it as `image/svg+xml`. Raw GitHub serves SVG as `text/plain` and would not render. Forge lint and deploy accept an https url for `graph:connector` icons. Not yet checked in Rovo Search.
 
+## Own data, 2026-11-05
+
+- Checked in the signed-in browser on the dev site, with the same URLs as `src/own/read.ts` (sample space and project): Confluence v2 pages with `body-format=storage` return `body.storage.value` and `version.createdAt`, the `_links.next` cursor pages on. Jira `search/jql` returns `description` and comment bodies as ADF, `created` with an offset like `-0500`, and `nextPageToken` pages on.
+- Live on dev after the deploy, bundled mode: explain-asset for Old Faithful returned the same answer as before.
+- NOT RUN yet: the import through the admin page, `asUser` from a resolver for Confluence, a file input inside the Custom UI frame, the admin check over Rovo and over MCP. The browser pane was hidden, clicks did not reach the app frame.
+- Limits chosen, not measured at the edge: 1000 assets, 200 pages, 500 issues.

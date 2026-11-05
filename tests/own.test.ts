@@ -231,6 +231,7 @@ describe('dates', () => {
     const now = Date.parse('2026-11-05T00:00:00Z');
     expect(daysAgo('2026-11-01T00:00:00Z', now, 99)).toBe(4);
     expect(daysAgo(undefined, now, 99)).toBe(99);
+    expect(daysAgo('2026-11-01T00:00:00.000-0500', now, 99)).toBe(3);
     expect(daysAgo('junk', now, 99)).toBe(99);
     expect(daysAgo('2027-01-01T00:00:00Z', now, 99)).toBe(0);
   });

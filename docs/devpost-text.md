@@ -18,7 +18,7 @@ I wanted an agent that is allowed to say "nobody knows". Most assistants fill th
 
 Pentti is a working demo, a Forge app for Jira, Confluence and Rovo. It runs on one fictional factory bundled inside the app. It takes the factory's machines from an anonymized scan, matches them to the factory's pages and tickets, and scores each machine on how much is known about it and how risky it is.
 
-It does not read your own machines, pages, tickets or people yet, and there is no scanner import. Install it on a test site.
+To try it on real data, a Jira admin can import an asset list as CSV and pick one Jira project and one Confluence space to read. That part is a proof of concept: read only, no people, no task creation, no graph, visible to Jira admins, and answers come from the import, not live. It is not for production use. Install it on a test site.
 
 - Gap map: 522 assets, knowledge against risk. Top right is risky and nobody knows anything.
 - Asset card: known, not known, where it looked. Pages and tickets with match confidence, people, findings, and a button for "I checked this".
@@ -40,6 +40,7 @@ Mostly with Claude Code, working slice by slice from a written spec. [fill: your
 - Scores are pure functions with tests. Weights in one YAML file. The model never adds up anything, it repeats what the actions return.
 - "Load the factory" on the admin page seeds 66 Confluence pages (61 of content, five for the page tree) and 150 Jira issues in steps of 10, so the sources can be read on the site. The matcher works on the bundled copy, it does not read them back. Pressing it again changes nothing, Reset removes only what it made.
 - Custom UI in React. The gap map is a hand drawn SVG.
+- The own data proof of concept sits beside the demo, not inside it: its own matcher, its own storage keys, GET requests only. A test freezes every bundled output, so it can not change the demo unnoticed. Real names follow no pattern, so names match as whole tokens, a name that could be a word stays a maybe, and a page naming more than 25 machines counts as a list, not as documentation. The matcher's measured numbers above are for the demo data, there are none yet for real data.
 
 ## Challenges I ran into
 

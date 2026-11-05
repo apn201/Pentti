@@ -6,7 +6,9 @@ Built for Atlassian Codegeist 2026, category Apps for Specialized Industries.
 
 ## This is a demo
 
-Pentti runs on one fictional factory bundled inside the app. It does not read your machines, your Confluence pages, your Jira tickets or your people, and there is no scanner import. Installing it will not tell you anything about your own factory. Scores and answers are illustrations, not a safety, security or compliance assessment.
+Out of the box Pentti runs on one fictional factory bundled inside the app. It does not read your machines, your Confluence pages, your Jira tickets or your people unless a Jira admin imports them, see [Try your own data](#try-your-own-data). Scores and answers are not a safety, security or compliance assessment.
+
+On the bundled data:
 
 - The page and the agent answer from the bundled data, even before "Load the factory".
 - "Load the factory" writes a copy of the fictional pages and issues to your site so you can read them. Pentti does not read that copy back. "Where I looked" counts the bundled data, not your site.
@@ -47,6 +49,30 @@ Every step below ran on our own development site. An install from this link on a
 
 Reset on the admin page removes everything Pentti created, by the label `pentti-demo`, and nothing else.
 
+## Try your own data
+
+A proof of concept, not for production use. Use a sandbox site or a small space with nothing sensitive in it. Bundled data stays the default, your data is used only after you choose it, and one click goes back.
+
+1. Jira settings, Apps, Pentti, scroll to **Try your own data**.
+2. Give an asset list as CSV, at most 1000 machines. Each row needs a `hostname` or an `ip`. Optional columns: `site`, `line`, `role`, `model`, `manufacturer`, `firmware`, `criticality`, `nickname`, `former_names`, `old_ips`, `open_critical`, `open_high`. A blank becomes "not known".
+3. Optional: pick one Jira project and one Confluence space to read. At most 200 pages and 500 issues, the answers say when more exist.
+4. Tick the box, press **Import**, then choose **Use my own data** under Data source.
+
+What it does:
+
+- Matches pages and tickets to your machines by hostname, IP, old IP, former name, nickname and model with line. It finds a machine only where a page or ticket names it.
+- Fills the gap map, the closing list, the asset cards and Ask Pentti, with CSV, SITE and SCORE chips.
+- Something it can not back up stays "not known". A name that could be an ordinary word, such as `printer`, only counts as a maybe. A page naming more than 25 machines is treated as a list, not as documentation.
+
+What it does not do:
+
+- **No writes.** It only sends GET requests to Jira and Confluence, as the admin who imports. Creating tasks is off in this mode.
+- **No people.** Owner and "who knows it" are "not known", and the owner points can not be earned, so the highest knowledge score is 80. No account names are read into the app.
+- **No live sync.** It answers from the import until you import again.
+- **No sharing.** Only Jira admins get answers, on the page, in Rovo and over MCP. Nothing goes into the Teamwork Graph.
+
+What it keeps: your asset list, page and ticket titles, keys and dates, and what matched, in this app's Forge storage. Page and ticket text is dropped after matching. **Delete my data** removes all of it. Nothing changes in Jira or Confluence, and Reset can not touch your pages or tickets. Answers in Rovo Chat and over MCP pass through those services as usual.
+
 ## How it is built
 
 - Forge, Node 24, TypeScript. Custom UI with React and Vite. Storage in Forge KVS.
@@ -56,7 +82,8 @@ Reset on the admin page removes everything Pentti created, by the label `pentti-
 - `src/actions/`: the Rovo actions and the view models for the page.
 - `src/seed/`: the idempotent seeder behind "Load the factory".
 - `src/connector/`: Teamwork Graph asset cards.
-- Tests: `npm test` runs pytest for the generator and vitest for matcher, scores, actions, seeder and cards.
+- `src/own/`: the own data proof of concept. CSV reader, read-only Jira and Confluence reader, its own matcher, its own storage keys.
+- Tests: `npm test` runs pytest for the generator and vitest for matcher, scores, actions, seeder, cards and own data. `tests/bundled-baseline.test.ts` freezes every bundled output, so own data can not change the demo unnoticed.
 
 What we measured on the platform, and every workaround, is in `docs/limits.md`. Decisions are in `docs/decisions.md`.
 
