@@ -92,5 +92,13 @@ Seeded-content and API quirks found later go below.
 
 - Checked in the signed-in browser on the dev site, with the same URLs as `src/own/read.ts` (sample space and project): Confluence v2 pages with `body-format=storage` return `body.storage.value` and `version.createdAt`, the `_links.next` cursor pages on. Jira `search/jql` returns `description` and comment bodies as ADF, `created` with an offset like `-0500`, and `nextPageToken` pages on.
 - Live on dev after the deploy, bundled mode: explain-asset for Old Faithful returned the same answer as before.
-- NOT RUN yet: the import through the admin page, `asUser` from a resolver for Confluence, a file input inside the Custom UI frame, the admin check over Rovo and over MCP. The browser pane was hidden, clicks did not reach the app frame.
+- Live run through the admin page on the dev site, 2026-11-05: a CSV of 7 rows, pasted, against the sample IT Operations space and project. 6 machines kept, the bad row reported at the right line. 19 pages and 500 issues read in about 20 s, "more exist" shown. Reading as the admin from a resolver works for Jira and Confluence, no new scopes and no reinstall.
+- Matches were as expected: `user-service` on two tickets at 1.0, an IP in a ticket summary, a hostname in a page. `billing` stayed a maybe at 0.3 on many tickets. `no-such-host-99` matched nothing.
+- The site stayed on bundled data until own data was chosen. Back on bundled, the Birch report said 22.5 hours and 15.1 percent, the gap map 522, 60 and 98. After Delete my data the test machine was gone.
+- Nothing was written: JQL and CQL over the last 3 hours found no created issue, no changed ITO issue, no changed ITO page, no gap task. The graph sync time did not move.
+- Rovo Chat, as an admin: Ask Pentti answered from own data with CSV, SITE and SCORE and real ticket links, said people are not imported, and refused to create a task.
+- MCP with the Claude client: every tool refused with the admin-only message while on own data, and worked again on bundled. Why it refuses is not known, the check fails closed. Not looked into further, it is the safe side.
+- Found live and fixed: "Highest score 0" from counts without scores, "Medium 0, Low 0" that the list never said, "0 in not known", a long list of maybes (now 10 and a count), a horizontal scrollbar from the column list.
+- NOT RUN: the file picker, a native dialog the test tools can not drive, so only pasting ran. A user who is not a Jira admin. Limits at their edge, 1000 assets and 200 pages. Reset while own data exists, it would empty the demo site, covered by the separate keys in code. Real plant data, so the matcher has no measured number there.
+- Test tool notes: the first wheel scroll after a load is lost, native select lists can not be clicked. Focus with Tab and press letters.
 - Limits chosen, not measured at the edge: 1000 assets, 200 pages, 500 issues.

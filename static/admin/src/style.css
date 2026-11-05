@@ -22,6 +22,7 @@ button:disabled { opacity: 0.5; cursor: default; }
 .bar > div { height: 100%; background: var(--ds-background-success-bold, #1f845a); transition: width 0.2s; }
 .errors { color: var(--ds-text-danger, #ae2e24); font-size: 13px; white-space: pre-wrap; }
 code { font-size: 12px; }
+.wrap { overflow-wrap: anywhere; }
 .choice { font-weight: 400; margin: 4px 0; }
 .warn { border-left: 3px solid var(--ds-border-warning, #e56910); padding: 4px 0 4px 10px; }
 textarea, input[type="file"] { width: 100%; box-sizing: border-box; font: inherit; color: inherit; }

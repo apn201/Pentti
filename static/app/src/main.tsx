@@ -56,7 +56,7 @@ function App() {
       {own ? (
         <header className="brand">
           <p className="muted small">
-            <strong>Your own data, imported {own.importedOn}. Proof of concept, not for production use.</strong> Read only, nothing here writes to Jira or Confluence, and only Jira admins can see it. Asset list <Chip k="SCAN" />, pages and tickets read from {[own.spaceKey, own.projectKey].filter(Boolean).join(' and ') || 'nowhere, none were picked'} <Chip k="GEN" />, scores computed <Chip k="SCORE" />. People are not imported. Not a safety, security or compliance assessment.
+            <strong>Your own data, imported {own.importedOn}. Proof of concept, not for production use.</strong> Read only, nothing here writes to Jira or Confluence, and only Jira admins can see it. Asset list <Chip k="SCAN" />, pages and tickets read from {[own.spaceKey && `space ${own.spaceKey}`, own.projectKey && `project ${own.projectKey}`].filter(Boolean).join(' and ') || 'nowhere, none were picked'} <Chip k="GEN" />, scores computed <Chip k="SCORE" />. People are not imported. Not a safety, security or compliance assessment.
           </p>
         </header>
       ) : (

@@ -163,6 +163,23 @@ describe('own data through the scores and actions', () => {
   it('counts from the list drive risk, and carry no invented CVE', () => {
     expect(byId.get(a1.id)!.riskDetail.openCriticalOrHigh).toBe(3);
     expect(index.findingsFor(a1.id).every((f) => f.cve === 'not known' && f.score === null)).toBe(true);
+    const r = explainAsset(index, byId.get(a1.id)!, site);
+    expect(r.known.findings).toMatchObject({ chip: 'CSV', open: 3, openCritical: 1, openHigh: 2, maxScore: null });
+  });
+
+  it('caps a long maybe list and says how many it left out', () => {
+    const noisy = asset({ hostname: 'printer', ip: '10.0.0.8', site: 'Oulu' });
+    const docs2: OwnDocs = {
+      pages: [],
+      issues: Array.from({ length: 30 }, (_, i) => ({ id: `oi_${i}`, remoteId: String(i), key: `REAL-${i}`, summary: 'printer', status: 'Open', createdDaysAgo: 1, resolvedDaysAgo: null })),
+      links: Array.from({ length: 30 }, (_, i) => ({ assetId: noisy.id, source: `oi_${i}`, sourceKind: 'issue' as const, matchType: 'nickname_ambiguous' as const, confidence: 0.3, evidence: 'printer' })),
+    };
+    const b = buildOwn([[noisy]], [docs2], scoring);
+    const ix = new Index(b.data, b.links);
+    const r = explainAsset(ix, scoreAll(ix, [], 0, true)[0], { ...site, seeded: b.seeded });
+    expect(r.maybe).toHaveLength(10);
+    expect(r.maybeNotShown).toBe(20);
+    expect(r.searched.join(' ')).toContain('30 maybe');
   });
 
   it('explain says own data, links the real page and ticket, and says what it did not read', () => {

@@ -72,7 +72,7 @@ export function OwnData({ targets, demo, onMode }: { targets: Targets | null; de
       const done = await call<OwnStatus>('ownFinish');
       show(done);
       setList(null);
-      setMessage('Imported. The site is still on bundled data until you choose your own below.');
+      setMessage('Imported. The site is still on bundled data until you choose your own under Data source, above.');
     } catch (e) {
       setMessage(`${text(e)} The site stays on bundled data.`);
       call<OwnStatus>('ownStatus').then(show).catch(() => undefined);
@@ -126,7 +126,7 @@ export function OwnData({ targets, demo, onMode }: { targets: Targets | null; de
 
       <label htmlFor="own-file">Asset list, CSV</label>
       <p className="muted">
-        At most {status?.limits.rows ?? '...'} machines. Each row needs a hostname or an IP. The other columns are optional, a blank becomes "not known". Columns: <code>{EXAMPLE}</code>
+        At most {status?.limits.rows ?? '...'} machines. Each row needs a hostname or an IP. The other columns are optional, a blank becomes "not known". Columns: <code className="wrap">{EXAMPLE}</code>
       </p>
       <input id="own-file" type="file" accept=".csv,text/csv,text/plain" disabled={busy} onChange={(e) => pick(e.target.files?.[0])} />
       <label htmlFor="own-paste">Or paste it</label>
@@ -139,7 +139,7 @@ export function OwnData({ targets, demo, onMode }: { targets: Targets | null; de
         </p>
       )}
       {list && list.errors.length > 0 && (
-        <pre className="errors">{`${list.errors.length} rows left out.\n`}{list.errors.slice(0, 10).map((e) => `Line ${e.line}: ${e.message}`).join('\n')}</pre>
+        <pre className="errors">{`${list.errors.length} ${list.errors.length === 1 ? 'row' : 'rows'} left out.\n`}{list.errors.slice(0, 10).map((e) => `Line ${e.line}: ${e.message}`).join('\n')}</pre>
       )}
 
       <label htmlFor="own-project">Jira project to read, optional</label>

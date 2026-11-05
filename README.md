@@ -69,7 +69,7 @@ What it does not do:
 - **No writes.** It only sends GET requests to Jira and Confluence, as the admin who imports. Creating tasks is off in this mode.
 - **No people.** Owner and "who knows it" are "not known", and the owner points can not be earned, so the highest knowledge score is 80. No account names are read into the app.
 - **No live sync.** It answers from the import until you import again.
-- **No sharing.** Only Jira admins get answers, on the page, in Rovo and over MCP. Nothing goes into the Teamwork Graph.
+- **No sharing.** Only Jira admins get answers, on the page and in Rovo. The MCP tools refused while a site ran on own data, in our test with the Claude client. Nothing goes into the Teamwork Graph.
 
 What it keeps: your asset list, page and ticket titles, keys and dates, and what matched, in this app's Forge storage. Page and ticket text is dropped after matching. **Delete my data** removes all of it. Nothing changes in Jira or Confluence, and Reset can not touch your pages or tickets. Answers in Rovo Chat and over MCP pass through those services as usual.
 

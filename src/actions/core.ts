@@ -33,6 +33,7 @@ export const BLAST_SENTENCE = 'Same subnet. Reachability not verified. No routin
 export const NOT_SEARCHED = 'Your own Jira and Confluence were not searched. This demo reads only the bundled data.';
 export const MAX_TASKS = 10;
 export const MAX_GAP_N = 25;
+export const MAX_OWN_MAYBE = 10;
 
 const OPEN = new Set(['open', 'reopen']);
 
@@ -148,7 +149,8 @@ function findingsSummary(findings: Finding[], chip: Chip = 'SCAN') {
     openHigh: by('High'),
     openMedium: by('Medium'),
     openLow: by('Low'),
-    maxScore: scores.length ? Math.max(...scores) : null,
+    // Counts from an asset list have no scores. Zero would be a made up number.
+    maxScore: !scores.length || (chip === 'CSV' && open.every((f) => f.score === null)) ? null : Math.max(...scores),
     top,
   };
 }
@@ -289,7 +291,9 @@ export function explainAsset(index: Index, score: AssetScore, site: Site) {
     known,
     not_known: notKnown,
     searched,
-    maybe: maybe.map((l) => ({ ...sourceRef(l.sourceKind, l.source, index, site), matchedOn: l.matchType, confidence: l.confidence, evidence: l.evidence })),
+    // A common word in a real project can be a maybe in hundreds of tickets. The counts are in searched.
+    maybe: (own ? maybe.slice(0, MAX_OWN_MAYBE) : maybe).map((l) => ({ ...sourceRef(l.sourceKind, l.source, index, site), matchedOn: l.matchType, confidence: l.confidence, evidence: l.evidence })),
+    ...(own && maybe.length > MAX_OWN_MAYBE ? { maybeNotShown: maybe.length - MAX_OWN_MAYBE } : {}),
     sources: [...pages.map((p) => p.id), ...issues.map((i) => i.id)],
     knowledge: {
       chip: 'SCORE',

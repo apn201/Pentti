@@ -20,6 +20,7 @@ interface AssetData {
   not_known: string[];
   searched: string[];
   maybe: Source[];
+  maybeNotShown?: number;
   knowledge: { score: number; parts: Record<string, { points: number; max: number; reason: string }> };
   risk: { score: number; openCriticalOrHigh: number; exploitBonus: number };
   danger: { score: number };
@@ -146,10 +147,12 @@ export function AssetCard({ assetId, onOpen, onChanged }: { assetId: string | nu
                 {k.identity.ipHistory.length > 0 && <li>Old IP {k.identity.ipHistory.join(', ')} <Chip k={own ? 'SCAN' : 'GEN'} /></li>}
                 {k.identity.formerNames.length > 0 && <li>Former name {k.identity.formerNames.join(', ')} <Chip k={own ? 'SCAN' : 'GEN'} /></li>}
                 <li>Model {k.hardware.model}, {k.hardware.manufacturer}, firmware {k.hardware.firmware} <Chip k="SCAN" /></li>
-                <li>
+                {own ? (
+                  <li>Open findings <Num v={k.findings.open} k="SCAN" />: Critical {k.findings.openCritical}, High {k.findings.openHigh}. Counts only, the list gives nothing else.</li>
+                ) : <li>
                   Open findings <Num v={k.findings.open} k="SCAN" />: Critical {k.findings.openCritical}, High {k.findings.openHigh}, Medium {k.findings.openMedium}, Low {k.findings.openLow}.
                   Highest score <Num v={k.findings.maxScore} k="SCAN" />
-                </li>
+                </li>}
                 {k.owner && <li>Owner {k.owner.name}{k.owner.leavingSoon ? `, leaving in ${k.owner.leavingInDays} days` : ''} <Chip k="GEN" /></li>}
                 {pages.length > 0 && <li>{pages.length} page(s) and {issues.length} ticket(s) describe it <Chip k="GEN" /></li>}
                 {pages.length === 0 && issues.length > 0 && <li>{issues.length} ticket(s) mention it <Chip k="GEN" /></li>}
@@ -186,7 +189,7 @@ export function AssetCard({ assetId, onOpen, onChanged }: { assetId: string | nu
               )}
               <h2>If it stops</h2>
               <p>
-                {data.blast.sameLine} other assets on the line, {data.blast.sameLineCritical} of them Critical. {data.blast.sameSubnet} in {data.blast.subnet} <Chip k="SCAN" />.{' '}
+                {data.blast.sameLine} other assets on the line, {data.blast.sameLineCritical} of them Critical. {data.blast.subnet === 'not known' ? 'Subnet not known' : <>{data.blast.sameSubnet} in {data.blast.subnet}</>} <Chip k="SCAN" />.{' '}
                 <span className="muted">{data.blast.sentence}</span>
               </p>
               <div className="bar">
@@ -234,6 +237,7 @@ export function AssetCard({ assetId, onOpen, onChanged }: { assetId: string | nu
               <h3>Maybe, not counted</h3>
               <ul className="plain muted">
                 {data.maybe.map((m) => <li key={m.id}><ExtLink href={m.url}>{m.title}</ExtLink>, {m.matchedOn} "{m.evidence}", confidence {m.confidence}</li>)}
+                {data.maybeNotShown ? <li>{data.maybeNotShown} more not shown.</li> : null}
               </ul>
             </>
           )}
