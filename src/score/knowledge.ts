@@ -26,6 +26,7 @@ export interface KnowledgeContext {
   person: (id: string) => Person | undefined;
   confirmations: Confirmation[];       // for this asset, daysAgo relative to today
   elapsedDays?: number;
+  ownData?: boolean;                   // a real asset list: any name counts, people are not imported
 }
 
 const HOSTNAME_PATTERN = /^[a-z]+-l\d+-[a-z]+-\d{2}$/;
@@ -57,7 +58,8 @@ export function knowledge(asset: Asset, ctx: KnowledgeContext): Knowledge {
 
   // name
   const named = !!(asset.hostname && HOSTNAME_PATTERN.test(asset.hostname)) || !!asset.nickname;
-  part('name', named, named ? (asset.hostname ? 'hostname follows the pattern' : 'has a nickname') : 'no name and no nickname');
+  if (ctx.ownData) part('name', !!(asset.hostname || asset.nickname), asset.hostname ? 'has a hostname' : asset.nickname ? 'has a nickname' : 'no name and no nickname');
+  else part('name', named, named ? (asset.hostname ? 'hostname follows the pattern' : 'has a nickname') : 'no name and no nickname');
 
   // owner: a person who touched it recently and is still here
   const touches: { personId: string; daysAgo: number; source: string }[] = [];
@@ -79,7 +81,8 @@ export function knowledge(asset: Asset, ctx: KnowledgeContext): Knowledge {
       ownerSources = [t.source];
     }
   }
-  if (!owner) part('owner', false, 'nobody touched it in the last ' + win.owner_activity + ' months');
+  if (ctx.ownData) part('owner', false, 'people are not imported');
+  else if (!owner) part('owner', false, 'nobody touched it in the last ' + win.owner_activity + ' months');
   else if (owner.leaving) part('owner', true, 'last touched by someone who is leaving', ownerSources, w.owner_leaving);
   else part('owner', true, 'touched recently by someone who stays', ownerSources);
 

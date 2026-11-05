@@ -5,6 +5,7 @@ import { createRoot } from 'react-dom/client';
 import { invoke, view } from '@forge/bridge';
 import logo from './logo-tervaniemi.png';
 import './style.css';
+import { OwnData } from './OwnData';
 
 type Count = { done: number; total: number };
 type Progress = Count & { pages: Count; issues: Count };
@@ -36,6 +37,7 @@ function App() {
   const [graph, setGraph] = useState<GraphStatus | null>(null);
   const [syncing, setSyncing] = useState(false);
   const [graphMsg, setGraphMsg] = useState('');
+  const [ownOn, setOwnOn] = useState(false);
 
   const loadGraph = () => call<GraphStatus>('graphStatus').then(setGraph).catch((e) => setGraphMsg(text(e)));
   const sync = async () => {
@@ -164,11 +166,13 @@ function App() {
           {graph.lastSync ? ` Last sync ${graph.lastSync.at.slice(0, 16).replace('T', ' ')} UTC, ${graph.lastSync.accepted} of ${graph.lastSync.cards} cards accepted.` : ''}
         </p>
       )}
-      <button className="subtle" disabled={!!busy || syncing || !graph?.connected} onClick={sync}>
+      <button className="subtle" disabled={!!busy || syncing || !graph?.connected || ownOn} onClick={sync}>
         {syncing ? 'Syncing' : 'Sync asset cards now'}
       </button>
+      {ownOn && <p className="muted">Off while Pentti runs on your own data. Your data never goes into the graph.</p>}
       {graphMsg && <p>{graphMsg}</p>}
 
+      <OwnData targets={targets} demo={status?.config ?? null} onMode={setOwnOn} />
     </main>
   );
 }

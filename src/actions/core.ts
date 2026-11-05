@@ -9,13 +9,23 @@ import { closingList, steps, type Step } from '../score/closing';
 import type { Dimension } from '../score/knowledge';
 import type { SeededMap } from '../seed/plan';
 
-export type Chip = 'SCAN' | 'GEN' | 'SCORE';
+export type Chip = 'SCAN' | 'GEN' | 'SCORE' | 'CSV' | 'SITE';
+
+/** What an admin imported. Only set when the site runs on own data, so bundled answers never carry it. */
+export interface OwnInfo {
+  importedOn: string;
+  spaceKey: string | null;
+  projectKey: string | null;
+  pagesCapped: boolean;
+  issuesCapped: boolean;
+}
 
 export interface Site {
   baseUrl: string | null;    // https://<site>.atlassian.net, null when not known
   appUrl?: string | null;    // the Pentti page, <baseUrl>/jira/apps/<app>/<env>, null when not known
   seeded: SeededMap;         // dataset id -> Jira key or Confluence page id
   elapsedDays: number;       // days since "Load the factory"
+  own?: OwnInfo;
 }
 
 export const NOT_KNOWN = 'not known';
@@ -108,7 +118,9 @@ export function findAsset(index: Index, text: string, site?: Site) {
 
 // ---------- explain-asset ----------
 
-function notKnownText(d: Dimension, w: ScoringConfig['windows_months']): string {
+function notKnownText(d: Dimension, w: ScoringConfig['windows_months'], own?: OwnInfo): string {
+  if (own && d === 'owner') return 'Owner: people are not imported in this proof of concept.';
+  if (own && d === 'firmware') return 'Firmware: the asset list does not say.';
   return {
     name: 'Name: no hostname and no nickname.',
     owner: `Owner: nobody who stays touched it in the last ${w.owner_activity} months.`,
@@ -120,7 +132,7 @@ function notKnownText(d: Dimension, w: ScoringConfig['windows_months']): string 
   }[d];
 }
 
-function findingsSummary(findings: Finding[]) {
+function findingsSummary(findings: Finding[], chip: Chip = 'SCAN') {
   const open = findings.filter((f) => OPEN.has(f.status));
   const by = (s: Finding['severity']) => open.filter((f) => f.severity === s).length;
   const top = [...open]
@@ -129,7 +141,7 @@ function findingsSummary(findings: Finding[]) {
     .map((f) => ({ cve: f.cve, severity: f.severity, score: f.score, exploit: f.exploitLabel, summary: f.summary }));
   const scores = open.map((f) => f.score ?? 0);
   return {
-    chip: 'SCAN' as Chip,
+    chip,
     total: findings.length,
     open: open.length,
     openCritical: by('Critical'),
@@ -178,6 +190,9 @@ export function explainAsset(index: Index, score: AssetScore, site: Site) {
   const maybe = links.filter((l) => l.confidence < cfg.match_min_confidence);
   const k = score.knowledge;
   const elapsed = site.elapsedDays;
+  const own = site.own;
+  const listChip: Chip = own ? 'CSV' : 'SCAN';
+  const docChip: Chip = own ? 'SITE' : 'GEN';
 
   const pages = counted.filter((l) => l.sourceKind === 'page').map((l) => {
     const p = index.page(l.source)!;
@@ -188,7 +203,7 @@ export function explainAsset(index: Index, score: AssetScore, site: Site) {
       matchedOn: l.matchType,
       confidence: l.confidence,
       evidence: l.evidence,
-      chip: 'GEN' as Chip,
+      chip: docChip,
     };
   }).sort((x, y) => x.lastEditedDaysAgo - y.lastEditedDaysAgo);
 
@@ -201,7 +216,7 @@ export function explainAsset(index: Index, score: AssetScore, site: Site) {
       matchedOn: l.matchType,
       confidence: l.confidence,
       evidence: l.evidence,
-      chip: 'GEN' as Chip,
+      chip: docChip,
     };
   }).sort((x, y) => x.createdDaysAgo - y.createdDaysAgo);
 
@@ -209,13 +224,13 @@ export function explainAsset(index: Index, score: AssetScore, site: Site) {
 
   const known: Record<string, unknown> = {
     identity: {
-      chip: 'SCAN',
+      chip: listChip,
       hostname: a.hostname ?? NOT_KNOWN,
       nickname: a.nickname ?? NOT_KNOWN,
       plant: a.plant,
       line: a.line,
       role: a.role,
-      ip: a.ip,
+      ip: a.ip || NOT_KNOWN,
       ipHistory: a.ipHistory,
       formerNames: a.formerNames,
       criticality: a.criticality,
@@ -223,14 +238,14 @@ export function explainAsset(index: Index, score: AssetScore, site: Site) {
       flags: a.flags,
     },
     hardware: {
-      chip: 'SCAN',
+      chip: listChip,
       model: a.model ?? NOT_KNOWN,
       manufacturer: a.manufacturer ?? NOT_KNOWN,
       firmware: a.firmware ?? NOT_KNOWN,
       modules: a.modules,
-      lastSeenDaysAgo: a.lastSeenDaysAgo,
+      lastSeenDaysAgo: own ? NOT_KNOWN : a.lastSeenDaysAgo,
     },
-    findings: findingsSummary(index.findingsFor(a.id)),
+    findings: findingsSummary(index.findingsFor(a.id), listChip),
   };
   if (owner) known.owner = owner;
   if (pages.length) known.pages = pages;
@@ -238,14 +253,28 @@ export function explainAsset(index: Index, score: AssetScore, site: Site) {
 
   const notKnown = (Object.keys(k.parts) as Dimension[])
     .filter((d) => k.parts[d].points === 0)
-    .map((d) => notKnownText(d, cfg.windows_months));
+    .map((d) => notKnownText(d, cfg.windows_months, own));
+  if (own && !index.findingsFor(a.id).length) notKnown.push('Findings: the asset list gives none. That does not mean there are none.');
   if (k.owner?.leaving) notKnown.push(`Owner after ${owner?.name ?? 'the owner'} leaves: nobody else touched it recently.`);
   notKnown.push(
     pages.length ? 'Spare parts: not in any structured source. Check the linked pages.' : 'Spare parts: not known.',
     'Upstream and downstream machines: not known. No process or routing data.',
   );
 
-  const searched = [
+  const pagesMaybe = maybe.filter((l) => l.sourceKind === 'page').length;
+  const issuesMaybe = maybe.filter((l) => l.sourceKind === 'issue').length;
+  const searched = own ? [
+    `Your asset list, imported ${own.importedOn}: ${index.assets.length} assets. ${index.findingsFor(a.id).length} findings counted on this machine.`,
+    own.spaceKey
+      ? `Confluence space ${own.spaceKey}: ${index.data.pages.length} pages read${own.pagesCapped ? ', more exist and were not read' : ''}. ${pages.length} counted for this machine, ${pagesMaybe} maybe.`
+      : 'Confluence: no space was picked.',
+    own.projectKey
+      ? `Jira project ${own.projectKey}: ${index.data.issues.length} issues read${own.issuesCapped ? ', more exist and were not read' : ''}. ${issues.length} counted for this machine, ${issuesMaybe} maybe.`
+      : 'Jira: no project was picked.',
+    'People: not imported.',
+    'Matched on hostname, IP, old IP, former name, nickname and model with line.',
+    `Nothing else on this site was searched. Pages and tickets are as they were on ${own.importedOn}.`,
+  ] : [
     `Scan: ${index.assets.length} assets and ${index.data.findings.length} findings. ${index.findingsFor(a.id).length} findings on this machine.`,
     `Demo pages bundled with the app: ${index.data.pages.length}. ${pages.length} counted for this machine, ${maybe.filter((l) => l.sourceKind === 'page').length} maybe.`,
     `Demo issues bundled with the app: ${index.data.issues.length}. ${issues.length} counted for this machine, ${maybe.filter((l) => l.sourceKind === 'issue').length} maybe.`,
@@ -255,6 +284,7 @@ export function explainAsset(index: Index, score: AssetScore, site: Site) {
   ];
 
   return {
+    ...(own ? { dataset: 'own' as const } : {}),
     asset: brief(a, site),
     known,
     not_known: notKnown,
@@ -293,15 +323,17 @@ export function blastRadius(index: Index, scores: Map<string, AssetScore>, asset
     danger: round1(scores.get(b.id)?.danger ?? 0),
   });
   const byDanger = (x: { danger: number; assetId: string }, y: { danger: number; assetId: string }) => y.danger - x.danger || x.assetId.localeCompare(y.assetId);
-  const sameLine = index.byLine(a.plant, a.line).filter((b) => b.id !== a.id).map(row).sort(byDanger);
+  // A blank line or address in an asset list says nothing about neighbours.
+  const sameLine = (a.line ? index.byLine(a.plant, a.line) : []).filter((b) => b.id !== a.id).map(row).sort(byDanger);
   const net = subnet(a.ip);
-  const sameSubnet = index.assets.filter((b) => b.id !== a.id && subnet(b.ip) === net).map(row).sort(byDanger);
+  const sameSubnet = (a.ip ? index.assets : []).filter((b) => b.id !== a.id && subnet(b.ip) === net).map(row).sort(byDanger);
   const cap = 25;
+  const chip: Chip = site?.own ? 'CSV' : 'SCAN';
   return {
     asset: brief(a, site),
     sentence: BLAST_SENTENCE,
-    sameLine: { chip: 'SCAN', count: sameLine.length, critical: sameLine.filter((b) => b.criticality === 'Critical').length, assets: sameLine.slice(0, cap) },
-    sameSubnet: { chip: 'SCAN', subnet: `${net}.0/24`, count: sameSubnet.length, critical: sameSubnet.filter((b) => b.criticality === 'Critical').length, assets: sameSubnet.slice(0, cap) },
+    sameLine: { chip, count: sameLine.length, critical: sameLine.filter((b) => b.criticality === 'Critical').length, assets: sameLine.slice(0, cap) },
+    sameSubnet: { chip, subnet: a.ip ? `${net}.0/24` : NOT_KNOWN, count: sameSubnet.length, critical: sameSubnet.filter((b) => b.criticality === 'Critical').length, assets: sameSubnet.slice(0, cap) },
     note: sameLine.length > cap || sameSubnet.length > cap ? `Lists show the ${cap} with the most danger.` : undefined,
   };
 }
@@ -327,7 +359,9 @@ export function whoKnows(index: Index, assetId: string, site: Site) {
   return {
     asset: brief(a, site),
     people,
-    not_known: active.length ? [] : ['Nobody who is still here has touched this machine in any page or ticket.'],
+    not_known: site.own
+      ? ['Who knows it: not known. People are not imported in this proof of concept.']
+      : active.length ? [] : ['Nobody who is still here has touched this machine in any page or ticket.'],
     note: active.length === 1 ? 'One person still here knows it.' : undefined,
   };
 }

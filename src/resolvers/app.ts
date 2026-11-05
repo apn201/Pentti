@@ -2,8 +2,9 @@
 // The two writes, "Create tasks" and "I checked this", key off context.accountId and check every id.
 import Resolver from '@forge/resolver';
 import { kvs } from '@forge/kvs';
-import { snapshot } from '../app/context';
+import { ownDenied, snapshot, type Snapshot } from '../app/context';
 import { CONFIRM_PREFIX } from '../seed/seed';
+import { OWN_CONFIRM_PREFIX } from '../own/store';
 import { findAsset, gapReport } from '../actions/core';
 import { assetView, overview, peopleView } from '../actions/views';
 import { createGapTasks, existingGapTasks } from '../actions/tasks';
@@ -28,30 +29,38 @@ function safe<T>(name: string, fn: (req: Req) => Promise<T>) {
   };
 }
 
-resolver.define('overview', safe('overview', async () => {
-  const snap = await snapshot();
-  return overview(snap.index, snap.scores);
+/** A resolver that needs the data: the access check for own data comes first. */
+function withData<T>(name: string, fn: (snap: Snapshot, req: Req) => Promise<T> | T) {
+  return safe(name, async (req) => {
+    const snap = await snapshot();
+    const denied = await ownDenied(snap, req.context.accountId);
+    if (denied) return denied;
+    return fn(snap, req);
+  });
+}
+
+// Gap tasks do not exist on own data, it is read only.
+const gapTasks = (snap: Snapshot) => (snap.site.own ? Promise.resolve({} as Record<string, string>) : existingGapTasks().catch(() => ({} as Record<string, string>)));
+
+resolver.define('overview', withData('overview', (snap) => {
+  const o = overview(snap.index, snap.scores);
+  return snap.site.own ? { ...o, own: snap.site.own } : o;
 }));
 
-resolver.define('find', safe('find', async ({ payload }) => {
-  const snap = await snapshot();
-  return findAsset(snap.index, String(payload.query ?? ''), snap.site);
-}));
+resolver.define('find', withData('find', (snap, { payload }) => findAsset(snap.index, String(payload.query ?? ''), snap.site)));
 
-resolver.define('asset', safe('asset', async ({ payload }) => {
-  const snap = await snapshot();
+resolver.define('asset', withData('asset', async (snap, { payload }) => {
   const id = String(payload.assetId ?? '');
   const score = snap.byId.get(id);
   if (!score) return { error: `Unknown asset id ${id}.` };
-  const tasks = await existingGapTasks().catch(() => ({} as Record<string, string>));
+  const tasks = await gapTasks(snap);
   return assetView(snap.index, score, snap.byId, snap.site, snap.confirmations, tasks[id] ?? null);
 }));
 
-resolver.define('closing', safe('closing', async ({ payload }) => {
-  const snap = await snapshot();
+resolver.define('closing', withData('closing', async (snap, { payload }) => {
   const report = gapReport(snap.index, snap.scores, String(payload.plant ?? 'all'), Number(payload.n ?? 10));
   if ('error' in report) return report;
-  const tasks = await existingGapTasks().catch(() => ({} as Record<string, string>));
+  const tasks = await gapTasks(snap);
   const url = (k: string) => (snap.site.baseUrl ? `${snap.site.baseUrl}/browse/${k}` : null);
   return {
     ...report,
@@ -63,20 +72,17 @@ resolver.define('closing', safe('closing', async ({ payload }) => {
   };
 }));
 
-resolver.define('people', safe('people', async () => {
-  const snap = await snapshot();
-  return peopleView(snap.index, snap.scores, snap.site);
-}));
+resolver.define('people', withData('people', (snap) => peopleView(snap.index, snap.scores, snap.site)));
 
 resolver.define('createTasks', safe('createTasks', async ({ payload, context }) =>
   createGapTasks(await snapshot(), payload.assetIds, context.accountId)));
 
-resolver.define('confirm', safe('confirm', async ({ payload, context }) => {
+resolver.define('confirm', withData('confirm', async (snap, { payload, context }) => {
   if (!context.accountId) return { error: 'Sign in to confirm a machine.' };
-  const snap = await snapshot();
   const id = String(payload.assetId ?? '');
   if (!snap.index.asset(id)) return { error: `Unknown asset id ${id}.` };
-  await kvs.set(CONFIRM_PREFIX + id, { accountId: context.accountId, at: new Date().toISOString() });
+  const prefix = snap.site.own ? OWN_CONFIRM_PREFIX : CONFIRM_PREFIX;
+  await kvs.set(prefix + id, { accountId: context.accountId, at: new Date().toISOString() });
   await syncOne(id).catch((e) => console.error('syncOne', e));
   return { ok: true, assetId: id };
 }));

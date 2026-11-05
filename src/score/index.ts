@@ -11,7 +11,7 @@ export interface AssetScore extends Scored {
   danger: number;
 }
 
-export function scoreAsset(index: Index, assetId: string, confirmations: Confirmation[] = [], elapsedDays = 0): AssetScore {
+export function scoreAsset(index: Index, assetId: string, confirmations: Confirmation[] = [], elapsedDays = 0, ownData = false): AssetScore {
   const a = index.asset(assetId);
   if (!a) throw new Error(`unknown asset ${assetId}`);
   const cfg = index.data.scoring;
@@ -23,11 +23,12 @@ export function scoreAsset(index: Index, assetId: string, confirmations: Confirm
     person: (id) => index.person(id),
     confirmations: confirmations.filter((c) => c.assetId === a.id),
     elapsedDays,
+    ownData,
   });
   const r = risk(a, index.findingsFor(a.id), cfg);
   return { assetId: a.id, risk: r.score, riskDetail: r, knowledge: k, danger: danger(r.score, k.score) };
 }
 
-export function scoreAll(index: Index, confirmations: Confirmation[] = [], elapsedDays = 0): AssetScore[] {
-  return index.assets.map((a) => scoreAsset(index, a.id, confirmations, elapsedDays));
+export function scoreAll(index: Index, confirmations: Confirmation[] = [], elapsedDays = 0, ownData = false): AssetScore[] {
+  return index.assets.map((a) => scoreAsset(index, a.id, confirmations, elapsedDays, ownData));
 }

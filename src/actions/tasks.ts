@@ -25,6 +25,8 @@ function adf(lines: string[]) {
 }
 
 export async function createGapTasks(snap: Snapshot, input: unknown, accountId: string | undefined) {
+  // Own data is read only. Nothing in this mode writes to Jira or Confluence.
+  if (snap.site.own) return { error: 'Tasks are off while Pentti runs on your own data. Nothing was created.' };
   if (!accountId) return { error: 'No user behind this call. Creating tasks needs a signed-in user.' };
   const v = validateTaskIds(snap.index, input);
   if ('error' in v) return v;

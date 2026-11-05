@@ -20,8 +20,18 @@ const CHIP_TITLE: Record<ChipKind, string> = {
   SCORE: 'Computed by Pentti from the scan and the generated content',
 };
 
+// On own data the same places say where the number really comes from.
+let ownData = false;
+export const setOwnData = (on: boolean) => { ownData = on; };
+
+const OWN_CHIP: Record<ChipKind, { text: string; title: string }> = {
+  SCAN: { text: 'CSV', title: 'From the asset list you imported' },
+  GEN: { text: 'SITE', title: 'Read from the Jira project and Confluence space you picked' },
+  SCORE: { text: 'SCORE', title: 'Computed by Pentti from your asset list, pages and tickets' },
+};
+
 export function Chip({ k }: { k: ChipKind }) {
-  return <span className={`chip chip-${k.toLowerCase()}`} title={CHIP_TITLE[k]}>{k}</span>;
+  return <span className={`chip chip-${k.toLowerCase()}`} title={ownData ? OWN_CHIP[k].title : CHIP_TITLE[k]}>{ownData ? OWN_CHIP[k].text : k}</span>;
 }
 
 /** A number with its chip. Every number on the page goes through here or sits next to a Chip. */
@@ -80,3 +90,10 @@ export const PLANT_COLORS: Record<string, string> = {
   Alder: '#db2777',
   Annex: '#0e7490',
 };
+
+const OTHER_COLORS = Object.values(PLANT_COLORS);
+
+/** The demo plants keep their colours. Other sites take colours in the order of the list. */
+export function plantColor(plant: string, plants: string[]): string {
+  return PLANT_COLORS[plant] ?? OTHER_COLORS[Math.max(0, plants.indexOf(plant)) % OTHER_COLORS.length];
+}

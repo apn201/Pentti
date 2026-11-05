@@ -44,7 +44,7 @@ const STEP_WORDS: Record<string, string> = {
   confirm: 'Check it in person',
 };
 
-export function Closing({ plants, onOpen }: { plants: string[]; onOpen: (id: string) => void }) {
+export function Closing({ plants, onOpen, readOnly = false }: { plants: string[]; onOpen: (id: string) => void; readOnly?: boolean }) {
   const [plant, setPlant] = useState('all');
   const [n, setN] = useState(10);
   const [report, setReport] = useState<Report | null>(null);
@@ -109,7 +109,7 @@ export function Closing({ plants, onOpen }: { plants: string[]; onOpen: (id: str
                 <th>Steps</th>
                 <th className="r">Hours <Chip k="SCORE" /></th>
                 <th className="r">Danger removed <Chip k="SCORE" /></th>
-                <th>Task</th>
+                {!readOnly && <th>Task</th>}
               </tr>
             </thead>
             <tbody>
@@ -131,7 +131,7 @@ export function Closing({ plants, onOpen }: { plants: string[]; onOpen: (id: str
                   <td>{i.steps.map((s) => <span className="step" key={s.action}>{STEP_WORDS[s.action] ?? s.action} {s.hours} h</span>)}</td>
                   <td className="r">{i.hours}</td>
                   <td className="r">{i.dangerRemoved}</td>
-                  <td>{i.task ? <ExtLink href={i.task.url}>{i.task.key}</ExtLink> : <span className="muted">none</span>}</td>
+                  {!readOnly && <td>{i.task ? <ExtLink href={i.task.url}>{i.task.key}</ExtLink> : <span className="muted">none</span>}</td>}
                 </tr>
               ))}
             </tbody>
@@ -140,7 +140,8 @@ export function Closing({ plants, onOpen }: { plants: string[]; onOpen: (id: str
             {report.items.length} assets, {report.totalHours} hours <Chip k="SCORE" />, removes {report.percentRemoved} percent <Chip k="SCORE" /> of the danger in {report.scope}.
           </p>
           <p className="muted small">K knowledge, R risk, D danger. Dots: knowledge, risk, danger. Red is bad.</p>
-          <div className="bar">
+          {readOnly && <p className="muted">Tasks are off on your own data. Pentti does not write to Jira here.</p>}
+          {!readOnly && <div className="bar">
             {!asking && (
               <button className="btn primary" disabled={busy || open.length === 0} onClick={() => setAsking(true)}>
                 {busy ? 'Creating' : open.length === 0 ? 'Every asset here has a task' : `Create tasks for ${open.length} assets`}
@@ -153,7 +154,7 @@ export function Closing({ plants, onOpen }: { plants: string[]; onOpen: (id: str
                 <button className="btn subtle" onClick={() => setAsking(false)}>No</button>
               </span>
             )}
-          </div>
+          </div>}
           {result && (
             <p className="ok">
               {result.created} created and {result.existing} already there, in {result.project}:{' '}

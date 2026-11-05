@@ -1,7 +1,7 @@
 // Gap map: x = knowledge from 100 to 0, so the bad corner is top right. y = risk.
 // Size = open findings, colour = plant, dark ring = Critical. Click opens the asset card.
 import { useMemo, useState } from 'react';
-import { Chip, Dot, PLANT_COLORS, type Light } from './ui';
+import { Chip, Dot, plantColor, type Light } from './ui';
 
 export interface Row {
   assetId: string;
@@ -25,6 +25,7 @@ export interface Overview {
   counts: { assets: number; criticalNothingKnown: number };
   sentence: string;
   bands: { risk: { red: number; amber: number }; knowledge: { green: number; amber: number } };
+  own?: { importedOn: string; spaceKey: string | null; projectKey: string | null; pagesCapped: boolean; issuesCapped: boolean };
 }
 
 const W = 900, H = 500, ML = 52, MR = 16, MT = 16, MB = 46;
@@ -96,7 +97,7 @@ export function GapMap({ data, onOpen }: { data: Overview; onOpen: (id: string) 
             cx={xOf(r.knowledge) + jitter(r.assetId, 1)}
             cy={yOf(r.risk) + jitter(r.assetId, 2)}
             r={Math.min(16, 3 + 1.5 * Math.sqrt(r.openFindings))}
-            fill={PLANT_COLORS[r.plant] ?? '#888'}
+            fill={plantColor(r.plant, data.plants)}
             onMouseMove={(e) => setTip({ x: e.clientX, y: e.clientY, row: r })}
             onClick={() => onOpen(r.assetId)}
           />
@@ -104,7 +105,7 @@ export function GapMap({ data, onOpen }: { data: Overview; onOpen: (id: string) 
       </svg>
 
       <div className="legend">
-        {data.plants.map((p) => <span key={p}><i style={{ background: PLANT_COLORS[p] }} />{p}</span>)}
+        {data.plants.map((p) => <span key={p}><i style={{ background: plantColor(p, data.plants) }} />{p}</span>)}
         <span>Dark ring: Critical</span>
         <span>Size: open findings <Chip k="SCAN" /></span>
         <span>Dots are spread a little where they overlap.</span>

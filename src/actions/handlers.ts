@@ -3,7 +3,7 @@
 // permission through context.accountId and runs as that user.
 import { blastRadius, explainAsset, findAsset, gapReport, whoKnows } from './core';
 import { createGapTasks } from './tasks';
-import { snapshot, type Snapshot } from '../app/context';
+import { ownDenied, snapshot, type Snapshot } from '../app/context';
 
 type Payload = Record<string, unknown> & { context?: { accountId?: string } };
 type Ctx = { accountId?: string } | undefined;
@@ -33,41 +33,42 @@ async function run<T>(name: string, fn: () => Promise<T>): Promise<T | { error: 
   }
 }
 
-export const findAssetAction = (payload: Payload) =>
-  run('find-asset', async () => {
+/** A read action: the access check for own data, then the answer. Own data answers say so, for the agent. */
+const read = <T extends object>(name: string, payload: Payload, context: Ctx, fn: (snap: Snapshot) => T) =>
+  run(name, async () => {
     const snap = await snapshot();
-    return findAsset(snap.index, String(payload.query ?? ''), snap.site);
+    const denied = await ownDenied(snap, accountIdOf(payload, context));
+    if (denied) return denied;
+    const r = fn(snap);
+    return snap.site.own ? { dataset: 'own', ...r } : r;
   });
 
-export const explainAssetAction = (payload: Payload) =>
-  run('explain-asset', async () => {
-    const snap = await snapshot();
+export const findAssetAction = (payload: Payload, context?: Ctx) =>
+  read('find-asset', payload, context, (snap) => findAsset(snap.index, String(payload.query ?? ''), snap.site));
+
+export const explainAssetAction = (payload: Payload, context?: Ctx) =>
+  read('explain-asset', payload, context, (snap) => {
     const r = assetOrError(snap, payload.assetId);
     if ('error' in r) return r;
     return explainAsset(snap.index, snap.byId.get(r.id)!, snap.site);
   });
 
-export const blastRadiusAction = (payload: Payload) =>
-  run('blast-radius', async () => {
-    const snap = await snapshot();
+export const blastRadiusAction = (payload: Payload, context?: Ctx) =>
+  read('blast-radius', payload, context, (snap) => {
     const r = assetOrError(snap, payload.assetId);
     if ('error' in r) return r;
     return blastRadius(snap.index, snap.byId, r.id, snap.site);
   });
 
-export const whoKnowsAction = (payload: Payload) =>
-  run('who-knows', async () => {
-    const snap = await snapshot();
+export const whoKnowsAction = (payload: Payload, context?: Ctx) =>
+  read('who-knows', payload, context, (snap) => {
     const r = assetOrError(snap, payload.assetId);
     if ('error' in r) return r;
     return whoKnows(snap.index, r.id, snap.site);
   });
 
-export const gapReportAction = (payload: Payload) =>
-  run('gap-report', async () => {
-    const snap = await snapshot();
-    return gapReport(snap.index, snap.scores, String(payload.plant ?? 'all'), Number(payload.n ?? 10), snap.site);
-  });
+export const gapReportAction = (payload: Payload, context?: Ctx) =>
+  read('gap-report', payload, context, (snap) => gapReport(snap.index, snap.scores, String(payload.plant ?? 'all'), Number(payload.n ?? 10), snap.site));
 
 // ---------- create-gap-tasks ----------
 

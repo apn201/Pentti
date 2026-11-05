@@ -5,6 +5,7 @@ import { kvs } from '@forge/kvs';
 import { graph } from '@forge/teamwork-graph';
 import { snapshot, type Snapshot } from '../app/context';
 import { assetCard, CARD_SOURCE, CARD_TYPE, chunks, SPIKE_IDS } from './cards';
+import { ownModeOn } from '../own/store';
 
 export const CONNECTION_KEY = 'graph:connectionId';
 export const LAST_SYNC_KEY = 'graph:lastSync';
@@ -62,6 +63,8 @@ export async function syncAll(): Promise<SyncResult> {
   const connection = await connectionId();
   const at = new Date().toISOString();
   if (!connection) return { connected: false, cards: 0, accepted: 0, rejected: 0, errors: [], at, ms: 0 };
+  // Cards are visible to everyone on the site. Own data never goes into the graph.
+  if (await ownModeOn()) return { connected: true, cards: 0, accepted: 0, rejected: 0, errors: [], at, ms: 0 };
   const snap = await snapshot();
   const r = await sendCards(connection, snap, snap.index.assets.map((a) => a.id));
   if (r.errors.some((e) => /connection not found/i.test(e))) {
@@ -93,7 +96,7 @@ export async function syncAll(): Promise<SyncResult> {
 /** Rewrites one card, for example after "I checked this". Quiet when not connected. */
 export async function syncOne(assetId: string): Promise<void> {
   const connection = await connectionId();
-  if (!connection) return;
+  if (!connection || await ownModeOn()) return;
   const snap = await snapshot();
   if (!snap.byId.has(assetId)) return;
   const r = await sendCards(connection, snap, [assetId]);

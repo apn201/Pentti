@@ -7,10 +7,11 @@ interface Source { id: string; kind: string; title: string; url: string | null; 
 interface Person { personId: string; name: string; role: string; left: boolean; leavingInDays: number | null; leavingSoon?: boolean; touches: number; lastTouchDaysAgo: number }
 
 interface AssetData {
+  dataset?: 'own';
   asset: { assetId: string; name: string; hostname: string | null; nickname: string | null; plant: string; line: string; role: string; model: string | null; criticality: string; ip: string };
   known: {
     identity: { hostname: string; nickname: string; ip: string; ipHistory: string[]; formerNames: string[]; criticality: string; purdueLevel: number | null; flags: string[] };
-    hardware: { model: string; manufacturer: string; firmware: string; modules: string[]; lastSeenDaysAgo: number };
+    hardware: { model: string; manufacturer: string; firmware: string; modules: string[]; lastSeenDaysAgo: number | string };
     findings: { open: number; openCritical: number; openHigh: number; openMedium: number; openLow: number; maxScore: number | null; total: number };
     owner?: { name: string; leavingSoon: boolean; leavingInDays: number | null };
     pages?: (Source & { lastEditedDaysAgo: number; author: string })[];
@@ -92,6 +93,7 @@ export function AssetCard({ assetId, onOpen, onChanged }: { assetId: string | nu
   const k = data?.known;
   const pages = k?.pages ?? [];
   const issues = k?.issues ?? [];
+  const own = data?.dataset === 'own';
 
   return (
     <section>
@@ -141,8 +143,8 @@ export function AssetCard({ assetId, onOpen, onChanged }: { assetId: string | nu
               <h2>What is known</h2>
               <ul className="plain">
                 <li>Hostname {k.identity.hostname}, nickname {k.identity.nickname}, IP {k.identity.ip} <Chip k="SCAN" /></li>
-                {k.identity.ipHistory.length > 0 && <li>Old IP {k.identity.ipHistory.join(', ')} <Chip k="GEN" /></li>}
-                {k.identity.formerNames.length > 0 && <li>Former name {k.identity.formerNames.join(', ')} <Chip k="GEN" /></li>}
+                {k.identity.ipHistory.length > 0 && <li>Old IP {k.identity.ipHistory.join(', ')} <Chip k={own ? 'SCAN' : 'GEN'} /></li>}
+                {k.identity.formerNames.length > 0 && <li>Former name {k.identity.formerNames.join(', ')} <Chip k={own ? 'SCAN' : 'GEN'} /></li>}
                 <li>Model {k.hardware.model}, {k.hardware.manufacturer}, firmware {k.hardware.firmware} <Chip k="SCAN" /></li>
                 <li>
                   Open findings <Num v={k.findings.open} k="SCAN" />: Critical {k.findings.openCritical}, High {k.findings.openHigh}, Medium {k.findings.openMedium}, Low {k.findings.openLow}.
@@ -170,8 +172,8 @@ export function AssetCard({ assetId, onOpen, onChanged }: { assetId: string | nu
                   ))}
                 </tbody>
               </table>
-              <h2>Who knows it <Chip k="GEN" /></h2>
-              {data.who.length === 0 ? <Empty>Nobody. Not one page or ticket by anyone.</Empty> : (
+              <h2>Who knows it {!own && <Chip k="GEN" />}</h2>
+              {own ? <Empty>Not known. People are not imported.</Empty> : data.who.length === 0 ? <Empty>Nobody. Not one page or ticket by anyone.</Empty> : (
                 <ul className="plain">
                   {data.who.map((w) => (
                     <li key={w.personId}>
@@ -204,7 +206,7 @@ export function AssetCard({ assetId, onOpen, onChanged }: { assetId: string | nu
           </div>
 
           <h2>Pages and tickets <Chip k="GEN" /></h2>
-          {pages.length + issues.length === 0 ? <Empty>None counted. Nobody wrote anything down.</Empty> : (
+          {pages.length + issues.length === 0 ? <Empty>{own ? 'None counted in what was read.' : 'None counted. Nobody wrote anything down.'}</Empty> : (
             <table>
               <thead><tr><th>Source</th><th>Matched on</th><th className="r">Confidence</th><th className="r">Age, days</th></tr></thead>
               <tbody>
@@ -237,7 +239,7 @@ export function AssetCard({ assetId, onOpen, onChanged }: { assetId: string | nu
           )}
 
           <h2>Open findings <Chip k="SCAN" /></h2>
-          {data.openFindings.length === 0 ? <Empty>No open findings in the scan.</Empty> : (
+          {data.openFindings.length === 0 ? <Empty>{own ? 'None in your asset list. That does not mean there are none.' : 'No open findings in the scan.'}</Empty> : (
             <table>
               <thead><tr><th>CVE</th><th>Severity</th><th className="r">Score</th><th>Exploit</th><th>Summary</th></tr></thead>
               <tbody>
