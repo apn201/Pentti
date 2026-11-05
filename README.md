@@ -2,7 +2,8 @@
 
 A Forge app that measures what a factory does not know about its own machines, then helps close the dangerous gaps first. A Rovo agent, Ask Pentti, answers questions about machines and says "nobody knows, here is where I looked" when that is the truth.
 
-Built for Atlassian Codegeist 2026, category Apps for Specialized Industries.
+Built for Atlassian Codegeist 2026, category Apps for Specialized Industries. 
+Devpost: https://devpost.com/software/pentti
 
 ## This is a demo
 
