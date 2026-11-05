@@ -109,3 +109,11 @@ Seeded-content and API quirks found later go below.
 - The admin page listed no spaces for a new space, with no error. `/wiki/api/v2/spaces?type=global` leaves out the newer types. The dev site API shows `global`, `collaboration`, `knowledge_base` and `personal`. On the new site a space made with the purpose Custom appeared in the list, so Custom appears to give `global`. Fixed: the list now asks for all current spaces and leaves out personal ones.
 - NOT RUN: a load into a `collaboration` or `knowledge_base` space, and the fixed list seen live. The fresh-site load went into a Custom space.
 - Still likely: a site with no Confluence at all loses the project list too, one call fetches both. Seen in code, not live.
+
+## Screenshots, 2026-11-05
+
+- Taken from the development install on the dev site. On screen: 522, 60, 98, Birch 10 assets 22.5 hours 15.1 percent, Pentti 39 and 34, 150 days. Ask Pentti and Rovo Search answered as the video script expects, the asset card first even without the App filter.
+- The connector icon is broken in Rovo Search on this site, on the card and in the "Pentti asset cards" filter. The page asks for `<site>/jira/static/connector-icon.svg`, the old relative path from before the jsDelivr url. The manifest has the new url and jsDelivr serves it as `image/svg+xml`. Probably the connection on this site keeps the icon it was added with, not tested. Adding the connector again would test it, but disconnect deletes the cards. A connector added on a new site is NOT RUN for the icon.
+- The built-in browser pane of the desktop app caps screenshots at 800x450 and times out while hidden, not enough for publishing. A separate Edge window on a debug port, signed in by a person, gives 1920x1080.
+- Rovo full screen view: the menu item did nothing when driven by script, tried twice, left it. The shots use the sidebar.
+- Typing in Jira without focus in the search box fires keyboard shortcuts. It opened Help and the All work list here. JQL `updated >= -30m` found no changed issue.

@@ -5,7 +5,7 @@ About 3 minutes 15. Everything a judge needs to understand the problem, the case
 The viewer has to get three things:
 1. **The problem.** OT nobody owns, now a real target.
 2. **The case.** Tervaniemi Works is not empty-handed. It used Jira and Confluence for some projects and maintenance, so bits are written down, a runbook here, a ticket there. How much depends on who wrote it. A clear inventory and a plan of action are missing.
-3. **The solution.** In this demo Pentti goes through every scrap of the factory's data, builds a card per machine, says plainly what nobody knows, and turns the worst gaps into Jira tasks. It works on the data bundled with the app, not on a customer's own site, so the script must not suggest otherwise.
+3. **The solution.** In this demo Pentti goes through every scrap of the factory's data, builds a card per machine, says plainly what nobody knows, and turns the worst gaps into Jira tasks. Everything filmed runs on the data bundled with the app, not on a customer's own site, so the script must not suggest otherwise. The own data proof of concept (CSV import, read only) is not filmed, the end card names it.
 
 Judges know Jira and Confluence, mostly from software teams. One sentence and one shot make clear they were used here for maintenance notes, not for an asset inventory.
 
@@ -93,12 +93,12 @@ Line: "If nobody knows, Pentti says so."
 
 ### 3:00 to 3:15 Install
 
-The admin page clip from the prep: Load the factory, the bar fills, "Done. 216 objects created." End card: the logo, "Pentti. Forge, Rovo agent, Teamwork Graph, MCP. Fictional company, real machine mix. A demo on bundled data, it does not read your own site yet."
+The admin page clip from the prep: Load the factory, the bar fills, "Done. 216 objects created." End card: the logo, "Pentti. Forge, Rovo agent, Teamwork Graph, MCP. Fictional company, real machine mix. A demo on bundled data. Own data is a read-only proof of concept."
 
 ## After recording
 
-- Upload to YouTube as public, not unlisted.
-- Put the link into `docs/devpost-text.md` and the Devpost form.
+- Upload to YouTube as public, not unlisted. Title, description, chapters and tags are in `docs/publish-copy.md`. Fix the chapter times to the final cut.
+- Put the link into the Devpost form.
 
 ## Sources for the text cards
 
