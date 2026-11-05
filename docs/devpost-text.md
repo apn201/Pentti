@@ -1,6 +1,6 @@
 # Devpost text (draft)
 
-Written in the APN201 voice. `[fill: ...]` marks a fact only Juha can give. Numbers come from the app and `docs/limits.md`, check them against the final build before pasting.
+Written in the APN201 voice. `[fill: ...]` marks a fact only Juha can give. Numbers come from the app and `docs/limits.md`. Checked against the code at d437ea7 on 2026-11-05 (production was deployed from it the same day): 522, 2194, 61, 150, 270 of 276, 98 of 98, 395 counted links with 0 wrong. Check again if anything is deployed after that. Rules: https://codegeist2026.devpost.com/rules
 
 ## Tagline
 
@@ -30,6 +30,19 @@ To try it on real data, a Jira admin can import an asset list as CSV and pick on
 
 The company is fictional, Tervaniemi Works. The machine mix is real, from an anonymized OT scan of a real plant [fill: say how much you can about the source, for example "a scanner export I had access to, anonymized before it left the machine"]. Every number in the app has a chip: SCAN for the scan, GEN for generated content, SCORE for computed.
 
+## How it meets the main technology requirement
+
+The rules ask for a Forge app that integrates with at least one Atlassian product or platform capability. Pentti is a Forge app, Node 24 runtime, no external egress, data in Forge storage. It uses Jira (global page, admin page, seeded issues, gap tasks created as the user), Confluence (seeded pages), Rovo (agent `rovo:agent` and six `action` modules), Teamwork Graph (`graph:connector`, 522 cards) and the Atlassian MCP server (`rovo:mcp`, Preview).
+
+## Testing instructions for judges
+
+Full steps with the install link are in the README: https://github.com/apn201/Pentti#install-the-demo-about-10-minutes
+
+- You need a Jira Cloud test site with Confluence and Rovo, and an organization admin for the connector and MCP steps. Confluence has to be on the site before you install, otherwise the dialog says "Installation failed" next to Confluence.
+- Short path: install, Jira settings, Apps, Pentti, pick an empty project and space, Load the factory. Rovo Chat, agent Ask Pentti: "What happens if Old Faithful dies?" Then Jira, Apps, Pentti for the page.
+- The page and the agent answer from the bundled data even before the load.
+- The author ran this install once on a new site. Nobody else has yet, so "about 10 minutes" is an estimate.
+
 ## How I built it
 
 Mostly with Claude Code, working slice by slice from a written spec. [fill: your own words on how that went, how much you steered, what you wrote yourself.]
@@ -50,6 +63,8 @@ Mostly with Claude Code, working slice by slice from a written spec. [fill: your
 - Confluence labels do not allow a colon. `pentti-demo:is_001` became `pentti-demo-is_001`.
 - MCP tools did not list in Claude. A community thread from the same day had the workaround: disconnect Confluence, toggle the tools, connect again.
 - The graph connection did not survive changing the installation. The connector had to be added again.
+- Installing on a new site before Confluence was there: "Installation failed. Try again or contact app owner" next to Confluence, no hint of why. The README says it now.
+- The admin page listed no spaces on the new site and gave no error, because `type=global` leaves out the newer space types. It now asks for all current spaces except personal ones.
 
 All of it is written down in `docs/limits.md`, with what was tried.
 
@@ -63,31 +78,24 @@ All of it is written down in `docs/limits.md`, with what was tried.
 
 ## What's next
 
-[fill: only if you want one. For example a real scanner import instead of the demo dataset.]
+[fill: only if you want one. For example a real scanner import instead of the CSV, the own data part as more than a proof of concept.]
 
 ## Built with
 
 Forge, Rovo agents, Rovo actions, Teamwork Graph connector, rovo:mcp, Jira, Confluence, TypeScript, React, Vite, Python, vitest, pytest, Claude Code.
 
-## Bonus: Best Agents (Rovo)
+## Bonus: Best Agents - Rovo/Assignable agents
 
 Ask Pentti uses six actions: find-asset, explain-asset, blast-radius, who-knows, gap-report and create-gap-tasks. Every asset id the model passes in is checked against the data, an unknown id gets search results back instead of a guess. The one write checks the user's own Jira permission and runs as that user, and Rovo shows its confirmation card before it. The prompt makes the agent answer in three parts and say "not known" when there is no source. On a nameless PLC with 91 findings and no page, it lists every gap and names nobody.
 
-## Bonus: Best Teamwork Graph integration
+## Bonus: Best apps with Teamwork Graph integration
 
 522 asset cards as `atlassian:document`, one per machine, with the seeded Jira issues as associations. The card text carries every name of the machine, so Rovo Search finds it by hostname, nickname or old address. Cards are rewritten after every load and reset and after "I checked this", and removed on disconnect. There is no Confluence page association type, so page titles and links go into the card text.
 
-## Bonus: Best Atlassian MCP
+## Bonus: Best app with Atlassian MCP
 
 `rovo:mcp` exposes find-asset, explain-asset and gap-report. Read only on purpose, writes stay inside Rovo where the user confirms them. Tested with Claude as the client: find Old Faithful, list the three Oracles in three plants, Birch closing list, and the honest answer for the nameless PLC.
 
 ## Submission checklist
 
-- [ ] Video public on YouTube, under 3 minutes of content, link in the form.
-- [ ] Every `[fill: ...]` above replaced or removed.
-- [ ] Category: Apps for Specialized Industries.
-- [ ] Bonus categories selected: Best Agents (Rovo), Best Teamwork Graph integration, Best Atlassian MCP. Paste the three write-ups above.
-- [ ] Install link (from the README) and the public repo link in the form.
-- [ ] Screenshots: gap map, asset card, closing list with keys, People with Pentti in red, Rovo Chat answer.
-- [ ] Submit by Dec 20, deadline Dec 22 12:00 PST (22:00 Helsinki).
-- [ ] Reopen the submission page from a logged-out browser and check the video plays and the links open.
+The full list is in `docs/publish-checklist.md`.
