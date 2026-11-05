@@ -55,6 +55,8 @@ describe('explain-asset', () => {
     expect(r.known.findings).toMatchObject({ chip: 'SCAN' });
     expect(r.not_known.length).toBeGreaterThan(0);
     expect(r.searched.length).toBeGreaterThan(3);
+    expect(r.searched.join(' ')).toContain('bundled with the app');
+    expect(r.searched.at(-1)).toBe('Your own Jira and Confluence were not searched. This demo reads only the bundled data.');
     expect(r.not_known.join(' ')).toContain('Spare parts');
   });
 

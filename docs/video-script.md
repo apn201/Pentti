@@ -5,7 +5,7 @@ About 3 minutes 15. Everything a judge needs to understand the problem, the case
 The viewer has to get three things:
 1. **The problem.** OT nobody owns, now a real target.
 2. **The case.** Tervaniemi Works is not empty-handed. It used Jira and Confluence for some projects and maintenance, so bits are written down, a runbook here, a ticket there. How much depends on who wrote it. A clear inventory and a plan of action are missing.
-3. **The solution.** Pentti goes through every scrap, builds a card per machine, says plainly what nobody knows, and turns the worst gaps into Jira tasks.
+3. **The solution.** In this demo Pentti goes through every scrap of the factory's data, builds a card per machine, says plainly what nobody knows, and turns the worst gaps into Jira tasks. It works on the data bundled with the app, not on a customer's own site, so the script must not suggest otherwise.
 
 Judges know Jira and Confluence, mostly from software teams. One sentence and one shot make clear they were used here for maintenance notes, not for an asset inventory.
 
@@ -53,7 +53,7 @@ Line: "Tervaniemi Works is a fictional company, but there are many real ones lik
 
 On screen: the Pentti page, Asset card tab, birch-l2-cp-04 (Old Faithful). Scroll to "Pages and tickets": each row shows what matched, the hostname or a former name, and a confidence. Then the knowledge part by part table.
 
-Line: "Pentti goes through all of it, the scan, every page and every ticket, and picks up every tiny bit that mentions a machine. By hostname, by IP, by an old address, by the nickname people use on the floor. It builds a card for each machine. And it says what nobody knows."
+Line: "In this demo Pentti goes through all of Tervaniemi's data, the scan, every page and every ticket, and picks up every tiny bit that mentions a machine. By hostname, by IP, by an old address, by the nickname people use on the floor. It builds a card for each machine. And it says what nobody knows."
 
 ### 1:15 to 1:40 Ask Pentti
 
@@ -62,7 +62,7 @@ Open Rovo Chat, agent Ask Pentti, new chat. Type: `What happens if Old Faithful 
 On screen (check before you keep the take):
 - Known: birch-l2-cp-04 (Old Faithful) as a link, Siemens CP 343-1, 33 open findings, one old page and one ticket.
 - Not known: owner, fresh documentation, history, checked in person, spare parts, upstream and downstream machines.
-- Where I looked: scan 522 assets, 61 pages, 150 issues.
+- Where I looked: scan 522 assets, 61 demo pages and 150 demo issues bundled with the app, and that your own site was not searched.
 - The sentence "Same subnet. Reachability not verified. No routing data."
 
 No line needed, let the answer be read. Click the Old Faithful link, the card opens.
@@ -93,7 +93,7 @@ Line: "If nobody knows, Pentti says so."
 
 ### 3:00 to 3:15 Install
 
-The admin page clip from the prep: Load the factory, the bar fills, "Done. 216 objects created." End card: the logo, "Pentti. Forge, Rovo agent, Teamwork Graph, MCP. Fictional company, real machine mix."
+The admin page clip from the prep: Load the factory, the bar fills, "Done. 216 objects created." End card: the logo, "Pentti. Forge, Rovo agent, Teamwork Graph, MCP. Fictional company, real machine mix. A demo on bundled data, it does not read your own site yet."
 
 ## After recording
 

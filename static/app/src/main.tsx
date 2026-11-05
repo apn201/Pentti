@@ -52,7 +52,7 @@ function App() {
       <header className="brand">
         <img src={logo} alt="Tervaniemi Works logo" />
         <p className="muted small">
-          Tervaniemi Works is a fictional company. Machines from a real anonymized scan <Chip k="SCAN" />, pages, tickets and people generated <Chip k="GEN" />, scores computed <Chip k="SCORE" />.
+          Demo. Tervaniemi Works is a fictional company, bundled with the app. Nothing here comes from your own machines, pages, tickets or people. Machines from a real anonymized scan <Chip k="SCAN" />, pages, tickets and people generated <Chip k="GEN" />, scores computed <Chip k="SCORE" />.
         </p>
       </header>
       <nav className="tabs">

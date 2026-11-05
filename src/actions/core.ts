@@ -20,6 +20,7 @@ export interface Site {
 
 export const NOT_KNOWN = 'not known';
 export const BLAST_SENTENCE = 'Same subnet. Reachability not verified. No routing data.';
+export const NOT_SEARCHED = 'Your own Jira and Confluence were not searched. This demo reads only the bundled data.';
 export const MAX_TASKS = 10;
 export const MAX_GAP_N = 25;
 
@@ -246,10 +247,11 @@ export function explainAsset(index: Index, score: AssetScore, site: Site) {
 
   const searched = [
     `Scan: ${index.assets.length} assets and ${index.data.findings.length} findings. ${index.findingsFor(a.id).length} findings on this machine.`,
-    `Confluence: ${index.data.pages.length} pages. ${pages.length} counted for this machine, ${maybe.filter((l) => l.sourceKind === 'page').length} maybe.`,
-    `Jira: ${index.data.issues.length} issues. ${issues.length} counted for this machine, ${maybe.filter((l) => l.sourceKind === 'issue').length} maybe.`,
+    `Demo pages bundled with the app: ${index.data.pages.length}. ${pages.length} counted for this machine, ${maybe.filter((l) => l.sourceKind === 'page').length} maybe.`,
+    `Demo issues bundled with the app: ${index.data.issues.length}. ${issues.length} counted for this machine, ${maybe.filter((l) => l.sourceKind === 'issue').length} maybe.`,
     `People: ${index.data.people.length} on file.`,
     'Matched on hostname, IP, old IP, former name, nickname and model with line.',
+    NOT_SEARCHED,
   ];
 
   return {

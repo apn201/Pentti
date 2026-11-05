@@ -16,7 +16,9 @@ I wanted an agent that is allowed to say "nobody knows". Most assistants fill th
 
 ## What it does
 
-Pentti is a Forge app for Jira, Confluence and Rovo. It takes the machines from a scan, matches them to Confluence pages and Jira tickets, and scores each machine on how much is known about it and how risky it is.
+Pentti is a working demo, a Forge app for Jira, Confluence and Rovo. It runs on one fictional factory bundled inside the app. It takes the factory's machines from an anonymized scan, matches them to the factory's pages and tickets, and scores each machine on how much is known about it and how risky it is.
+
+It does not read your own machines, pages, tickets or people yet, and there is no scanner import. Install it on a test site.
 
 - Gap map: 522 assets, knowledge against risk. Top right is risky and nobody knows anything.
 - Asset card: known, not known, where it looked. Pages and tickets with match confidence, people, findings, and a button for "I checked this".
@@ -36,7 +38,7 @@ Mostly with Claude Code, working slice by slice from a written spec. [fill: your
 - Pages and tickets were written as narrative with markup, so the ground truth of which page mentions which machine is known. That made it possible to measure the matcher: 270 of 276 exact mentions found, all 98 old names and addresses, no false positives.
 - The matcher is plain code, no model. Hostname, current and old IP, former name, nickname within its plant, model with line. When two machines share an IP both get a "maybe", never a guess.
 - Scores are pure functions with tests. Weights in one YAML file. The model never adds up anything, it repeats what the actions return.
-- "Load the factory" on the admin page seeds 66 Confluence pages and 150 Jira issues in steps of 10. Pressing it again changes nothing, Reset removes only what it made.
+- "Load the factory" on the admin page seeds 66 Confluence pages (61 of content, five for the page tree) and 150 Jira issues in steps of 10, so the sources can be read on the site. The matcher works on the bundled copy, it does not read them back. Pressing it again changes nothing, Reset removes only what it made.
 - Custom UI in React. The gap map is a hand drawn SVG.
 
 ## Challenges I ran into

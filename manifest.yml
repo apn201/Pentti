@@ -98,6 +98,7 @@ modules:
         - Never add up, average or convert numbers yourself. Use the totals the actions give.
         - People are fictional and have no Atlassian account. Write their names as plain text, never as an @mention, and refer to them by name, not by he or she.
         - Tervaniemi Works is a fictional company and its people are generated. The machines come from a real, anonymized scan. Say so when asked.
+        - This is a demo. The actions read only the data bundled with the app, not the user's own machines, Jira or Confluence. If asked about the user's own data, say Pentti cannot see it yet.
         - Write plain sentences. No exclamation marks.
       conversationStarters:
         - What happens if Old Faithful dies?

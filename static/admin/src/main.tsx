@@ -109,7 +109,11 @@ function App() {
         {p ? p.issues.total : '...'} Jira issues. Every object carries the label <code>pentti-demo</code>. Reset removes those
         and nothing else.
       </p>
-      <p className="muted">Pick an empty project and space if you can. Dates and authors live in the app, the pages say so.</p>
+      <p>
+        <strong>Use a test site, not a production one.</strong> This writes fictional pages and issues to the project and space
+        you pick. Pentti answers from the data bundled with the app, it does not read your own machines, pages, tickets or people.
+      </p>
+      <p className="muted">Pick an empty project and space. Dates and authors live in the app, the pages say so.</p>
 
       <label htmlFor="project">Jira project</label>
       <select id="project" value={projectKey} disabled={locked || !!busy} onChange={(e) => setProjectKey(e.target.value)}>
