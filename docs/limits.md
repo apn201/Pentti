@@ -13,7 +13,7 @@ Filled in during slice S0. Every row is run with code, not read from docs. FAIL 
 | g | Can REST set created/updated dates on seeded Jira issues and Confluence pages | FAIL (both, measured) | Jira create: "Field 'created' cannot be set". Confluence v1 create with `history.createdDate` and `version.when` set to 2019: accepted, both ignored, page shows today. Fallback per spec section 11: the app keeps `createdDaysAgo` and `lastEditedDaysAgo` and scores never read Atlassian dates (D6). Page and issue headers say "(app date)". |
 | h | Can a graph object link to a Confluence page | FAIL | Docs list only `issueIdOrKeys` and `atlassian:<objectType>` association types. Tried `confluencePageIds`, `pageIds`, `contentIds`, `atlassian:page`, `confluencePageId`, all "not a valid 'associationType'". Fallback: asset card text and description carry the Confluence page title and url, page links live in app storage. |
 | i | Scopes the seeder needs (Jira, Confluence) | PASS | Jira: `read:jira-work`, `write:jira-work` (create, transition, delete issues, project and createmeta reads, own permissions as the user). Confluence (granular, v2): `read:space:confluence`, `read:page:confluence`, `write:page:confluence`, `delete:page:confluence`, `read:label:confluence`, `write:label:confluence`, `search:confluence`, `read:content-details:confluence`. Plus `storage:app`. Classic Confluence scopes are not enough: the v1 content and space endpoints answer 410 to apps. |
-| j | Does the judge-style install (install link, fresh site, non-owner admin) work | NOT RUN | Install link created 2026-11-04 (production, Jira plus Confluence). No second site and no outside tester were available: the site picker in Atlassian always offered the current site. Skipped by decision (D42). Covered so far only by the dev-site runs of every step. |
+| j | Does the judge-style install (install link, fresh site, non-owner admin) work | PASS, one run | Run by Juha on 2026-11-05 on a new site from the production install link, reported as working. Not run by an outside tester. Two findings, see "Fresh site, 2026-11-05". |
 
 Seeded-content and API quirks found later go below.
 
@@ -102,3 +102,10 @@ Seeded-content and API quirks found later go below.
 - NOT RUN: the file picker, a native dialog the test tools can not drive, so only pasting ran. A user who is not a Jira admin. Limits at their edge, 1000 assets and 200 pages. Reset while own data exists, it would empty the demo site, covered by the separate keys in code. Real plant data, so the matcher has no measured number there.
 - Test tool notes: the first wheel scroll after a load is lost, native select lists can not be clicked. Focus with Tab and press letters.
 - Limits chosen, not measured at the edge: 1000 assets, 200 pages, 500 issues.
+
+## Fresh site, 2026-11-05
+
+- Installing before Confluence was on the site: the dialog showed Jira as successful and "Installation failed. Try again or contact app owner" next to Confluence. Jira stayed installed. After adding Confluence the connection worked. The message gives no hint of the cause, so the README says it.
+- The admin page listed no spaces for a new space, with no error. `/wiki/api/v2/spaces?type=global` leaves out the newer types. The dev site API shows `global`, `collaboration`, `knowledge_base` and `personal`. On the new site a space made with the purpose Custom appeared in the list, so Custom appears to give `global`. Fixed: the list now asks for all current spaces and leaves out personal ones.
+- NOT RUN: a load into a `collaboration` or `knowledge_base` space, and the fixed list seen live. The fresh-site load went into a Custom space.
+- Still likely: a site with no Confluence at all loses the project list too, one call fetches both. Seen in code, not live.

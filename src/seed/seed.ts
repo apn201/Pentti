@@ -9,7 +9,7 @@ import {
   DEMO_LABEL, idFromLabels, idLabel, issueDescription, issueLabels, pageBody, pickIssueType,
   rootBody, rootTitle, sectionBody, sectionTitle,
 } from './format';
-import { nextToCreate, nextToDelete, progress, ROOT_ID, units, type Progress, type Seeded, type SeededMap, type Unit } from './plan';
+import { nextToCreate, nextToDelete, pickableSpaces, progress, ROOT_ID, units, type Progress, type Seeded, type SeededMap, type Unit } from './plan';
 
 export const STEP_SIZE = 10;
 const OBJ_PREFIX = 'seed:obj:';
@@ -106,11 +106,11 @@ export async function listTargets() {
   );
   // Confluence v2. The v1 content and space endpoints answer 410 to apps (limits.md, seeder notes).
   const spaces = await conf<{ results: { id: string; key: string; name: string; type: string }[] }>(
-    route`/wiki/api/v2/spaces?limit=250&type=global`,
+    route`/wiki/api/v2/spaces?limit=250&status=current`,
   );
   return {
     projects: projects.values.map((p) => ({ id: p.id, key: p.key, name: p.name, type: p.projectTypeKey })),
-    spaces: spaces.results.map((s) => ({ id: String(s.id), key: s.key, name: s.name })).sort((x, y) => x.name.localeCompare(y.name)),
+    spaces: pickableSpaces(spaces.results),
   };
 }
 

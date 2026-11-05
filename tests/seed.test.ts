@@ -3,7 +3,19 @@ import { bundledDataset } from '../src/store/dataset';
 import {
   DEMO_LABEL, idFromLabels, idLabel, issueDescription, issueLabels, mdToStorage, pageBody, pickIssueType,
 } from '../src/seed/format';
-import { nextToCreate, nextToDelete, progress, ROOT_ID, units, type SeededMap } from '../src/seed/plan';
+import { nextToCreate, nextToDelete, pickableSpaces, progress, ROOT_ID, units, type SeededMap } from '../src/seed/plan';
+
+describe('spaces to pick', () => {
+  it('offers every space type a new site creates, sorted, without personal ones', () => {
+    const r = pickableSpaces([
+      { id: 3, key: 'B', name: 'Beta', type: 'knowledge_base' },
+      { id: 1, key: 'A', name: 'Alpha', type: 'collaboration' },
+      { id: 2, key: 'C', name: 'Classic', type: 'global' },
+      { id: 4, key: '~me', name: 'Me', type: 'personal' },
+    ]);
+    expect(r).toEqual([{ id: '1', key: 'A', name: 'Alpha' }, { id: '3', key: 'B', name: 'Beta' }, { id: '2', key: 'C', name: 'Classic' }]);
+  });
+});
 
 const data = bundledDataset();
 const people = new Map(data.people.map((p) => [p.id, p]));

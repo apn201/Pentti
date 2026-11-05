@@ -35,6 +35,17 @@ export function units(data: Pick<Dataset, 'pages' | 'issues'>): Unit[] {
   ];
 }
 
+/**
+ * Spaces an admin can pick. New sites create collaboration and knowledge_base spaces, not global ones,
+ * so this goes by leaving out personal spaces, never by asking for one type (limits.md).
+ */
+export function pickableSpaces(spaces: { id: string | number; key: string; name: string; type?: string }[]) {
+  return spaces
+    .filter((s) => s.type !== 'personal')
+    .map((s) => ({ id: String(s.id), key: s.key, name: s.name }))
+    .sort((x, y) => x.name.localeCompare(y.name));
+}
+
 /** Next units to create: missing, parent done before this step, at most n. */
 export function nextToCreate(all: Unit[], seeded: SeededMap, n: number): Unit[] {
   const out: Unit[] = [];
